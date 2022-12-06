@@ -9,12 +9,6 @@ const HOST: string = process.env.IP || 'localhost';
 
 // Example get request
 app.get('/', (req: Request, res: Response, next) => {
-  let dataBuffer = fs.readFileSync('./menu.pdf');
-
-	pdf(dataBuffer).then(function(data) {
-		console.log(data.text);
-	});
-	
 	return res.send('Hello World');
 });
 
