@@ -15,9 +15,18 @@ app.post("/webhook", (req: Request, res: Response) => {
 
   console.log(`\u{1F7EA} Received webhook:`);
   console.dir(body, { depth: null });
+  
   // Send a 200 OK response if this is a page webhook
-
   if (body.object === "page") {
+    
+    //Iterates over each entry - there may be multiple if batched
+    body.entry.forEach(function(entry) {
+
+      // Gets the message. entry.messaging is an array , but 
+      // will only ever contain one message, so we get index 0
+      console.log(entry.messaging[0]);
+    });
+
     // Returns a '200 OK' response to all requests
     res.status(200).send("EVENT_RECEIVED");
     // Determine which webhooks were triggered and get sender PSIDs and locale, message content and more.
@@ -47,7 +56,7 @@ app.get("/webhook", (req: Request, res: Response) => {
       res.sendStatus(403);
     }
   }
-  });
+});
 
 // start server
 const server = app.listen(PORT, HOST, () => {
