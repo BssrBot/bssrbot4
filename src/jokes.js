@@ -1,5 +1,3 @@
-const { get } = require("http");
-
 const listOfJokes = [
     "Did you hear about the restaurant on the moon? Great food, no atmosphere.",
     "What do you call a fake noodle? An impasta.",
