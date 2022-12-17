@@ -9,7 +9,7 @@ const fs = require('fs');
 const app = express();
 
 // Example get request
-app.get('/', (req: Request, res: Response) => {
+app.post('/', (req: Request, res: Response) => {
 	return res.send('Hello World');
 });
 
