@@ -1,9 +1,13 @@
 import express, { json, Request, Response } from 'express';
+
 import config from './config.json';
-const fs = require('fs');
-const app = express();
+import dotenv from 'dotenv';
+dotenv.config();
 const PORT: number = parseInt(process.env.PORT || config.port);
 const HOST: string = process.env.IP || 'localhost';
+
+const fs = require('fs');
+const app = express();
 
 // Example get request
 app.get('/', (req: Request, res: Response) => {
