@@ -1,14 +1,12 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "noImplicitAny": false,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "allowJs": true,
-        "suppressImplicitAnyIndexErrors": true
-    },
-    "exclude": [
-        "**/**_broken.ts"
-    ]
-    
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "resolveJsonModule":true
+},
+  "lib": ["es2015"]
 }
