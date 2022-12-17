@@ -4,7 +4,6 @@ import config from './config.json';
 import dotenv from 'dotenv';
 dotenv.config();
 const PORT: number = parseInt(process.env.PORT || config.port);
-const HOST: string = process.env.IP || 'localhost';
 
 const fs = require('fs');
 const app = express();
@@ -63,9 +62,9 @@ app.get("/webhook", (req: Request, res: Response) => {
 });
 
 // start server
-const server = app.listen(PORT, HOST, () => {
+const server = app.listen(PORT, () => {
   // DO NOT CHANGE THIS LINE
-  console.log(`⚡️ Server listening on port ${PORT} at ${HOST}`);
+  console.log(`⚡️ Server listening on port ${PORT}`);
 });
 
 // Handle Ctrl+C gracefully
