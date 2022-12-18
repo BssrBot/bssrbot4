@@ -92,4 +92,3 @@ function getJoke() {
     const x = Math.floor(Math.random() * listOfJokes.length) ;
     return listOfJokes[x];
 }
-
