@@ -96,7 +96,7 @@ function handleMessage(senderPsid, receivedMessage) {
     if (message.includes('joke')) {
       const joke = getJoke();
       response = {
-        'text': `Here is a joke: '${joke}'. Hope you found it funny`
+        'text': `'${joke}'`
       };
     } else {
       response = {
