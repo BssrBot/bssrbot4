@@ -19,7 +19,7 @@ app.use(json());
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
 
-  let quickReplies = {
+  res.send({
     "quick_replies":[
       {
         "content_type":"text",
@@ -33,8 +33,7 @@ app.get('/', function (req, res) {
         "image_url":"http://example.com/img/green.png"
       }
     ]
-  }
-  res.send('Hello World');
+  });
 });
 
 // Adds support for GET requests to our webhook
