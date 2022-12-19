@@ -139,7 +139,7 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (payload === 'yes') {
-    response = { 'text': 'Thanks!' };
+    response = { 'text': 'Adding to dino!' };
   } else if (payload === 'no') {
     response = { 'text': 'Oops, try sending another image.' };
   }
