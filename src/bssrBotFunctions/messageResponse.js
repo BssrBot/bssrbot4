@@ -6,7 +6,7 @@ import { getLaundry } from './getLaundry.js';
 
 export function Respond(message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
-
+console.log(text === '?')
 	// ? (List of Commands)
 	if (text === '?') {
 		return {

@@ -1,7 +1,7 @@
 export function getHealth() {
 
 	const healthString = '!! UNSW Services are free to UNSW students !!\n\n';
-	
+
 	return  healthString + getLifeline() + getCounsellor() + 
 					getHealthServices() + getDentist() + getOptometrist() + 
 					getSecurity() + getDutyTutor();
@@ -38,7 +38,7 @@ function getHealthServices() {
 
 function getCounsellor() {
 
-	const counsellorString = 'To Book an Appointment with a UNSW Counsellor: https://unsw.au1.qualtrics.com/jfe/form/SV_7P5OepTL4eJDztb\n';
+	let counsellorString = 'To Book an Appointment with a UNSW Counsellor: https://unsw.au1.qualtrics.com/jfe/form/SV_7P5OepTL4eJDztb\n';
 	counsellorString += 'UNSW Mental Health Support Line: 02 9385 5418\n';
 
 	return counsellorString;
