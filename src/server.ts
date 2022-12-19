@@ -1,6 +1,6 @@
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
-import { getJoke } from './bssrBotFunctions/getJokes.js'
+import { getJoke } from './bssrBotFunctions/getJokes'
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -94,8 +94,9 @@ function handleMessage(senderPsid, receivedMessage) {
     let message = receivedMessage.text.toLowerCase();
 
     if (message.includes('joke')) {
+      const joke = getJoke();
       response = {
-        'text': getJoke()
+        'text': `Here is a joke: '${joke}'. Hope you found it funny`
       };
     } else {
       response = {

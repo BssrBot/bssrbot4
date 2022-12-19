@@ -30,6 +30,5 @@
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20",
     "sync-request": "^6.1.0"
-  },
-  "type" : "module"
+  }
 }
