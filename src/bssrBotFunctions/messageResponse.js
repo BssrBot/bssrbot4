@@ -6,9 +6,9 @@ import { getLaundry } from './getLaundry.js';
 
 export function Respond(message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
-console.log(text === '?')
-	// ? (List of Commands)
-	if (text === '?') {
+	
+	// Commands
+	if (text === 'commands') {
 		return {
 			text: getCommands()
 		};
@@ -55,6 +55,6 @@ console.log(text === '?')
 
 	// No command is correct
 	return {
-		text: 'Input \'?\' to see the list of commands!'
+		text: 'Input \'commands\' to see the list of commands!'
 	};
 }
