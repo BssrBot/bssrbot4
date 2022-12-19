@@ -30,6 +30,9 @@ crack a joke --> bssr bot will tell you a joke
 
 */
 
+
+//console.log(emoji.get('coffee'));
+
 export function getCommands() {
 	return `COMMAND LIST\n\n` + health() + dino() + college() + fun();
 }
