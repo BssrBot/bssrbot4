@@ -1,7 +1,6 @@
 import Respond from './bssrBotFunctions/messageResponse.js';
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
-
 // Imports dependencies and set up http server
 const
   request = require('request'),
