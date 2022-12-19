@@ -1,4 +1,6 @@
-import Respond from './bssrBotFunctions/messageResponse.js';
+import { Respond } from './bssrBotFunctions/messageResponse.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
 // Imports dependencies and set up http server

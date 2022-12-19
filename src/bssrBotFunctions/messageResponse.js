@@ -1,8 +1,8 @@
-import getDinoTimes from './getDino.js';
-import getJoke from './getJokes';
-import getHealth from './getHealth.js'
-import getCommands from './getCommands.js';
-import getLaundry from './getLaundry.js';
+import { getDinoTimes } from './getDino.js';
+import { getJoke } from './getJokes.ts';
+import { getHealth } from './getHealth.js'
+import { getCommands } from './getCommands.js';
+import { getLaundry } from './getLaundry.js';
 
 export function Respond(message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
