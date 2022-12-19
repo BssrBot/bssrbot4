@@ -6,9 +6,10 @@ export function getLaundry() {
 			"text":"Click here to view the status if the washing machines and dryers:",
 			"buttons":[
 				{
-					"type":"postback",
+					"type":"web_url",
+					"url":'https://recharge.it.unsw.edu.au/mymonitor/index.php?qrid=QR9ecb9faa4dda8fec',
 					"title":"Laundry",
-					"payload":'https://recharge.it.unsw.edu.au/mymonitor/index.php?qrid=QR9ecb9faa4dda8fec'
+					"webview_height_ratio": "full"
 				}
 			]
 		}
