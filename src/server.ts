@@ -97,12 +97,12 @@ function handleMessage(senderPsid, receivedMessage) {
       response = {
         'text': getJoke()
       };
+    } else {
+      response = {
+        'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
+      };
     }
-    /*
-    response = {
-      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
-    };
-    */
+    
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
