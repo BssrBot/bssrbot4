@@ -175,6 +175,7 @@ function addQuickReply(response) {
       "payload":"Laundry",
     }
   ]
+  return response;
 }
 
 // Sends response messages via the Send API
