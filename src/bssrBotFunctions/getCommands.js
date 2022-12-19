@@ -31,7 +31,7 @@ crack a joke --> bssr bot will tell you a joke
 */
 
 export function getCommands() {
-	return `COMMAND LIST\n\n` + health() + dino(); + college() + fun();
+	return `COMMAND LIST\n\n\n` + health() + dino() + college() + fun();
 }
 
 function health() {
@@ -39,13 +39,13 @@ function health() {
 }
 
 function dino() {
-	return `Dino:\nbreakfast --> get todays breakfast\nlunch --> get todays lunch\ndinner --> tonight ill be eating\ndino --> get todays menu\ndino times --> gives the times of dino breakfast lunch and dinner\ndino feedback --> leave feedback on your scrumptious meal!\n\n`
+	return `Dino:\nbreakfast --> get todays breakfast\n\nlunch --> get todays lunch\n\ndinner --> tonight ill be eating\n\ndino --> get todays menu\n\ndino times --> gives the times of dino breakfast lunch and dinner\n\ndino feedback --> leave feedback on your scrumptious meal!\n\n\n`
 }
 
 function college() {
-	return `College:\nlaundry --> get the link to the laundry portal\ncollege feedback --> write feedback for events or general college life\nwildcat --> wildcat of the week nomination form\nrecap --> recappuccino\ncoffee night --> submit photos or quotes for coffee night\nwhats on? --> event scedule for the week\nwhats on today? --> todays events\nwhats on tomorrow? --> tomorrows events\n\n`
+	return `College:\nlaundry --> get the link to the laundry portal\n\ncollege feedback --> write feedback for events or general college life\n\nwildcat --> wildcat of the week nomination form\n\nrecap --> recappuccino\n\ncoffee night --> submit photos or quotes for coffee night\n\nwhats on? --> event scedule for the week\n\nwhats on today? --> todays events\n\nwhats on tomorrow? --> tomorrows events\n\n\n`
 }
 
 function fun() {
-	return `Fun!:\ncrack a joke --> bssr bot will tell you a joke\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
+	return `Fun!:\ncrack a joke --> bssr bot will tell you a joke\n\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
 }
