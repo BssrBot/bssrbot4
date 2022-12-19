@@ -19,7 +19,7 @@ app.use(json());
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
 
-  let quickReplies = {,
+  let quickReplies = {
     "quick_replies":[
       {
         "content_type":"text",
