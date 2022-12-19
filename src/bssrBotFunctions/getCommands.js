@@ -35,42 +35,17 @@ export function getCommands() {
 }
 
 function health() {
-	return `
-	Health Services:\n
-	<u>health</u> --> details of UNSW health services, dentist, optometrist, counsellor, Helpline, Lifeline, duty tutor, and security\n\n
-	`;
+	return `Health Services:\nhealth --> details of UNSW health services, dentist, optometrist, counsellor, Helpline, Lifeline, duty tutor, and security\n\n`;
 }
 
 function dino() {
-	return `
-	Dino:\n
-	<u>breakfast</u> --> get todays breakfast\n
-	<u>lunch</u> --> get todays lunch\n
-	<u>dinner</u> --> tonight ill be eating\n
-	<u>dino</u> --> get todays menu\n
-	<u>dino times</u> --> gives the times of dino breakfast lunch and dinner\n
-	<u>dino feedback</u> --> leave feedback on your scrumptious meal!\n\n
-	`
+	return `Dino:\nbreakfast --> get todays breakfast\nlunch --> get todays lunch\ndinner --> tonight ill be eating\ndino --> get todays menu\ndino times --> gives the times of dino breakfast lunch and dinner\ndino feedback --> leave feedback on your scrumptious meal!\n\n`
 }
 
 function college() {
-	return `
-	College:\n
-	<u>laundry</u> --> get the link to the laundry portal\n
-	<u>college</u> feedback --> write feedback for events or general college life\n
-	<u>wildcat</u> --> wildcat of the week nomination form\n
-	<u>recap</u> --> recappuccino\n
-	<u>coffee night</u> --> submit photos or quotes for coffee night\n
-	<u>whats on?</u> --> event scedule for the week\n
-	<u>whats on today?</u> --> todays events\n
-	<u>whats on tomorrow?</u> --> tomorrows events\n\n
-	`
+	return `College:\nlaundry --> get the link to the laundry portal\ncollege feedback --> write feedback for events or general college life\nwildcat --> wildcat of the week nomination form\nrecap --> recappuccino\ncoffee night --> submit photos or quotes for coffee night\nwhats on? --> event scedule for the week\nwhats on today? --> todays events\nwhats on tomorrow? --> tomorrows events\n\n`
 }
 
 function fun() {
-	return `
-	Fun!:\n
-	<u>crack a joke</u> --> bssr bot will tell you a joke\n
-	<u>!! Secret quotes exist !!</u>--> input your friend's names and see if bssrbot has anything to say about them ;)\n\
-	`
+	return `Fun!:\ncrack a joke --> bssr bot will tell you a joke\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
 }
