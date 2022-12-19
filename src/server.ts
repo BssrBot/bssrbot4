@@ -1,6 +1,6 @@
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
-
+import { getJoke } from './bssrBotFunctions/getJokes.js'
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -91,9 +91,18 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
+    let message = receivedMessage.text.toLowerCase();
+
+    if (message.includes('joke')) {
+      response = {
+        'text': getJoke()
+      };
+    }
+    /*
     response = {
       'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
     };
+    */
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
