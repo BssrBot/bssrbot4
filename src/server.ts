@@ -1,6 +1,8 @@
+import { Respond } from './bssrBotFunctions/messageResponse.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
-
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -92,9 +94,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    response = {
-      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
-    };
+    response = Respond(receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -147,9 +147,41 @@ function handlePostback(senderPsid, receivedPostback) {
   callSendAPI(senderPsid, response);
 }
 
+// Adds Quick Reply Bubbles
+function addQuickReply(response) {
+  response['quick_replies'] = [
+    {
+      "content_type":"text",
+      "title":"Dino",
+      "payload":"Dino",
+    },
+    {
+      "content_type":"text",
+      "title":"Breakfast",
+      "payload":"Breakfast",
+    },
+    {
+      "content_type":"text",
+      "title":"Lunch",
+      "payload":"Lunch",
+    },
+    {
+      "content_type":"text",
+      "title":"Dinner",
+      "payload":"Dinner",
+    },
+    {
+      "content_type":"text",
+      "title":"Laundry",
+      "payload":"Laundry",
+    }
+  ]
+  return response;
+}
+
 // Sends response messages via the Send API
 function callSendAPI(senderPsid, response) {
-
+  response = addQuickReply(response);
   // The page access token we have generated in your app settings
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
