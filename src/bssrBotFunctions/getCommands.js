@@ -31,11 +31,11 @@ crack a joke --> bssr bot will tell you a joke
 */
 
 export function getCommands() {
-	return `COMMAND LIST\n\n\n` + health() + dino() + college() + fun();
+	return `COMMAND LIST\n\n` + health() + dino() + college() + fun();
 }
 
 function health() {
-	return `Health Services:\nhealth --> details of UNSW health services, dentist, optometrist, counsellor, Helpline, Lifeline, duty tutor, and security\n\n`;
+	return `Health Services:\nhealth --> details of UNSW health services, dentist, optometrist, counsellor, Helpline, Lifeline, duty tutor, and security\n\n\n`;
 }
 
 function dino() {
