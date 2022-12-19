@@ -18,6 +18,22 @@ app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
+
+  let quickReplies = {,
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"red",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"Green",
+        "payload":"green",
+        "image_url":"http://example.com/img/green.png"
+      }
+    ]
+  }
   res.send('Hello World');
 });
 
@@ -127,6 +143,11 @@ function handleMessage(senderPsid, receivedMessage) {
 
   // Send the response message
   callSendAPI(senderPsid, response);
+}
+
+// Quick Reply Buttons
+function quickReplies() {
+  
 }
 
 // Handles messaging_postbacks events
