@@ -7,7 +7,7 @@ export function getLaundry() {
 			"buttons":[
 				{
 					"type":"web_url",
-					"url":'https://recharge.it.unsw.edu.au/mymonitor/index.php?qrid=QR9ecb9faa4dda8fec',
+					"url":'https://recharge.it.unsw.edu.au/LaundryMonitor/Location',
 					"title":"Laundry",
 					"webview_height_ratio": "full"
 				}
