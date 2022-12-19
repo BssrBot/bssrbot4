@@ -18,22 +18,7 @@ app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
-
-  res.send({
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Red",
-        "payload":"red",
-        "image_url":"http://example.com/img/red.png"
-      },{
-        "content_type":"text",
-        "title":"Green",
-        "payload":"green",
-        "image_url":"http://example.com/img/green.png"
-      }
-    ]
-  });
+  res.send('Hello World');
 });
 
 // Adds support for GET requests to our webhook
@@ -144,11 +129,6 @@ function handleMessage(senderPsid, receivedMessage) {
   callSendAPI(senderPsid, response);
 }
 
-// Quick Reply Buttons
-function quickReplies() {
-  
-}
-
 // Handles messaging_postbacks events
 function handlePostback(senderPsid, receivedPostback) {
   let response;
@@ -166,9 +146,40 @@ function handlePostback(senderPsid, receivedPostback) {
   callSendAPI(senderPsid, response);
 }
 
+// Adds Quick Reply Bubbles
+function addQuickReply(response) {
+  response['quick_replies'] = [
+    {
+      "content_type":"text",
+      "title":"Dino",
+      "payload":"Dino",
+    },
+    {
+      "content_type":"text",
+      "title":"Breakfast",
+      "payload":"Breakfast",
+    },
+    {
+      "content_type":"text",
+      "title":"Lunch",
+      "payload":"Lunch",
+    },
+    {
+      "content_type":"text",
+      "title":"Dinner",
+      "payload":"Dinner",
+    },
+    {
+      "content_type":"text",
+      "title":"Laundry",
+      "payload":"Laundry",
+    }
+  ]
+}
+
 // Sends response messages via the Send API
 function callSendAPI(senderPsid, response) {
-
+  response = addQuickReply(response);
   // The page access token we have generated in your app settings
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
