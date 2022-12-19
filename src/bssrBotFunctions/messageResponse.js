@@ -1,5 +1,5 @@
 import { getDinoTimes } from './getDino.js';
-import { getJoke } from './getJokes.ts';
+import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
