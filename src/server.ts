@@ -1,3 +1,4 @@
+import Respond from './bssrBotFunctions/messageResponse.js';
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
 
@@ -91,9 +92,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    response = {
-      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
-    };
+    response = Respond(receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
