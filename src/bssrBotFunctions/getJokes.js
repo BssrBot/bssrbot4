@@ -88,7 +88,7 @@ const listOfJokes = [
     "Why did the crab never share? Because he's shellfish."
 ];
 
-function getJoke() {
+export function getJoke() {
     const x = Math.floor(Math.random() * listOfJokes.length) ;
     return listOfJokes[x];
 }
