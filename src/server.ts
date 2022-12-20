@@ -111,12 +111,12 @@ function handleMessage(senderPsid, receivedMessage) {
             'buttons': [
               {
                 'type': 'postback',
-                'title': 'Yes!',
-                'payload': 'yes',
+                'title': 'Yes',
+                'payload': attachmentUrl,
               },
               {
                 'type': 'postback',
-                'title': 'No!',
+                'title': 'No',
                 'payload': 'no',
               }
             ],
@@ -135,12 +135,12 @@ function handlePostback(senderPsid, receivedPostback) {
   let response;
 
   // Get the payload for the postback
-  let payload = receivedPostback.payload;
+  let title = receivedPostback.title;
 
   // Set the response based on the postback payload
-  if (payload === 'yes') {
+  if (title === 'Yes') {
     response = { 'text': 'Adding to dino!' };
-  } else if (payload === 'no') {
+  } else if (title === 'No') {
     response = { 'text': 'Oops, try sending another image.' };
   }
   // Send the message to acknowledge the postback
