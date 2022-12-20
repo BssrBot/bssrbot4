@@ -1,5 +1,6 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { createRequire } from 'module';
+import { send } from 'process';
 const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -139,6 +140,8 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (title === 'Yes') {
+    const sendingReponse = { 'text': 'Here is your image.'}
+    callSendAPI(senderPsid, sendingReponse);
     response = {
         'attachment':{
           'type':'image', 
