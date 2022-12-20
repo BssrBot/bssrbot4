@@ -139,7 +139,15 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (title === 'Yes') {
-    response = { 'text': 'Adding to dino!' };
+    response = {
+        "attachment":{
+          "type":"image", 
+          "payload":{
+            "url": receivedPostback.payload, 
+            "is_reusable":true
+          }
+        }
+    }
   } else if (title === 'No') {
     response = { 'text': 'Oops, try sending another image.' };
   }
