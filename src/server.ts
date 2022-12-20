@@ -140,11 +140,11 @@ function handlePostback(senderPsid, receivedPostback) {
   // Set the response based on the postback payload
   if (title === 'Yes') {
     response = {
-        "attachment":{
-          "type":"image", 
-          "payload":{
-            "url": receivedPostback.payload, 
-            "is_reusable":true
+        'attachment':{
+          'type':'image', 
+          'payload':{
+            'url': receivedPostback.payload, 
+            'is_reusable': true
           }
         }
     }
