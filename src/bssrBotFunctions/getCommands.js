@@ -31,6 +31,7 @@ crack a joke --> bssr bot will tell you a joke
 */
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+//Emojis package, pretty self explanatory
 const emoji = require('node-emoji');
 
 export function getCommands() {
