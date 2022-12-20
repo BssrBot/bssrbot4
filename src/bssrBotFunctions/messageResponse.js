@@ -1,8 +1,19 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const RiveScript = require("rivescript");
 import { getDinoTimes } from './getDino.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
+
+const bot = new RiveScript();
+bot.loadDirectory("./brain");
+//Sleep for 20 milliseconds to allow bot to load directory before sorting replies
+//This was truly insane trying to find a way to get it to work but somehow it does
+await new Promise(r => setTimeout(r, 20));
+bot.sortReplies();
+
 
 export function Respond(message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
@@ -53,8 +64,14 @@ export function Respond(message) {
 		};
 	}
 
-	// No command is correct
+	// No command is correct & Rivescript stuff
+
+	let reply = bot.reply("localuser", message)
+	if (reply.includes(`Sorry I don't understand`)) {
+		reply = 'Input \'commands\' to see the list of commands!'
+	}
 	return {
-		text: 'Input \'commands\' to see the list of commands!'
-	};
+		text : reply
+	}
+	
 }

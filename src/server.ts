@@ -88,6 +88,7 @@ app.post('/webhook', (req, res) => {
 // Handles messages events
 function handleMessage(senderPsid, receivedMessage) {
   let response;
+  
 
   // Checks if the message contains text
   if (receivedMessage.text) {
@@ -104,7 +105,7 @@ function handleMessage(senderPsid, receivedMessage) {
         'payload': {
           'template_type': 'generic',
           'elements': [{
-            'title': 'Is this the right picture?',
+            'title': 'Add to Dino?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
             'buttons': [
@@ -138,7 +139,7 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (payload === 'yes') {
-    response = { 'text': 'Thanks!' };
+    response = { 'text': 'Adding to dino!' };
   } else if (payload === 'no') {
     response = { 'text': 'Oops, try sending another image.' };
   }
