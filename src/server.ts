@@ -142,6 +142,7 @@ function handlePostback(senderPsid, receivedPostback) {
   if (title === 'Yes') {
     const sendingReponse = { 'text': 'Here is your image.'}
     callSendAPI(senderPsid, sendingReponse);
+    console.log(receivedPostback.payload);
     response = {
         'attachment':{
           'type':'image', 
