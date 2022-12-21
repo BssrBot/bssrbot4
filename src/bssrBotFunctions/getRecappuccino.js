@@ -5,11 +5,11 @@ var fs = require('fs');
 
 export function validRecap(text) {
 	const num = text.replace('recap', '');
-	console.log('//////////////////////////////////////', num);
 	return ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].indexOf(num);
 }
 
 export function getRecappuccino(recapWeek) {
+	console.log(recapWeek === '', '//////////////////mmmmmmmmmmm');
 	if (recapWeek === '') {
 		recapWeek = latestWeek();
 	}
