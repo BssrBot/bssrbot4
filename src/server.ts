@@ -129,14 +129,12 @@ function handleMessage(senderPsid, receivedMessage) {
     };
   }
 
+  // If images can be attached to a dino message 
+  if (attachDinoImage(receivedMessage)) {
+    response['attachment'] = getRandomImage();
+  }
   // Send the response message
   callSendAPI(senderPsid, response);
-  if (attachDinoImage(receivedMessage)) {
-    console.log('\n\n??????????????????????????????????????????????\n\n')
-    const imageResponse = getRandomImage();
-    console.log(imageResponse);
-    callSendAPI(senderPsid, imageResponse);
-  }
 }
 
 // Attach Image to dino

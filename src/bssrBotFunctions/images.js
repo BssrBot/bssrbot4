@@ -14,12 +14,10 @@ export function getRandomImage() {
 
 	const x = Math.floor(Math.random() * listOfImages.length) ;
 	return {
-		'attachment': {
-			'type':'image', 
-			'payload':{
-				'url': listOfImages[x],
-				'is_reusable': true
-			}
+		'type':'image', 
+		'payload':{
+			'url': listOfImages[x],
+			'is_reusable': true
 		}
 	}
 }
