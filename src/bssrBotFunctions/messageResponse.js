@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
-import { getDinoTimes } from './getDino.js';
+import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
@@ -25,18 +25,35 @@ export function Respond(message) {
 			text: getCommands()
 		};
 	}
-	if (text === 'breakfast' || text === 'lunch' || text === 'dinner') {
-		const url = getRandomImage();
+	
+	// Dino 
+	if (text === 'dino') {
 		return {
-			'attachment':{
-				'type':'image', 
-				'payload':{
-					'url': url,
-					'is_reusable': true
-				}
-			}
-		}
+			text: getDino()
+		};
 	}
+
+	// Breakfast
+	if (text === 'breakfast') {
+		return {
+			text: getBreakfast()
+		};
+	}
+
+	// Lunch
+	if (text === 'lunch') { 
+		return {
+			text: getLunch()
+		};
+	}
+
+	// Dinner 
+	if (text === 'dinner') {
+		return {
+			text: getDinner()
+		};
+	}
+
 	// Dino Times
 	if (text === 'dinotimes') {
 		return {
@@ -84,6 +101,6 @@ export function Respond(message) {
 	}
 	return {
 		text : reply
-	}
+	};
 	
 }
