@@ -134,6 +134,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
     imageResponse.attachment.payload['text'] = response.text;
+    console.log(imageResponse);
     callSendAPI(senderPsid, imageResponse);
   } else {
     callSendAPI(senderPsid, response);
