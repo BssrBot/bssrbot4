@@ -6,24 +6,24 @@ const listOfImages = [];
 
 export function addImage(url) {
 
-    listOfImages.push(url);
+  listOfImages.push(url);
 
 }
 
 export function getRandomImage() {
 
-    const x = Math.floor(Math.random() * listOfImages.length) ;
-    return {
-        'attachment': {
-        'type':'image', 
-        'payload':{
-            'url': listOfImages[x],
-            'is_reusable': true
-            }
-        }
-    }
+	const x = Math.floor(Math.random() * listOfImages.length) ;
+	return {
+		'attachment': {
+			'type':'image', 
+			'payload':{
+				'url': listOfImages[x],
+				'is_reusable': true
+			}
+		}
+	}
 }
 
 export function clearImages() {
-    listOfImages = [];
+  listOfImages = [];
 }
