@@ -29,28 +29,28 @@ export function Respond(message) {
 	// Dino 
 	if (text === 'dino') {
 		return {
-			text: getDino()
+			attachment: getDino()
 		};
 	}
 
 	// Breakfast
 	if (text === 'breakfast') {
 		return {
-			text: getBreakfast()
+			attachment: getBreakfast()
 		};
 	}
 
 	// Lunch
 	if (text === 'lunch') { 
 		return {
-			text: getLunch()
+			attachment: getLunch()
 		};
 	}
 
 	// Dinner 
 	if (text === 'dinner') {
 		return {
-			text: getDinner()
+			attachment: getDinner()
 		};
 	}
 
