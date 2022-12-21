@@ -138,7 +138,7 @@ function handleMessage(senderPsid, receivedMessage) {
 
 // Attach Image to dino
 function attachDinoImage(receivedMessage) {
-  if (receivedMessage.text && isDinoMeal(receivedMessage.text)) {
+  if (receivedMessage.text && isDinoMeal(receivedMessage.text.toLowerCase().replace(/\W/g, ''))) {
     return true;
   } else {
     return false;
