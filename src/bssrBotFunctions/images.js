@@ -6,7 +6,7 @@ const listOfImages = [];
 
 export function addImage(url) {
 
-  listOfImages.push(url);
+	listOfImages.push(url);
 
 }
 
