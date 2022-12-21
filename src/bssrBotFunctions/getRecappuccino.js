@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 var fs = require('fs');
 
 export function validRecap(text) {
-	text = text.substring(0, 5);
+	text = text.splice(0, 5);
 	console.log('//////////////////////////////////////', text);
 	return ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].indexOf(text);
 }
