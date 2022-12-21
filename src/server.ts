@@ -131,14 +131,11 @@ function handleMessage(senderPsid, receivedMessage) {
   }
 
   // Send the response message
+  callSendAPI(senderPsid, response);
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
-    imageResponse.attachment.payload['text'] = response.text;
-    console.log(imageResponse);
     callSendAPI(senderPsid, imageResponse);
-  } else {
-    callSendAPI(senderPsid, response);
-  }
+  }   
 }
 
 // Attach Image to dino

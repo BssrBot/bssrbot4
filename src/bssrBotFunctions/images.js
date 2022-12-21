@@ -15,14 +15,10 @@ export function getRandomImage() {
 	const x = Math.floor(Math.random() * listOfImages.length) ;
 	return {
 		'attachment': {
-			'type':'template', 
+			'type':'image', 
 			'payload':{
-				'template_type': 'generic',
-				'elements': [
-					{
-						'image_url': listOfImages[x]
-					}
-				]
+				'url': listOfImages[x],
+				'is_reusable': true
 			}
 		}
 	}
