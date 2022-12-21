@@ -7,7 +7,7 @@ import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
-import { validRecap } from './getRecappuccino.js';
+import { getRecappuccino, validRecap } from './getRecappuccino.js';
 import { get } from 'request';
 
 const bot = new RiveScript();
@@ -104,7 +104,7 @@ export function Respond(message) {
 
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {
-			attachment: get
+			attachment: getRecappuccino()
 		};
 	}
 
