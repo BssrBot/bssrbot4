@@ -10,7 +10,7 @@ export function validRecap(text) {
 
 export function getRecappuccino(recapWeek) {
 	console.log(recapWeek === '', '//////////////////mmmmmmmmmmm');
-	if (recapWeek === '') {
+	if (recapWeek === '' || recapWeek === undefined) {
 		recapWeek = latestWeek();
 	}
 	const pathname = './RecappuccinoPDF/' + recapWeek + '.pdf/';
