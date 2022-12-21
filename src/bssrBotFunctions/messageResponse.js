@@ -8,7 +8,6 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { get } from 'request';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
