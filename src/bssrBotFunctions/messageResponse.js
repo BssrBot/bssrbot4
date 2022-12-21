@@ -6,6 +6,7 @@ import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
+import { getRandomImage } from './images.js'
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -24,7 +25,18 @@ export function Respond(message) {
 			text: getCommands()
 		};
 	}
-
+	if (text === 'breakfast' || text === 'lunch' || text === 'dinner') {
+		const url = getRandomImage();
+		return {
+			'attachment':{
+				'type':'image', 
+				'payload':{
+					'url': url,
+					'is_reusable': true
+				}
+			}
+		}
+	}
 	// Dino Times
 	if (text === 'dinotimes') {
 		return {

@@ -1,4 +1,5 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
+import { addImage } from './bssrBotFunctions/images.js'
 import { createRequire } from 'module';
 import { send } from 'process';
 const require = createRequire(import.meta.url);
@@ -140,18 +141,9 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (title === 'Yes') {
-    const sendingReponse = { 'text': 'Here is your image.'}
-    callSendAPI(senderPsid, sendingReponse);
+    response = { 'text': 'Adding image to dino...'}
     console.log(receivedPostback.payload);
-    response = {
-        'attachment':{
-          'type':'image', 
-          'payload':{
-            'url': receivedPostback.payload, 
-            'is_reusable': true
-          }
-        }
-    }
+    addImage(receivedPostback.payload);
   } else if (title === 'No') {
     response = { 'text': 'Oops, try sending another image.' };
   }
