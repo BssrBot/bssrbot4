@@ -12,7 +12,7 @@ export function getRecappuccino(recapWeek) {
 	if (recapWeek === '' || recapWeek === undefined) {
 		recapWeek = latestWeek();
 	}
-	const pathname = './RecappuccinoPDF/' + recapWeek + '.pdf';
+	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.pdf';
 	if (fs.existsSync(pathname)) {
 		return {
 			"type":"file", 
