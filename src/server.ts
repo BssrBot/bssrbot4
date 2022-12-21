@@ -1,5 +1,7 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
+import { addImage } from './bssrBotFunctions/images.js'
 import { createRequire } from 'module';
+import { send } from 'process';
 const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -111,12 +113,12 @@ function handleMessage(senderPsid, receivedMessage) {
             'buttons': [
               {
                 'type': 'postback',
-                'title': 'Yes!',
-                'payload': 'yes',
+                'title': 'Yes',
+                'payload': attachmentUrl,
               },
               {
                 'type': 'postback',
-                'title': 'No!',
+                'title': 'No',
                 'payload': 'no',
               }
             ],
@@ -135,12 +137,14 @@ function handlePostback(senderPsid, receivedPostback) {
   let response;
 
   // Get the payload for the postback
-  let payload = receivedPostback.payload;
+  let title = receivedPostback.title;
 
   // Set the response based on the postback payload
-  if (payload === 'yes') {
-    response = { 'text': 'Adding to dino!' };
-  } else if (payload === 'no') {
+  if (title === 'Yes') {
+    response = { 'text': 'Adding image to dino...'}
+    console.log(receivedPostback.payload);
+    addImage(receivedPostback.payload);
+  } else if (title === 'No') {
     response = { 'text': 'Oops, try sending another image.' };
   }
   // Send the message to acknowledge the postback
