@@ -9,12 +9,11 @@ export function validRecap(text) {
 }
 
 export function getRecappuccino(recapWeek) {
-	console.log(recapWeek === '', '//////////////////mmmmmmmmmmm');
 	if (recapWeek === '' || recapWeek === undefined) {
 		recapWeek = latestWeek();
 	}
-	const pathname = './RecappuccinoPDF/' + recapWeek + '.pdf/';
-	if (fs.readdirSync(pathname)) {
+	const pathname = './RecappuccinoPDF/' + recapWeek + '.pdf';
+	if (fs.existsSync(pathname)) {
 		return {
 			"type":"file", 
       "payload":{
@@ -27,7 +26,7 @@ export function getRecappuccino(recapWeek) {
 
 function latestWeek() {
 	let week = 1;
-	while (fs.readdirSync('./RecappuccinoPDF/' + week.toString() + '.pdf/')) {
+	while (fs.existsSync('./RecappuccinoPDF/' + week.toString() + '.pdf')) {
 		week++;
 	}
 
