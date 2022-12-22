@@ -12,21 +12,25 @@ export function getRecappuccino(recapWeek) {
 	if (recapWeek === '' || recapWeek === undefined) {
 		recapWeek = latestWeek();
 	}
-	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.pdf';
+	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
 	if (fs.existsSync(pathname)) {
+		data = fs.readFileSync(pathname, 'UTF-8')
+		// split the contents by new line
+		const lines = data.split(/\r?\n/)
+
 		return {
 			"type":"file", 
-      "payload":{
-        "url": pathname,
-        "is_reusable": true
-      }
+			"payload":{
+				"url": lines[0],
+				"is_reusable": true
+			}
 		};
 	}
 }
 
 function latestWeek() {
 	let week = 1;
-	while (fs.existsSync('./RecappuccinoPDF/' + week.toString() + '.pdf')) {
+	while (fs.existsSync('./RecappuccinoPDF/' + week.toString() + '.txt')) {
 		week++;
 	}
 
