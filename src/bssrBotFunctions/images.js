@@ -3,17 +3,9 @@ const require = createRequire(import.meta.url);
 
 let listOfImagesDino = [];
 
-let listOfCoffeeNightPics = [];
-
 export function addImageDino(url) {
 
 	listOfImagesDino.push(url);
-
-}
-
-export function addImageCoffeeNight(url) {
-
-	listOfCoffeeNightPics.push(url);
 
 }
 
@@ -34,16 +26,12 @@ export function getRandomImage() {
 export function removeSpecificImage(url) {
 
 	const indexDino = listOfImagesDino.indexOf(url);
-	const indexCoffeeNight = listOfCoffeeNightPics.indexOf(url);
 
-	if (indexDino === -1 && indexCoffeeNight === -1) {
+	if (indexDino === -1) {
 		return { 'text' : 'Image was not added'}
 	}
 	if (indexDino >= 0) {
 		listOfImagesDino.splice(indexDino, 1);
-	}
-	if (indexCoffeeNight >= 0) {
-		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
 	}
 
 	return { 'text': 'Successfully deleted!'};

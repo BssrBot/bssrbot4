@@ -1,9 +1,8 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
-import { addImageDino, getRandomImage, addImageCoffeeNight, removeSpecificImage} from './bssrBotFunctions/images.js';
+import { addImageDino, getRandomImage, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
-import {listOfCoffeeNightPics} from './bssrBotFunctions/images.js'
-import {ADMIN_IDS} from './bssrBotFunctions/messageResponse.js'
+import { ADMIN_IDS } from './bssrBotFunctions/messageResponse.js'
 import { send } from 'process';
 import e from 'express';
 const require = createRequire(import.meta.url);
@@ -177,7 +176,16 @@ function handlePostback(senderPsid, receivedPostback) {
     
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
-    addImageCoffeeNight(receivedPostback.payload);
+    
+    callSendAPI(ADMIN_IDS[1], {
+      'attachment': {
+        'type':'image', 
+        'payload':{
+          'url': receivedPostback.payload,
+          'is_reusable': true
+        }
+      }
+    });
 
   }
   else if (title === 'Delete') {
@@ -247,24 +255,6 @@ export function callSendAPI(senderPsid, response) {
       console.error('Unable to send message:' + err);
     }
   });
-}
-
-function getCoffeeNightPics(senderId) {
-
-	for (let i = 0; i < listOfCoffeeNightPics.length; i++) {
-		let response = {
-			'attachment': {
-				'type':'image', 
-				'payload':{
-					'url': listOfCoffeeNightPics[i],
-					'is_reusable': true
-				}
-			}
-			
-		}
-		callSendAPI(senderId, response);
-	}
-
 }
 
 // listen for requests :)
