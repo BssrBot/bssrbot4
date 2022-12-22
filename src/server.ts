@@ -163,11 +163,11 @@ function handlePostback(senderPsid, receivedPostback) {
   if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
     console.log(receivedPostback.payload);
-    addImage(receivedPostback.payload);
+    addImageDino(receivedPostback.payload);
     
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
-    coffeeNightPics(receivedPostback.payload);
+    addImageCoffeeNight(receivedPostback.payload);
 
   }
   else if (title === 'Cancel') {
