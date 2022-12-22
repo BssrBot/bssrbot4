@@ -135,7 +135,7 @@ export function Respond(senderId, message) {
 			'text' : 'Sent! See you at coffee night ;)'
 		}
 	}
-	//Get coffee night quotes
+	//Get coffee night quotes, only admins can do
 	if (text === 'getcoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
@@ -147,6 +147,7 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
+	//Clear coffee night quotes, only admins can do
 	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
