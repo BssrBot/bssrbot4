@@ -12,7 +12,7 @@ export function getRecappuccino(recapWeek) {
 	if (recapWeek === '' || recapWeek === undefined) {
 		recapWeek = latestWeek();
 	}
-	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
+	const pathname = './src/bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
 	console.log(pathname)
 	if (fs.existsSync(pathname)) {
 		data = fs.readFileSync(pathname, 'UTF-8')
@@ -32,7 +32,6 @@ export function getRecappuccino(recapWeek) {
 function latestWeek() {
 	let week = 1;
 	while (fs.existsSync('./src/bssrBotFunctions/RecappuccinoPDF/' + week.toString() + '.txt')) {
-		console.log('yes');
 		week++;
 	}
 
