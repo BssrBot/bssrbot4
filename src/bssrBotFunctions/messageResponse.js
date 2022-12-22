@@ -127,6 +127,8 @@ export function Respond(senderId, message) {
 		};
 	}
 
+	//Coffee Night Quotes
+
 
 	// No command is correct & Rivescript stuff
 	let reply = bot.reply("localuser", message)
