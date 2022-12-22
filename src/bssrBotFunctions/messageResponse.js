@@ -2,6 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
+import { clearImagesDino } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
@@ -16,8 +17,13 @@ bot.loadDirectory("./brain");
 await new Promise(r => setTimeout(r, 20));
 bot.sortReplies();
 
+// Zach 5852973454748898
+// Laurence 5688278634581333 
+// PSID
+const ADMIN_IDS = ['5852973454748898', '5688278634581333']
 
-export function Respond(message) {
+
+export function Respond(senderId, message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
 	
 	// Commands
@@ -100,6 +106,20 @@ export function Respond(message) {
 			attachment: getFeedback()
 		};
 	}
+
+	// Remove all Dino Images (incase something naughty/bad). Only admins can do
+	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearImagesDino()
+			}
+		} else {
+			return {
+				'text' : 'No admin permissions. Ask Zach or Laurence to clear if required'
+			}
+		}
+	}
+
 /*
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {

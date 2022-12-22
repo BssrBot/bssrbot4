@@ -1,6 +1,6 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
-import { addImage, getRandomImage } from './bssrBotFunctions/images.js';
+import { addImageDino, getRandomImage, addImageCoffeeNight, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
 import { send } from 'process';
 import e from 'express';
@@ -98,7 +98,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    response = Respond(receivedMessage.text);
+    response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -109,20 +109,25 @@ function handleMessage(senderPsid, receivedMessage) {
         'payload': {
           'template_type': 'generic',
           'elements': [{
-            'title': 'Add to Dino?',
+            'title': 'Add to Dino/Coffee Night?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
             'buttons': [
               {
                 'type': 'postback',
-                'title': 'Yes',
+                'title': 'Dino',
                 'payload': attachmentUrl,
               },
               {
                 'type': 'postback',
-                'title': 'No',
-                'payload': 'no',
-              }
+                'title': 'Coffee Night',
+                'payload': attachmentUrl,
+              },
+              {
+                'type': 'postback',
+                'title': 'Delete',
+                'payload': attachmentUrl,
+              },
             ],
           }]
         }
@@ -155,12 +160,19 @@ function handlePostback(senderPsid, receivedPostback) {
   let title = receivedPostback.title;
 
   // Set the response based on the postback payload
-  if (title === 'Yes') {
+  if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
     console.log(receivedPostback.payload);
-    addImage(receivedPostback.payload);
-  } else if (title === 'No') {
-    response = { 'text': 'Oops, try sending another image.' };
+    addImageDino(receivedPostback.payload);
+    
+  } else if (title === 'Coffee Night') {
+    response = { 'text': 'Adding image to coffee night...' };
+    addImageCoffeeNight(receivedPostback.payload);
+
+  }
+  else if (title === 'Delete') {
+
+    response = removeSpecificImage(receivedPostback.payload)
   }
   // Send the message to acknowledge the postback
   callSendAPI(senderPsid, response);

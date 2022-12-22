@@ -1,29 +1,57 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-const listOfImages = [];
+let listOfImagesDino = [];
 
+let listOfCoffeeNightPics = [];
 
-export function addImage(url) {
+export function addImageDino(url) {
 
-	listOfImages.push(url);
+	listOfImagesDino.push(url);
+
+}
+
+export function addImageCoffeeNight(url) {
+
+	listOfCoffeeNightPics.push(url);
 
 }
 
 export function getRandomImage() {
 
-	const x = Math.floor(Math.random() * listOfImages.length) ;
+	const x = Math.floor(Math.random() * listOfImagesDino.length) ;
 	return {
 		'attachment': {
 			'type':'image', 
 			'payload':{
-				'url': listOfImages[x],
+				'url': listOfImagesDino[x],
 				'is_reusable': true
 			}
 		}
 	}
 }
 
-export function clearImages() {
-  listOfImages = [];
+export function removeSpecificImage(url) {
+
+	const indexDino = listOfImagesDino.indexOf(url);
+	const indexCoffeeNight = listOfCoffeeNightPics.indexOf(url);
+
+	if (indexDino === -1 && indexCoffeeNight === -1) {
+		return { 'text' : 'Image was not added'}
+	}
+	if (indexDino >= 0) {
+		listOfImagesDino.splice(indexDino, 1);
+	}
+	if (indexCoffeeNight >= 0) {
+		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
+	}
+
+	return { 'text': 'Successfully deleted!'};
+	
+	
+}
+
+export function clearImagesDino() {
+	listOfImagesDino = [];
+	return 'All images removed from dino';
 }
