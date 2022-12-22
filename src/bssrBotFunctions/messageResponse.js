@@ -9,6 +9,7 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
+import { addQuote, clearQuotes, getQuotes } from './getWildcat.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -125,6 +126,38 @@ export function Respond(senderId, message) {
 		return {
 			attachment: getRecappuccino(validRecap(text))
 		};
+	}
+
+	//Send Coffeee Night Quotes
+	if (text.startsWith("coffeenightquote")) {
+		addQuote(message)
+		return {
+			'text' : 'Sent! See you at coffee night ;)'
+		}
+	}
+	//Get coffee night quotes, only admins can do
+	if (text === 'getcoffeenightquotes') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : getQuotes()
+			}
+		} else {
+			return {
+				'text' : 'Wait till coffee night to see ;)'
+			}
+		}
+	}
+	//Clear coffee night quotes, only admins can do
+	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearQuotes()
+			}
+		} else {
+			return {
+				'text' : 'Sorry. Only admins can do this'
+			}
+		}
 	}
 
 
