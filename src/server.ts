@@ -1,7 +1,9 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
-import { addImage } from './bssrBotFunctions/images.js'
+import { isDinoMeal } from './bssrBotFunctions/getDino.js';
+import { addImage, getRandomImage } from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
 import { send } from 'process';
+import e from 'express';
 const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -130,6 +132,19 @@ function handleMessage(senderPsid, receivedMessage) {
 
   // Send the response message
   callSendAPI(senderPsid, response);
+  if (attachDinoImage(receivedMessage)) {
+    const imageResponse = getRandomImage();
+    callSendAPI(senderPsid, imageResponse);
+  }   
+}
+
+// Attach Image to dino
+function attachDinoImage(receivedMessage) {
+  if (receivedMessage.text && isDinoMeal(receivedMessage.text.toLowerCase().replace(/\W/g, ''))) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // Handles messaging_postbacks events
