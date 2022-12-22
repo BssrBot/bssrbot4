@@ -52,6 +52,6 @@ export function removeSpecificImage(url) {
 }
 
 export function clearImagesDino() {
-  listOfImagesDino = [];
-  return 'All images removed from dino';
+	listOfImagesDino = [];
+	return 'All images removed from dino';
 }

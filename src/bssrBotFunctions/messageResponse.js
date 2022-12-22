@@ -108,7 +108,7 @@ export function Respond(senderId, message) {
 	}
 
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do
-	if (text === 'removedinoimages' || text === 'cleardinoimages' || 'deletedinoimages') {
+	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
 				'text' : clearImagesDino()
