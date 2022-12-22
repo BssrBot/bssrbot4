@@ -135,7 +135,7 @@ export function Respond(senderId, message) {
 
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {
-			attachment: getRecappuccino()
+			attachment: getRecappuccino(validRecap(text))
 		};
 	}
 
