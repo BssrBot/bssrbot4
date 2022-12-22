@@ -115,14 +115,19 @@ function handleMessage(senderPsid, receivedMessage) {
             'buttons': [
               {
                 'type': 'postback',
-                'title': 'Yes',
+                'title': 'Dino',
                 'payload': attachmentUrl,
               },
               {
                 'type': 'postback',
-                'title': 'No',
-                'payload': 'no',
-              }
+                'title': 'Coffee Night',
+                'payload': attachmentUrl,
+              },
+              {
+                'type': 'postback',
+                'title': 'Cancel',
+                'payload': 'cancel',
+              },
             ],
           }]
         }
