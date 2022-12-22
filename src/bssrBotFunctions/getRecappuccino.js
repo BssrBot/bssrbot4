@@ -9,7 +9,7 @@ export function validRecap(text) {
 }
 
 export function getRecappuccino(recapWeek) {
-	if (recapWeek === '' || recapWeek === undefined) {
+	if (recapWeek === '' || recapWeek === undefined || parseInt(recapWeek) > parseInt(latestWeek())) {
 		recapWeek = latestWeek();
 	}
 	const pathname = './src/bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
