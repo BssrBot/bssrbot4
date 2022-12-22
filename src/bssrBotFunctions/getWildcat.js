@@ -9,7 +9,7 @@ export function getQuotes() {
     if (listOfQuotes.length === 0) {
         return 'No quotes yet :(';
     }
-    quoteString = listOfQuotes.join("\n\n");
+    let quoteString = listOfQuotes.join("\n\n");
     return quoteString;
 
 }
