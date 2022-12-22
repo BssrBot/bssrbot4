@@ -13,6 +13,7 @@ export function getRecappuccino(recapWeek) {
 		recapWeek = latestWeek();
 	}
 	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
+	console.log(pathname)
 	if (fs.existsSync(pathname)) {
 		data = fs.readFileSync(pathname, 'UTF-8')
 		// split the contents by new line
