@@ -1,23 +1,30 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-const listOfImages = [];
+const listOfImagesDino = [];
 
+const listOfCoffeeNightPics = [];
 
-export function addImage(url) {
+export function addImageDino(url) {
 
-	listOfImages.push(url);
+	listOfImagesDino.push(url);
+
+}
+
+export function addImageCoffeeNight(url) {
+
+	listOfCoffeeNightPics.push(url);
 
 }
 
 export function getRandomImage() {
 
-	const x = Math.floor(Math.random() * listOfImages.length) ;
+	const x = Math.floor(Math.random() * listOfImagesDino.length) ;
 	return {
 		'attachment': {
 			'type':'image', 
 			'payload':{
-				'url': listOfImages[x],
+				'url': listOfImagesDino[x],
 				'is_reusable': true
 			}
 		}
