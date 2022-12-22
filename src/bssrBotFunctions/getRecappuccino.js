@@ -9,24 +9,29 @@ export function validRecap(text) {
 }
 
 export function getRecappuccino(recapWeek) {
-	if (recapWeek === '' || recapWeek === undefined) {
+	if (recapWeek === 0 || recapWeek > latestWeek()) {
 		recapWeek = latestWeek();
 	}
-	const pathname = './bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.pdf';
+	const pathname = './src/bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
+	console.log(pathname)
 	if (fs.existsSync(pathname)) {
+		let data = fs.readFileSync(pathname, 'UTF-8')
+		// split the contents by new line
+		const lines = data.split(/\r?\n/)
+		console.log(lines);
 		return {
 			"type":"file", 
-      "payload":{
-        "url": pathname,
-        "is_reusable": true
-      }
+			"payload":{
+				"url": lines[0],
+				"is_reusable": true
+			}
 		};
 	}
 }
 
 function latestWeek() {
 	let week = 1;
-	while (fs.existsSync('./RecappuccinoPDF/' + week.toString() + '.pdf')) {
+	while (fs.existsSync('./src/bssrBotFunctions/RecappuccinoPDF/' + week.toString() + '.txt')) {
 		week++;
 	}
 
