@@ -45,6 +45,8 @@ export function removeSpecificImage(url) {
 	if (indexCoffeeNight >= 0) {
 		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
 	}
+
+	return {'text': 'Successfully removed!'};
 	
 	
 }
