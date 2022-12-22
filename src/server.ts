@@ -160,11 +160,15 @@ function handlePostback(senderPsid, receivedPostback) {
   let title = receivedPostback.title;
 
   // Set the response based on the postback payload
-  if (title === 'Yes') {
+  if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
     console.log(receivedPostback.payload);
     addImage(receivedPostback.payload);
-  } else if (title === 'No') {
+    
+  } else if (title === 'Coffee Night') {
+    response = { 'text': 'Adding image to coffee night...' };
+  }
+  else if (title === 'Cancel') {
     response = { 'text': 'Oops, try sending another image.' };
   }
   // Send the message to acknowledge the postback
