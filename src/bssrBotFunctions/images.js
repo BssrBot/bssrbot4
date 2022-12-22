@@ -39,6 +39,14 @@ export function removeSpecificImage(url) {
 	if (indexDino === -1 && indexCoffeeNight === -1) {
 		return { 'text' : 'Okay then...'}
 	}
+	if (indexDino >= 0) {
+		listOfImagesDino.splice(indexDino, 1);
+	}
+	if (indexCoffeeNight >= 0) {
+		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
+	}
+	
+	
 }
 
 export function clearImages() {
