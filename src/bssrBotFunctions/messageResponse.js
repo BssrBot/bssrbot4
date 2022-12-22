@@ -18,7 +18,7 @@ await new Promise(r => setTimeout(r, 20));
 bot.sortReplies();
 
 //Zach and Laurence PSID
-const ADMIN_IDS = [5852973454748898, 5688278634581333]
+const ADMIN_IDS = ['5852973454748898', '5688278634581333']
 
 
 export function Respond(senderId, message) {
