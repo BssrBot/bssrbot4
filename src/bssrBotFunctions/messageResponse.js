@@ -128,6 +128,10 @@ export function Respond(senderId, message) {
 	}
 
 	//Coffee Night Quotes
+	if (text.includes("coffeenightquote")) {
+
+		
+	}
 
 
 	// No command is correct & Rivescript stuff
