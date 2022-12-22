@@ -24,6 +24,7 @@ whats on tomorrow? --> tomorrows events
 
 Fun!:
 crack a joke --> bssr bot will tell you a joke
+coffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>
 !! Secret quotes exist !! --> input your friends and see if bssrbot has anything to say about them
 
 */
