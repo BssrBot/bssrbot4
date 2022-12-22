@@ -109,7 +109,7 @@ function handleMessage(senderPsid, receivedMessage) {
         'payload': {
           'template_type': 'generic',
           'elements': [{
-            'title': 'Add to Dino?',
+            'title': 'Add to Dino/Coffee Night?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
             'buttons': [
