@@ -2,6 +2,8 @@ import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
 import { addImageDino, getRandomImage, addImageCoffeeNight, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
+import {listOfCoffeeNightPics} from './bssrBotFunctions/images.js'
+import {ADMIN_IDS} from './bssrBotFunctions/messageResponse.js'
 import { send } from 'process';
 import e from 'express';
 const require = createRequire(import.meta.url);
@@ -98,7 +100,15 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    response = Respond(senderPsid, receivedMessage.text);
+
+    //Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
+    if (receivedMessage.text === 'get coffee night pics' || receivedMessage.text === 'send coffee night pics'
+      && ADMIN_IDS.includes(senderPsid)) {
+      getCoffeeNightPics(senderPsid);
+      response = {'text': 'All pictures sent!'};
+    } else {
+      response = Respond(senderPsid, receivedMessage.text);
+    }
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -211,7 +221,7 @@ function addQuickReply(response) {
 }
 
 // Sends response messages via the Send API
-function callSendAPI(senderPsid, response) {
+export function callSendAPI(senderPsid, response) {
   response = addQuickReply(response);
   // The page access token we have generated in your app settings
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
@@ -237,6 +247,24 @@ function callSendAPI(senderPsid, response) {
       console.error('Unable to send message:' + err);
     }
   });
+}
+
+function getCoffeeNightPics(senderId) {
+
+	for (let i = 0; i < listOfCoffeeNightPics.length; i++) {
+		let response = {
+			'attachment': {
+				'type':'image', 
+				'payload':{
+					'url': listOfCoffeeNightPics[i],
+					'is_reusable': true
+				}
+			}
+			
+		}
+		callSendAPI(senderId, response);
+	}
+
 }
 
 // listen for requests :)
