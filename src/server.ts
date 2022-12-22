@@ -100,6 +100,8 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
+
+    //Get coffee night pics has to be in server.ts because it requires use of callSendAPI
     if (receivedMessage.text === 'get coffee night pics' || receivedMessage.text === 'send coffee night pics'
       && ADMIN_IDS.includes(senderPsid)) {
       getCoffeeNightPics(senderPsid);
