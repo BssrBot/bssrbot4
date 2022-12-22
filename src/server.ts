@@ -101,13 +101,7 @@ function handleMessage(senderPsid, receivedMessage) {
     // will be added to the body of your request to the Send API
 
     //Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
-    if (receivedMessage.text === 'get coffee night pics' || receivedMessage.text === 'send coffee night pics'
-      && ADMIN_IDS.includes(senderPsid)) {
-      getCoffeeNightPics(senderPsid);
-      response = {'text': 'All pictures sent!'};
-    } else {
-      response = Respond(senderPsid, receivedMessage.text);
-    }
+    response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
