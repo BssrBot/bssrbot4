@@ -129,7 +129,7 @@ export function Respond(senderId, message) {
 	}
 
 	//Send Coffeee Night Quotes
-	if (text.includes("coffeenightquote")) {
+	if (text.startsWith("coffeenightquote")) {
 		addQuote(message)
 		return {
 			'text' : 'Sent! See you at coffee night ;)'
