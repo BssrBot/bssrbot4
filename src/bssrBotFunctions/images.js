@@ -1,9 +1,9 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-const listOfImagesDino = [];
+let listOfImagesDino = [];
 
-const listOfCoffeeNightPics = [];
+let listOfCoffeeNightPics = [];
 
 export function addImageDino(url) {
 
