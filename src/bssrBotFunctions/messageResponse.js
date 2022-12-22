@@ -139,7 +139,18 @@ export function Respond(senderId, message) {
 	if (text === 'getcoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : clearImagesDino()
+				'text' : getQuotes()
+			}
+		} else {
+			return {
+				'text' : 'Wait till coffee night to see ;)'
+			}
+		}
+	}
+	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : getQuotes()
 			}
 		} else {
 			return {

@@ -6,14 +6,19 @@ export function addQuote(text) {
 }
 
 export function getQuotes() {
-    let quoteString = listOfQuotes.join("\n\n");
+    if (listOfQuotes.length === 0) {
+        return 'No quotes yet :(';
+    }
+    quoteString = listOfQuotes.join("\n\n");
     return quoteString;
 
 }
 
 export function clearQuotes() {
-
+    listOfQuotes = [];
 }
 export function getWildcat() {
 
 }
+
+console.log(getQuotes());
