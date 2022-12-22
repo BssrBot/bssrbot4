@@ -125,7 +125,7 @@ function handleMessage(senderPsid, receivedMessage) {
               },
               {
                 'type': 'postback',
-                'title': 'Cancel',
+                'title': 'Delete',
                 'payload': attachmentUrl,
               },
             ],
@@ -170,7 +170,7 @@ function handlePostback(senderPsid, receivedPostback) {
     addImageCoffeeNight(receivedPostback.payload);
 
   }
-  else if (title === 'Cancel') {
+  else if (title === 'Delete') {
 
     response = removeSpecificImage(receivedPostback.payload)
   }

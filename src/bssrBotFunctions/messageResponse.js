@@ -2,6 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
+import { clearImagesDino } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
@@ -15,6 +16,9 @@ bot.loadDirectory("./brain");
 //This was truly insane trying to find a way to get it to work but somehow it does
 await new Promise(r => setTimeout(r, 20));
 bot.sortReplies();
+
+//Zach and Laurence PSID
+const ADMIN_IDS = [5852973454748898]
 
 
 export function Respond(senderId, message) {
@@ -100,6 +104,20 @@ export function Respond(senderId, message) {
 			attachment: getFeedback()
 		};
 	}
+
+	// Remove all Dino Images (incase something naughty/bad). Only admins can do
+	if (text === 'removedinoimages') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearImagesDino()
+			}
+		} else {
+			return {
+				'text' : 'No admin permissions. Ask Zach or Laurence to clear if required'
+			}
+		}
+	}
+
 /*
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {

@@ -37,7 +37,7 @@ export function removeSpecificImage(url) {
 	const indexCoffeeNight = listOfCoffeeNightPics.indexOf(url);
 
 	if (indexDino === -1 && indexCoffeeNight === -1) {
-		return { 'text' : 'Okay then...'}
+		return { 'text' : 'Nothing to be deleted!'}
 	}
 	if (indexDino >= 0) {
 		listOfImagesDino.splice(indexDino, 1);
@@ -46,11 +46,12 @@ export function removeSpecificImage(url) {
 		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
 	}
 
-	return { 'text': 'Successfully removed!'};
+	return { 'text': 'Successfully deleted!'};
 	
 	
 }
 
-export function clearImages() {
-  listOfImages = [];
+export function clearImagesDino() {
+  listOfImagesDino = [];
+  return { 'text': 'All images removed from dino!'};
 }
