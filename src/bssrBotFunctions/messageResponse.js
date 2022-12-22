@@ -17,7 +17,7 @@ await new Promise(r => setTimeout(r, 20));
 bot.sortReplies();
 
 
-export function Respond(message) {
+export function Respond(senderId, message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
 	
 	// Commands

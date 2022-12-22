@@ -98,7 +98,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    response = Respond(receivedMessage.text);
+    response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -171,7 +171,7 @@ function handlePostback(senderPsid, receivedPostback) {
 
   }
   else if (title === 'Cancel') {
-    
+
     response = removeSpecificImage(receivedPostback.payload)
   }
   // Send the message to acknowledge the postback

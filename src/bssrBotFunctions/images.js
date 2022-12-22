@@ -46,7 +46,7 @@ export function removeSpecificImage(url) {
 		listOfCoffeeNightPics.splice(indexCoffeeNight, 1);
 	}
 
-	return {'text': 'Successfully removed!'};
+	return { 'text': 'Successfully removed!'};
 	
 	
 }
