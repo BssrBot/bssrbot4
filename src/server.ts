@@ -1,6 +1,7 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
 import { addImage, getRandomImage } from './bssrBotFunctions/images.js';
+import { coffeeNightPics } from './bssrBotFunctions/getCoffeeNight.js'
 import { createRequire } from 'module';
 import { send } from 'process';
 import e from 'express';
@@ -167,6 +168,7 @@ function handlePostback(senderPsid, receivedPostback) {
     
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
+
   }
   else if (title === 'Cancel') {
     response = { 'text': 'Oops, try sending another image.' };
