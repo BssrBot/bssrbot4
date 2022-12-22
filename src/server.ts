@@ -1,9 +1,8 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
-import { addImageDino, getRandomImage, addImageCoffeeNight, removeSpecificImage} from './bssrBotFunctions/images.js';
+import { addImageDino, getRandomImage, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
-import {listOfCoffeeNightPics} from './bssrBotFunctions/images.js'
-import {ADMIN_IDS} from './bssrBotFunctions/messageResponse.js'
+import { ADMIN_IDS } from './bssrBotFunctions/messageResponse.js'
 import { send } from 'process';
 import e from 'express';
 const require = createRequire(import.meta.url);
@@ -102,13 +101,7 @@ function handleMessage(senderPsid, receivedMessage) {
     // will be added to the body of your request to the Send API
 
     //Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
-    if (receivedMessage.text === 'get coffee night pics' || receivedMessage.text === 'send coffee night pics'
-      && ADMIN_IDS.includes(senderPsid)) {
-      getCoffeeNightPics(senderPsid);
-      response = {'text': 'All pictures sent!'};
-    } else {
-      response = Respond(senderPsid, receivedMessage.text);
-    }
+    response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -177,7 +170,16 @@ function handlePostback(senderPsid, receivedPostback) {
     
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
-    addImageCoffeeNight(receivedPostback.payload);
+    
+    callSendAPI(ADMIN_IDS[1], {
+      'attachment': {
+        'type':'image', 
+        'payload':{
+          'url': receivedPostback.payload,
+          'is_reusable': true
+        }
+      }
+    });
 
   }
   else if (title === 'Delete') {
@@ -247,24 +249,6 @@ export function callSendAPI(senderPsid, response) {
       console.error('Unable to send message:' + err);
     }
   });
-}
-
-function getCoffeeNightPics(senderId) {
-
-	for (let i = 0; i < listOfCoffeeNightPics.length; i++) {
-		let response = {
-			'attachment': {
-				'type':'image', 
-				'payload':{
-					'url': listOfCoffeeNightPics[i],
-					'is_reusable': true
-				}
-			}
-			
-		}
-		callSendAPI(senderId, response);
-	}
-
 }
 
 // listen for requests :)
