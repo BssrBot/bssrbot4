@@ -31,7 +31,7 @@ export function getRecappuccino(recapWeek) {
 
 function latestWeek() {
 	let week = 1;
-	while (fs.existsSync('./bssrBotFunctions/RecappuccinoPDF/' + week.toString() + '.txt')) {
+	while (fs.existsSync('./src/bssrBotFunctions/RecappuccinoPDF/' + week.toString() + '.txt')) {
 		console.log('yes');
 		week++;
 	}
