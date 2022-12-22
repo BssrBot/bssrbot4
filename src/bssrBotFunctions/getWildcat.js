@@ -16,6 +16,7 @@ export function getQuotes() {
 
 export function clearQuotes() {
     listOfQuotes = [];
+    return 'Quotes cleared!'
 }
 export function getWildcat() {
 
