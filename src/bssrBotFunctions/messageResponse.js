@@ -132,13 +132,13 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-/*
+
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {
 			attachment: getRecappuccino()
 		};
 	}
-*/
+
 
 	// No command is correct & Rivescript stuff
 	let reply = bot.reply("localuser", message)
