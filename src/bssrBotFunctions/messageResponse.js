@@ -128,13 +128,12 @@ export function Respond(senderId, message) {
 		};
 	}
 
-	//Coffee Night Quotes
+	//Send Coffeee Night Quotes
 	if (text.includes("coffeenightquote")) {
 		addQuote(message)
 		return {
 			'text' : 'Sent! See you at coffee night ;)'
 		}
-
 	}
 
 

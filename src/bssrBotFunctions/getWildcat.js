@@ -6,9 +6,14 @@ export function addQuote(text) {
 }
 
 export function getQuotes() {
-    
+    let quoteString = listOfQuotes.join("\n\n");
+    return quoteString;
+
 }
 
+export function clearQuotes() {
+
+}
 export function getWildcat() {
 
 }
