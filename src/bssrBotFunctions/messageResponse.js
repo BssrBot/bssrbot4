@@ -17,7 +17,9 @@ bot.loadDirectory("./brain");
 await new Promise(r => setTimeout(r, 20));
 bot.sortReplies();
 
-//Zach and Laurence PSID
+// Zach 5852973454748898
+// Laurence 5688278634581333 
+// PSID
 const ADMIN_IDS = ['5852973454748898', '5688278634581333']
 
 
