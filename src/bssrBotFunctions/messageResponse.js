@@ -9,7 +9,7 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { addQuote, getQuotes } from './getWildcat.js';
+import { addQuote, clearQuotes, getQuotes } from './getWildcat.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -150,11 +150,11 @@ export function Respond(senderId, message) {
 	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : getQuotes()
+				'text' : clearQuotes()
 			}
 		} else {
 			return {
-				'text' : 'Wait till coffee night to see ;)'
+				'text' : 'Sorry. Only admins can do this'
 			}
 		}
 	}
