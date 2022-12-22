@@ -17,7 +17,7 @@ export function getRecappuccino(recapWeek) {
 		data = fs.readFileSync(pathname, 'UTF-8')
 		// split the contents by new line
 		const lines = data.split(/\r?\n/)
-
+		console.log(lines);
 		return {
 			"type":"file", 
 			"payload":{
