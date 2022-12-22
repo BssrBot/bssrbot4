@@ -55,3 +55,5 @@ export function clearImagesDino() {
 	listOfImagesDino = [];
 	return 'All images removed from dino';
 }
+
+export {listOfCoffeeNightPics}

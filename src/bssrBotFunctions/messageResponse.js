@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
-import { clearImagesDino } from './images.js';
+import { clearImagesDino} from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
@@ -110,12 +110,27 @@ export function Respond(senderId, message) {
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do
 	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
 		if (ADMIN_IDS.includes(senderId)) {
+			getCoffeeNightPics(senderId);
 			return {
 				'text' : clearImagesDino()
 			}
 		} else {
 			return {
 				'text' : 'No admin permissions. Ask Zach or Laurence to clear if required'
+			}
+		}
+	}
+
+	//Get all coffee night pics sent to you on messenger
+	if (text === 'getcoffeenightpics' || text === 'obtaincoffeenightpics') {
+		if (ADMIN_IDS.includes(senderId)) {
+
+			return {
+				'text' : 'All coffee night pictures sent!'
+			}
+		} else {
+			return {
+				'text' : 'No admin permissions. Wait till coffee night to see them ;)'
 			}
 		}
 	}
@@ -138,3 +153,5 @@ export function Respond(senderId, message) {
 	};
 	
 }
+
+export {ADMIN_IDS}
