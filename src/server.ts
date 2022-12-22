@@ -126,7 +126,7 @@ function handleMessage(senderPsid, receivedMessage) {
               {
                 'type': 'postback',
                 'title': 'Cancel',
-                'payload': 'cancel',
+                'payload': attachmentUrl,
               },
             ],
           }]
@@ -171,7 +171,8 @@ function handlePostback(senderPsid, receivedPostback) {
 
   }
   else if (title === 'Cancel') {
-    response = { 'text': 'Oops, try sending another image.' };
+
+    response = { 'text': 'Image removed' };
   }
   // Send the message to acknowledge the postback
   callSendAPI(senderPsid, response);

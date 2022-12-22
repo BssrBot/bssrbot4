@@ -31,6 +31,10 @@ export function getRandomImage() {
 	}
 }
 
+export function removeSpecificImage(url) {
+	
+}
+
 export function clearImages() {
   listOfImages = [];
 }
