@@ -21,5 +21,3 @@ export function clearQuotes() {
 export function getWildcat() {
 
 }
-
-console.log(getQuotes());
