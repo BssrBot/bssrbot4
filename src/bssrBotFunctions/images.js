@@ -32,7 +32,13 @@ export function getRandomImage() {
 }
 
 export function removeSpecificImage(url) {
-	
+
+	const indexDino = listOfImagesDino.indexOf(url);
+	const indexCoffeeNight = listOfCoffeeNightPics.indexOf(url);
+
+	if (indexDino === -1 && indexCoffeeNight === -1) {
+		return { 'text' : 'Okay then...'}
+	}
 }
 
 export function clearImages() {

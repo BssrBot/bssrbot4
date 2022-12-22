@@ -1,6 +1,6 @@
 import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
-import { addImageDino, getRandomImage, addImageCoffeeNight} from './bssrBotFunctions/images.js';
+import { addImageDino, getRandomImage, addImageCoffeeNight, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { createRequire } from 'module';
 import { send } from 'process';
 import e from 'express';
@@ -171,8 +171,8 @@ function handlePostback(senderPsid, receivedPostback) {
 
   }
   else if (title === 'Cancel') {
-
-    response = { 'text': 'Image removed' };
+    
+    response = removeSpecificImage(receivedPostback.payload)
   }
   // Send the message to acknowledge the postback
   callSendAPI(senderPsid, response);
