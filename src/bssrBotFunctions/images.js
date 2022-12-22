@@ -37,7 +37,7 @@ export function removeSpecificImage(url) {
 	const indexCoffeeNight = listOfCoffeeNightPics.indexOf(url);
 
 	if (indexDino === -1 && indexCoffeeNight === -1) {
-		return { 'text' : 'Nothing to be deleted!'}
+		return { 'text' : 'Image was not added'}
 	}
 	if (indexDino >= 0) {
 		listOfImagesDino.splice(indexDino, 1);
