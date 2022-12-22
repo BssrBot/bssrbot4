@@ -49,4 +49,3 @@ export function clearImagesCoffeeNight() {
 	return 'All images removed from coffee night. See ya next Wednesday!';
 }
 
-export {listOfCoffeeNightPics}
