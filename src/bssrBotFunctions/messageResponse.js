@@ -9,7 +9,7 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { addQuote } from './getWildcat.js';
+import { addQuote, getQuotes } from './getWildcat.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -133,6 +133,18 @@ export function Respond(senderId, message) {
 		addQuote(message)
 		return {
 			'text' : 'Sent! See you at coffee night ;)'
+		}
+	}
+	//Get coffee night quotes
+	if (text === 'getcoffeenightquotes') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearImagesDino()
+			}
+		} else {
+			return {
+				'text' : 'Wait till coffee night to see ;)'
+			}
 		}
 	}
 
