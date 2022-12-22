@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
-import { clearImagesDino} from './images.js';
+import { clearImagesDino, clearImagesCoffeeNight} from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth } from './getHealth.js'
 import { getCommands } from './getCommands.js';
@@ -110,7 +110,6 @@ export function Respond(senderId, message) {
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do
 	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
 		if (ADMIN_IDS.includes(senderId)) {
-			getCoffeeNightPics(senderId);
 			return {
 				'text' : clearImagesDino()
 			}
@@ -121,20 +120,18 @@ export function Respond(senderId, message) {
 		}
 	}
 
-	//Get all coffee night pics sent to you on messenger
-	if (text === 'getcoffeenightpics' || text === 'obtaincoffeenightpics') {
+	// Remove all coffee night images (can prob be automated but oh well). Only admins can do
+	if (text === 'removecoffeenightpics' || text === 'clearcoffeenightpics' || text === 'deletecoffeenightpics') {
 		if (ADMIN_IDS.includes(senderId)) {
-
 			return {
-				'text' : 'All coffee night pictures sent!'
+				'text' : clearImagesCoffeeNight()
 			}
 		} else {
 			return {
-				'text' : 'No admin permissions. Wait till coffee night to see them ;)'
+				'text' : 'No admin permissions. I love coffee night!'
 			}
 		}
 	}
-
 /*
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {

@@ -100,7 +100,8 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
-    if (receivedMessage.text === 'get coffee night pics' && ADMIN_IDS.includes(senderPsid)) {
+    if (receivedMessage.text === 'get coffee night pics' || receivedMessage.text === 'send coffee night pics'
+      && ADMIN_IDS.includes(senderPsid)) {
       getCoffeeNightPics(senderPsid);
       response = {'text': 'All pictures sent!'};
     } else {

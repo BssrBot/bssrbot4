@@ -56,4 +56,9 @@ export function clearImagesDino() {
 	return 'All images removed from dino';
 }
 
+export function clearImagesCoffeeNight() {
+	listOfCoffeeNightPics = [];
+	return 'All images removed from coffee night. See ya next Wednesday!';
+}
+
 export {listOfCoffeeNightPics}
