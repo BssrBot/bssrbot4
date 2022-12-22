@@ -15,7 +15,7 @@ export function getRecappuccino(recapWeek) {
 	const pathname = './src/bssrBotFunctions/RecappuccinoPDF/' + recapWeek + '.txt';
 	console.log(pathname)
 	if (fs.existsSync(pathname)) {
-		data = fs.readFileSync(pathname, 'UTF-8')
+		let data = fs.readFileSync(pathname, 'UTF-8')
 		// split the contents by new line
 		const lines = data.split(/\r?\n/)
 		console.log(lines);
