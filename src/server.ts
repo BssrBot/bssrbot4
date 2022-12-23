@@ -113,6 +113,7 @@ function handleMessage(senderPsid, receivedMessage) {
             'title': 'Add to Dino/Coffee Night?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
+            //Payload contains attachment URL for adding/deleting
             'buttons': [
               {
                 'type': 'postback',
