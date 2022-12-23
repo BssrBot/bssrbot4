@@ -174,10 +174,8 @@ export function Respond(senderId, message) {
 
 	// Whats On
 	if (text === 'whatson') {
-		const WhatsOn = getWhatsOn();
-		console.log(typeof WhatsOn)
 		return {
-			'text' : WhatsOn.toString()
+			'text' : getWhatsOn()
 		};
 	}
 
