@@ -174,10 +174,8 @@ export function Respond(senderId, message) {
 
 	// Whats On
 	if (text === 'whatson') {
-		let events = async () => {
-			return await getWhatsOn();
-		}
-		console.log(events);
+		const events = WhatsOnPromise(1);
+		console.log(events)
 		return {
 			'text' : events
 		};
@@ -194,4 +192,10 @@ export function Respond(senderId, message) {
 		text : reply
 	};
 	
+}
+
+async function WhatsOnPromise(promise) {
+	if (promise === 1) {
+		return await getWhatsOn();
+	}
 }
