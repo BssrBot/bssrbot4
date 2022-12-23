@@ -161,7 +161,7 @@ function attachDinoImage(receivedMessage) {
 // Send all Coffee Night Pics
 function sendCoffeeNightPics(urls) {
   for (const url of urls) {
-    callSendAPI(ADMIN_IDS[1], {
+    callSendAPI(ADMIN_IDS[1], { //ADMIN_IDS[1] is Laurence's PSID
       'attachment': {
         'type':'image', 
         'payload':{
