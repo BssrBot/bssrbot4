@@ -10,6 +10,7 @@ import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
 import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes } from './getCoffeeNight.js';
+import { getWhatsOn } from './getEvents.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -168,6 +169,13 @@ export function Respond(senderId, message) {
 			return {
 				'text' : COFFEE_NIGHT
 			}
+		};
+	}
+
+	// Whats On
+	if (text === 'whatson') {
+		return {
+			text: getWhatsOn()
 		};
 	}
 
