@@ -8,8 +8,8 @@ export async function getWhatsOn() {
     const events = await ical.async.fromURL(CALENDAR);
     let eventList = '';
     for (const event in events) {
-        console.log(events[event].type)
         if (events[event].type === 'VEVENT') {
+            console.log(events[event].summary)
             eventList += events[event].summary + '\n\n';
         }
     }
