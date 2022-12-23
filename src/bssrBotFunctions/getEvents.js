@@ -20,7 +20,7 @@ export function getWhatsOn() {
         if (events[event].type === 'VEVENT') {
             console.log('Start:', startOfWeek, 'End:', endOfWeek);
             if (new Date(events[event].start) >= startOfWeek && new Date(events[event].start) <= endOfWeek)
-            eventList += events[event].summary + '\t' + events[event].start + '\n\n';
+            eventList += events[event].summary + '\n' + new Date(events[event].start) + '\n\n';
         }
     }
     return eventList;
