@@ -15,7 +15,7 @@ let endOfWeek = new Date(2023, 2, 13);
 endOfWeek.setDate(endOfWeek.getDate() + endDays[endOfWeek.getDay()]); 
 
 export function getWhatsOn() {
-    let eventList = ['Upcoming Events:\n'];
+    let eventList = [];
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
             const d = new Date(events[event].start)
@@ -23,6 +23,7 @@ export function getWhatsOn() {
             eventList.unshift(events[event].summary + '\n' + dayAndTime(d) + '\n\n');
         }
     }
+    eventList.unshift('Upcoming Events:\n');
     return eventList.join('');
 }
 
