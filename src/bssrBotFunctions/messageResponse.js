@@ -174,8 +174,10 @@ export function Respond(senderId, message) {
 
 	// Whats On
 	if (text === 'whatson') {
+		const ret = getWhatsOn();
+		console.log(ret.then);
 		return {
-			'text' : getWhatsOn().then
+			'text' : ret.then
 		};
 	}
 
