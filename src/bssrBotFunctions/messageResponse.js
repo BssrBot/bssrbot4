@@ -163,7 +163,7 @@ export function Respond(senderId, message) {
 		}
 	}
 
-	// Get coffee night pics, send only to admins
+	// Get coffee night pics, sent only to admins
 	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
