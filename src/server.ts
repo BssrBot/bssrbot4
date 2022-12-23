@@ -184,6 +184,7 @@ function handlePostback(senderPsid, receivedPostback) {
   if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
     addImageDino(receivedPostback.payload);
+  // If button pressed is Coffee night, add image to coffee night(contained in postback payload)
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
     console.log(receivedPostback.payload);
