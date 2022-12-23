@@ -12,7 +12,7 @@ startOfWeek.setDate(startOfWeek.getDate() - startDays[startOfWeek.getDay()]);
 
 let endDays = [0,6,5,4,3,2,1];
 let endOfWeek = new Date(2023, 2, 13);
-endOfWeek.setDate(endOfWeek.getDate() - endDays[endOfWeek.getDay()]); 
+endOfWeek.setDate(endOfWeek.getDate() + endDays[endOfWeek.getDay()]); 
 
 export function getWhatsOn() {
     let eventList = 'Upcoming Events:\n';
