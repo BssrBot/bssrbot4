@@ -139,6 +139,7 @@ function handleMessage(senderPsid, receivedMessage) {
 
   // Send the response message
   callSendAPI(senderPsid, response);
+  //If a dino meal, send a random picture sent in by a user
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
     callSendAPI(senderPsid, imageResponse);
