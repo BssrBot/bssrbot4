@@ -143,7 +143,7 @@ function handleMessage(senderPsid, receivedMessage) {
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
     callSendAPI(senderPsid, imageResponse);
-  } else if (response === COFFEE_NIGHT) {
+  } else if (response.text === COFFEE_NIGHT) {
     sendCoffeeNightPics(getCoffeeNightPics());
   }
 }
