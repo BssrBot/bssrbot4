@@ -26,7 +26,7 @@ export function getRandomImage() {
 export function removeSpecificImage(url) {
 
 	const indexDino = listOfImagesDino.indexOf(url);
-
+	//Url not found in array
 	if (indexDino === -1) {
 		return { 'text' : 'Image was not added'}
 	}
