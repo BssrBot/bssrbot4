@@ -175,7 +175,7 @@ export function Respond(senderId, message) {
 	// Whats On
 	if (text === 'whatson') {
 		return {
-			text: getWhatsOn()
+			'text' : getWhatsOn()
 		};
 	}
 

@@ -10,9 +10,9 @@ export async function getWhatsOn() {
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
             eventList += events[event].summary + '\n\n';
-            console.log(eventList)
         }
     }
+    console.log(eventList)
     return eventList;
 }
 
