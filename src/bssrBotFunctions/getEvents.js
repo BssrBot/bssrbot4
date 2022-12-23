@@ -6,6 +6,7 @@ const CALENDAR = 'https://calendar.google.com/calendar/ical/fed4287b9c43ffbee8f8
 
 export function getWhatsOn() {
     const events = ical.fromURL(CALENDAR);
+    console.log(events)
     let eventList = '';
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
