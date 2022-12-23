@@ -128,7 +128,7 @@ function handleMessage(senderPsid, receivedMessage) {
               },
               {
                 'type': 'postback',
-                'title': 'Delete',
+                'title': 'Delete from Dino',
                 'payload': attachmentUrl,
               },
             ],
@@ -190,7 +190,7 @@ function handlePostback(senderPsid, receivedPostback) {
     console.log(receivedPostback.payload);
     addCoffeeNightPic(receivedPostback.payload);
   }
-  else if (title === 'Delete') {
+  else if (title === 'Delete from Dino') {
 
     response = removeSpecificImage(receivedPostback.payload)
   }
