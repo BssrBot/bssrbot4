@@ -1,5 +1,6 @@
 // THIS FILE IS NOT USED AT ALL IN BSSRBOT4
 // THIS IS JUST TO TEST AND HAVE FUN WITH
+// Look at Rivescript documentation
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
