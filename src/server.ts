@@ -190,6 +190,7 @@ function handlePostback(senderPsid, receivedPostback) {
     console.log(receivedPostback.payload);
     addCoffeeNightPic(receivedPostback.payload);
   }
+  // If button pressed delete from dino, removes specific image that the user added so it won't appear in dino anymore
   else if (title === 'Delete from Dino') {
 
     response = removeSpecificImage(receivedPostback.payload)
