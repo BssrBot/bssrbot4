@@ -111,7 +111,7 @@ export function Respond(senderId, message) {
 
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do
 	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
-		if (ADMIN_IDS.includes(senderId)) {
+		if (ADMIN_IDS.includes(senderId)) { //Checks if senderId is an admin
 			return {
 				'text' : clearImagesDino()
 			}
@@ -183,6 +183,7 @@ export function Respond(senderId, message) {
 
 	// No command is correct & Rivescript stuff
 	let reply = bot.reply("localuser", message)
+	//If not in the rivescript files...
 	if (reply.includes(`Sorry I don't understand`)) {
 		reply = 'Input \'commands\' to see the list of commands!'
 	}
