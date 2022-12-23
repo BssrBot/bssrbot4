@@ -42,6 +42,7 @@ export function getCoffeeNightPics() {
 
 export function clearCoffeeNightPics() {
     const today = new Date();
+    //Clears every Wednesday at 10pm
     if (parseInt(today.getDay()) === 3 && parseInt(today.getHours()) >= 22) {
         listOfPics = [];
     }
