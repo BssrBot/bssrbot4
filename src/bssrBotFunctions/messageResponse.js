@@ -129,7 +129,7 @@ export function Respond(senderId, message) {
 		};
 	}
 
-	// Send Coffeee Night Quotes
+	// Send Coffee Night Quotes
 	if (text.startsWith("coffeenightquote")) {
 		addQuote(message)
 		return {
