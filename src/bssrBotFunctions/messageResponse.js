@@ -14,9 +14,9 @@ import { getWhatsOn } from './getEvents.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
-//Sleep for 20 milliseconds to allow bot to load directory before sorting replies
-//This was truly insane trying to find a way to get it to work but somehow it does
+//Sleep for 20 milliseconds to allow bot to load directory
 await new Promise(r => setTimeout(r, 20));
+// Now sort replies(necessary)
 bot.sortReplies();
 
 // Zach 5852973454748898
