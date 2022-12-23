@@ -21,6 +21,7 @@ export function getDino() {
 		"payload":{
 			"template_type":"button",
 			"text": 'Today\'s Menu\n\n\n' + Breakfast() + '\n' + Lunch() + '\n' + Dinner(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
