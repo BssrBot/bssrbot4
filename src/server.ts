@@ -21,7 +21,6 @@ app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
-  clearCoffeeNightPics();
   res.send('Hello World');
 });
 
@@ -56,6 +55,8 @@ app.get('/webhook', (req, res) => {
 // Creates the endpoint for your webhook
 app.post('/webhook', (req, res) => {
   let body = req.body;
+  //Runs the clear coffee night pics command, checks if its 10pm on Wednesday
+  clearCoffeeNightPics();
 
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
