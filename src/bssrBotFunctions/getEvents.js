@@ -7,11 +7,11 @@ const CALENDAR = 'https://calendar.google.com/calendar/ical/fed4287b9c43ffbee8f8
 const events = await ical.async.fromURL(CALENDAR);
 
 let startDays = [6,0,1,2,3,4,5];
-let startOfWeek = new Date(2023, 2, 13);
+let startOfWeek = new Date();
 startOfWeek.setDate(startOfWeek.getDate() - startDays[startOfWeek.getDay()]);
 
 let endDays = [0,6,5,4,3,2,1];
-let endOfWeek = new Date(2023, 2, 13);
+let endOfWeek = new Date();
 endOfWeek.setDate(endOfWeek.getDate() + endDays[endOfWeek.getDay()]); 
 
 export function getWhatsOn() {
@@ -23,7 +23,11 @@ export function getWhatsOn() {
             eventList.unshift(events[event].summary + '\n' + dayAndTime(d) + '\n\n');
         }
     }
-    eventList.unshift('Upcoming Events:\n');
+    if (eventList.length === 0) {
+        eventList.unshift('No Upcoming Events :(\n');
+    } else {
+        eventList.unshift('Upcoming Events:\n');
+    }
     return eventList.join('');
 }
 
