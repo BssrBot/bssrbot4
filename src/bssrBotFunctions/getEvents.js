@@ -7,8 +7,8 @@ const CALENDAR = 'https://calendar.google.com/calendar/ical/fed4287b9c43ffbee8f8
 export async function getWhatsOn() {
     const events = await ical.async.fromURL(CALENDAR);
     let eventList = '';
-    for (const event of events) {
-        eventList += event.summary + '\n\n';
+    for (const event in events) {
+        eventList += events.event.summary + '\n\n';
     }
     return eventList;
 }
