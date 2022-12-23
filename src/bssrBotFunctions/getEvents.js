@@ -6,14 +6,13 @@ const CALENDAR = 'https://calendar.google.com/calendar/ical/fed4287b9c43ffbee8f8
 const events = await ical.async.fromURL(CALENDAR);
 
 export function getWhatsOn() {
-    console.log('events', events)
     let eventList = '';
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
             eventList += events[event].summary + '\t' + events[event].start + '\n\n';
         }
     }
-    WhatsOn = eventList;
+    return eventList;
 }
 
 export function getWhatsOnToday() {
