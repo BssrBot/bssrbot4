@@ -198,7 +198,7 @@ function handlePostback(senderPsid, receivedPostback) {
   callSendAPI(senderPsid, response);
 }
 
-// Adds Quick Reply Bubbles
+// Adds Quick Reply Bubbles  
 function addQuickReply(response) {
   response['quick_replies'] = [
     {
