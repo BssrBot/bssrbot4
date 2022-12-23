@@ -12,7 +12,6 @@ export async function getWhatsOn() {
             eventList += events[event].summary + '\t' + events[event].start + '\n\n';
         }
     }
-    console.log(eventList)
     return eventList;
 }
 
