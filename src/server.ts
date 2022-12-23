@@ -1,10 +1,8 @@
-import { Respond } from './bssrBotFunctions/messageResponse.js';
+import { Respond, ADMIN_IDS } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
 import { addImageDino, getRandomImage, removeSpecificImage} from './bssrBotFunctions/images.js';
+import { addCoffeeNightPic, getCoffeeNightPics, COFFEE_NIGHT, clearCoffeeNightPics } from './bssrBotFunctions/getCoffeeNight.js'
 import { createRequire } from 'module';
-import { ADMIN_IDS } from './bssrBotFunctions/messageResponse.js'
-import { send } from 'process';
-import e from 'express';
 const require = createRequire(import.meta.url);
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -23,6 +21,7 @@ app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
+  clearCoffeeNightPics();
   res.send('Hello World');
 });
 
@@ -100,7 +99,8 @@ function handleMessage(senderPsid, receivedMessage) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
 
-    //Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
+    // Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
+
     response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
@@ -128,7 +128,7 @@ function handleMessage(senderPsid, receivedMessage) {
               },
               {
                 'type': 'postback',
-                'title': 'Delete',
+                'title': 'Delete from Dino',
                 'payload': attachmentUrl,
               },
             ],
@@ -143,7 +143,9 @@ function handleMessage(senderPsid, receivedMessage) {
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
     callSendAPI(senderPsid, imageResponse);
-  }   
+  } else if (response.text === COFFEE_NIGHT) {
+    sendCoffeeNightPics(getCoffeeNightPics());
+  }
 }
 
 // Attach Image to dino
@@ -152,6 +154,21 @@ function attachDinoImage(receivedMessage) {
     return true;
   } else {
     return false;
+  }
+}
+
+// Send all Coffee Night Pics
+function sendCoffeeNightPics(urls) {
+  for (const url of urls) {
+    callSendAPI(ADMIN_IDS[1], {
+      'attachment': {
+        'type':'image', 
+        'payload':{
+          'url': url,
+          'is_reusable': true
+        }
+      }
+    });
   }
 }
 
@@ -170,19 +187,10 @@ function handlePostback(senderPsid, receivedPostback) {
     
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
-    
-    callSendAPI(ADMIN_IDS[1], {
-      'attachment': {
-        'type':'image', 
-        'payload':{
-          'url': receivedPostback.payload,
-          'is_reusable': true
-        }
-      }
-    });
-
+    console.log(receivedPostback.payload);
+    addCoffeeNightPic(receivedPostback.payload);
   }
-  else if (title === 'Delete') {
+  else if (title === 'Delete from Dino') {
 
     response = removeSpecificImage(receivedPostback.payload)
   }
@@ -229,6 +237,7 @@ export function callSendAPI(senderPsid, response) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
   // Construct the message body
+  
   let requestBody = {
     'recipient': {
       'id': senderPsid

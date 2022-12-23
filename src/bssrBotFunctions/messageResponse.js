@@ -9,7 +9,8 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { addQuote, clearQuotes, getQuotes } from './getWildcat.js';
+import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes } from './getCoffeeNight.js';
+import { getWhatsOn } from './getEvents.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -21,7 +22,7 @@ bot.sortReplies();
 // Zach 5852973454748898
 // Laurence 5688278634581333 
 // PSID
-const ADMIN_IDS = ['5852973454748898', '5688278634581333']
+export const ADMIN_IDS = ['5852973454748898', '5688278634581333']
 
 
 export function Respond(senderId, message) {
@@ -128,14 +129,15 @@ export function Respond(senderId, message) {
 		};
 	}
 
-	//Send Coffeee Night Quotes
+	// Send Coffeee Night Quotes
 	if (text.startsWith("coffeenightquote")) {
 		addQuote(message)
 		return {
 			'text' : 'Sent! See you at coffee night ;)'
 		}
 	}
-	//Get coffee night quotes, only admins can do
+
+	// Get coffee night quotes, only admins can do
 	if (text === 'getcoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
@@ -147,7 +149,8 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-	//Clear coffee night quotes, only admins can do
+
+	// Clear coffee night quotes, only admins can do
 	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
@@ -160,6 +163,23 @@ export function Respond(senderId, message) {
 		}
 	}
 
+	// Get coffee night pics, send only to admins
+	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : COFFEE_NIGHT
+			}
+		};
+	}
+
+	// Whats On
+	if (text === 'whatson') {
+		return {
+			'text' : getWhatsOn()
+		};
+	}
+
+
 
 	// No command is correct & Rivescript stuff
 	let reply = bot.reply("localuser", message)
@@ -171,5 +191,3 @@ export function Respond(senderId, message) {
 	};
 	
 }
-
-export {ADMIN_IDS}
