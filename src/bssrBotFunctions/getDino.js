@@ -110,6 +110,7 @@ export function getDinner() {
 		"payload":{
 			"template_type":"button",
 			"text": Dinner(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
