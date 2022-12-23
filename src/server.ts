@@ -180,12 +180,10 @@ function handlePostback(senderPsid, receivedPostback) {
   // Get the payload for the postback
   let title = receivedPostback.title;
 
-  // Set the response based on the postback payload
+  // If button pressed is dino, add image to dino(contained in postback payload)
   if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
-    console.log(receivedPostback.payload);
     addImageDino(receivedPostback.payload);
-    
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
     console.log(receivedPostback.payload);
