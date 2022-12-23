@@ -18,9 +18,9 @@ export function getWhatsOn() {
     let eventList = 'Upcoming Events:\n';
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
-            console.log('Start:', startOfWeek, 'End:', endOfWeek);
-            if (new Date(events[event].start) >= startOfWeek && new Date(events[event].start) <= endOfWeek)
-            eventList += events[event].summary + '\n' + new Date(events[event].start) + '\n\n';
+            const d = new Date(events[event].start)
+            if (d >= startOfWeek && d <= endOfWeek)
+            eventList += events[event].summary + '\n' + dayAndTime(d) + '\n\n';
         }
     }
     return eventList;
@@ -32,4 +32,16 @@ export function getWhatsOnToday() {
 
 export function getWhatsOnTomorrow() {
     
+}
+
+function dayAndTime(d) {    
+    const weekday = ["Sun ","Mon ","Tue ","Wed ","Thu ","Fri ","Sat "];
+    const day = weekday[d.getDay()];
+    
+    const date = d.getDate();
+
+    const months = [" Jan"," Feb"," Mar"," Apr"," May"," Jun"," Jul"," Aug"," Sep"," Oct"," Nov"," Dec"];
+    const month = months[d.getMonth()];
+
+    return day + date + month
 }
