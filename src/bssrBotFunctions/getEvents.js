@@ -7,15 +7,15 @@ const CALENDAR = 'https://calendar.google.com/calendar/ical/fed4287b9c43ffbee8f8
 const events = await ical.async.fromURL(CALENDAR);
 
 let startDays = [6,0,1,2,3,4,5];
-let startOfWeek = new Date();
+let startOfWeek = new Date(2023, 2, 13);
 startOfWeek.setDate(startOfWeek.getDate() - startDays[startOfWeek.getDay()]);
 
 let endDays = [0,6,5,4,3,2,1];
-let endOfWeek = new Date();
+let endOfWeek = new Date(2023, 2, 13);
 endOfWeek.setDate(endOfWeek.getDate() - endDays[endOfWeek.getDay()]); 
 
 export function getWhatsOn() {
-    let eventList = '';
+    let eventList = 'Upcoming Events:\n';
     for (const event in events) {
         if (events[event].type === 'VEVENT') {
             if (new Date(events[event].summary) >= startOfWeek && new Date(events[event].summary) <= endOfWeek)
