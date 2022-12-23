@@ -30,6 +30,7 @@ export function removeSpecificImage(url) {
 	if (indexDino === -1) {
 		return { 'text' : 'Image was not added'}
 	}
+	//If url found, then remove it from array
 	if (indexDino >= 0) {
 		listOfImagesDino.splice(indexDino, 1);
 	}
