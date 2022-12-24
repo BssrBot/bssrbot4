@@ -31,9 +31,10 @@ let listOfWildcats = [];
 export function addWildcat(text) {
     let newText = text.replace("wildcat", "");
     listOfWildcats.push(newText);
+    console.log(newText);
 }
 
-export function getWildcat() {
+export function getWildcats() {
     if (listOfWildcats.length === 0) {
         return 'No wildcats yet :(';
     }

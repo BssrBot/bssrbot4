@@ -9,7 +9,7 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes, addWildcat, getWildcat, clearWildcats } from './getCoffeeNight.js';
+import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes, addWildcat, getWildcats, clearWildcats } from './getCoffeeNight.js';
 import { getWhatsOn } from './getEvents.js';
 
 const bot = new RiveScript();
@@ -190,7 +190,7 @@ export function Respond(senderId, message) {
 	if (text === 'getwildcats') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : getWildcat()
+				'text' : getWildcats()
 			}
 		} else {
 			return {
