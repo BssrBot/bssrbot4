@@ -45,7 +45,8 @@ export function getWildcats() {
 
 export function clearWildcats() {
     listOfWildcats = [];
-    return 'Wildcats cleared!'
+    console.log(listOfWildcats)
+    return 'Cleared!'
 }
 
 
