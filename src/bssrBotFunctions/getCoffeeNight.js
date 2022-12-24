@@ -33,7 +33,7 @@ export function addWildcat(text) {
     listOfWildcats.push(newText);
 }
 
-export function getWildcats() {
+export function getWildcat() {
     if (listOfWildcats.length === 0) {
         return 'No wildcats yet :(';
     }
