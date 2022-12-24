@@ -24,9 +24,29 @@ export function clearQuotes() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function getWildcat() {
+
+
+let listOfWildcats = [];
+
+export function addWildcat(text) {
+    let newText = text.replace("wildcat", "");
+    listOfWildcats.push(newText);
+}
+
+export function getWildcats() {
+    if (listOfWildcats.length === 0) {
+        return 'No wildcats yet :(';
+    }
+    let wildcatString = listOfWildcats.join("\n\n");
+    return wildcatString;
 
 }
+
+export function clearWildcats() {
+    listOfWildcats = [];
+    return 'Wildcats cleared!'
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
