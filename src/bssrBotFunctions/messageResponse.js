@@ -179,6 +179,14 @@ export function Respond(senderId, message) {
 		};
 	}
 
+	//Send in wildcat nominations
+	if (text.startsWith("wildcat")) {
+		addWildcat(message)
+		return {
+			'text' : 'Sent! See you at coffee night ;)'
+		}
+	}
+
 
 
 	// No command is correct & Rivescript stuff
