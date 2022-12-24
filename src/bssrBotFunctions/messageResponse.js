@@ -186,6 +186,31 @@ export function Respond(senderId, message) {
 			'text' : 'Sent! See you at coffee night ;)'
 		}
 	}
+	//Get wildcat nominations, only admins can do
+	if (text === 'getwildcats') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : getWildcat()
+			}
+		} else {
+			return {
+				'text' : 'Wait till coffee night to see ;)'
+			}
+		}
+	}
+
+	// Clear wildcat nominations, only admins can do
+	if (text === 'clearwildcats' || text === 'removewildcats' || text === 'deletewildcats') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearWildcats()
+			}
+		} else {
+			return {
+				'text' : 'Sorry. Only admins can do this'
+			}
+		}
+	}
 
 
 
