@@ -10,7 +10,7 @@ import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
 import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes, addWildcat, getWildcats, clearWildcats } from './getCoffeeNight.js';
-import { getWhatsOn } from './getEvents.js';
+import { getWhatsOn, getWhatsOnToday, getWhatsOnTomorrow } from './getEvents.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -176,6 +176,20 @@ export function Respond(senderId, message) {
 	if (text === 'whatson') {
 		return {
 			'text' : getWhatsOn()
+		};
+	}
+
+	// Whats On Today
+	if (text === 'whatsontoday') {
+		return {
+			'text' : getWhatsOnToday()
+		};
+	}
+
+	// Whats On Tomorrow
+	if (text === 'whatsontomorrow') {
+		return {
+			'text' : getWhatsOnTomorrow()
 		};
 	}
 
