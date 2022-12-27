@@ -17,7 +17,7 @@ export function addBasserian(PSID) {
 
 export function isBasserian(PSID) {
     if (fs.existsSync(filename)) {
-        let data = fs.readFileSync(pathname, 'UTF-8')
+        let data = fs.readFileSync(filename, 'UTF-8')
 		// split the contents by new line
 		const lines = data.split(/\r?\n/)
         for (const line of lines) {
@@ -31,7 +31,7 @@ export function isBasserian(PSID) {
 
 export function allBasserians() {
     if (fs.existsSync(filename)) {
-        let data = fs.readFileSync(pathname, 'UTF-8')
+        let data = fs.readFileSync(filename, 'UTF-8')
 		// split the contents by new line
 		return data.split(/\r?\n/);
     }
