@@ -15,7 +15,6 @@ College:
 laundry --> get the link to the laundry portal
 (Basser Only)
 feedback --> write feedback for events or general college life
-wildcat --> wildcat of the week nomination form
 recap --> recappuccino
 whats on? --> event scedule for the week
 whats on today? --> todays events
@@ -25,6 +24,7 @@ whats on tomorrow? --> tomorrows events
 Fun!:
 crack a joke --> bssr bot will tell you a joke
 coffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>
+wildcat --> Nominate someone for Wildcat of the week! Usage: wildcat <name and what they did>
 !! Secret quotes exist !! --> input your friends and see if bssrbot has anything to say about them
 
 */
@@ -54,6 +54,6 @@ function college() {
 
 function fun() {
 	const fun = emoji.get('tada')
-	return `Fun! ${fun}:\ncrack a joke --> bssr bot will tell you a joke\n\ncoffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>\n\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
+	return `Fun! ${fun}:\ncrack a joke --> bssr bot will tell you a joke\n\ncoffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>\n\nwildcat --> Nominate someone for Wildcat of the week! Usage: wildcat <name and what they did>\n\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
 }
 

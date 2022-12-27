@@ -9,7 +9,7 @@ export function isDinoMeal(text) {
 }
 
 export function getDinoTimes() {
-
+	//Times could possibly change(with new caterers) so change if required
 	const dinoString = "Breakfast: 7:30-10:00am\nLunch: 12:00-2:15pm\nDinner: 5:00-7:30pm\nSeconds are last 15 minutes of each meal";
 	
 	return dinoString;
@@ -21,6 +21,7 @@ export function getDino() {
 		"payload":{
 			"template_type":"button",
 			"text": 'Today\'s Menu\n\n\n' + Breakfast() + '\n' + Lunch() + '\n' + Dinner(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
@@ -47,6 +48,7 @@ export function getBreakfast() {
 		"payload":{
 			"template_type":"button",
 			"text": Breakfast(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
@@ -78,6 +80,7 @@ export function getLunch() {
 		"payload":{
 			"template_type":"button",
 			"text": Lunch(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
@@ -109,6 +112,7 @@ export function getDinner() {
 		"payload":{
 			"template_type":"button",
 			"text": Dinner(),
+			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",

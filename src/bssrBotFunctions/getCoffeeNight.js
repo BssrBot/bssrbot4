@@ -24,9 +24,30 @@ export function clearQuotes() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function getWildcat() {
+
+
+let listOfWildcats = [];
+
+export function addWildcat(text) {
+    let newText = text.replace("wildcat", "");
+    listOfWildcats.push(newText);
+    console.log(newText);
+}
+
+export function getWildcats() {
+    if (listOfWildcats.length === 0) {
+        return 'No wildcats yet :(';
+    }
+    let wildcatString = listOfWildcats.join("\n\n");
+    return wildcatString;
 
 }
+
+export function clearWildcats() {
+    listOfWildcats = [];
+    return 'Cleared!'
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -42,6 +63,7 @@ export function getCoffeeNightPics() {
 
 export function clearCoffeeNightPics() {
     const today = new Date();
+    //Clears every Wednesday at 10pm
     if (parseInt(today.getDay()) === 3 && parseInt(today.getHours()) >= 22) {
         listOfPics = [];
     }

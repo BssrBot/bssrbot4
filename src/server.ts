@@ -21,7 +21,6 @@ app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (req, res) {
-  clearCoffeeNightPics();
   res.send('Hello World');
 });
 
@@ -56,6 +55,8 @@ app.get('/webhook', (req, res) => {
 // Creates the endpoint for your webhook
 app.post('/webhook', (req, res) => {
   let body = req.body;
+  //Runs the clear coffee night pics command, checks if its 10pm on Wednesday
+  clearCoffeeNightPics();
 
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
@@ -99,8 +100,6 @@ function handleMessage(senderPsid, receivedMessage) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
 
-    // Get coffee night pics has to be in server.ts because it requires use of callSendAPI several times
-
     response = Respond(senderPsid, receivedMessage.text);
   } else if (receivedMessage.attachments) {
 
@@ -115,6 +114,7 @@ function handleMessage(senderPsid, receivedMessage) {
             'title': 'Add to Dino/Coffee Night?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
+            //Payload contains attachment URL for adding/deleting
             'buttons': [
               {
                 'type': 'postback',
@@ -140,9 +140,11 @@ function handleMessage(senderPsid, receivedMessage) {
 
   // Send the response message
   callSendAPI(senderPsid, response);
+  //If a dino meal, send a random picture sent in by a user
   if (attachDinoImage(receivedMessage)) {
     const imageResponse = getRandomImage();
     callSendAPI(senderPsid, imageResponse);
+  //Send coffee night pics to Laurence
   } else if (response.text === COFFEE_NIGHT) {
     sendCoffeeNightPics(getCoffeeNightPics());
   }
@@ -160,7 +162,7 @@ function attachDinoImage(receivedMessage) {
 // Send all Coffee Night Pics
 function sendCoffeeNightPics(urls) {
   for (const url of urls) {
-    callSendAPI(ADMIN_IDS[1], {
+    callSendAPI(ADMIN_IDS[1], { //ADMIN_IDS[1] is Laurence's PSID
       'attachment': {
         'type':'image', 
         'payload':{
@@ -179,17 +181,17 @@ function handlePostback(senderPsid, receivedPostback) {
   // Get the payload for the postback
   let title = receivedPostback.title;
 
-  // Set the response based on the postback payload
+  // If button pressed is dino, add image to dino(contained in postback payload)
   if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
-    console.log(receivedPostback.payload);
     addImageDino(receivedPostback.payload);
-    
+  // If button pressed is Coffee night, add image to coffee night(contained in postback payload)
   } else if (title === 'Coffee Night') {
     response = { 'text': 'Adding image to coffee night...' };
     console.log(receivedPostback.payload);
     addCoffeeNightPic(receivedPostback.payload);
   }
+  // If button pressed delete from dino, removes specific image that the user added so it won't appear in dino anymore
   else if (title === 'Delete from Dino') {
 
     response = removeSpecificImage(receivedPostback.payload)
@@ -198,7 +200,7 @@ function handlePostback(senderPsid, receivedPostback) {
   callSendAPI(senderPsid, response);
 }
 
-// Adds Quick Reply Bubbles
+// Adds Quick Reply Bubbles  
 function addQuickReply(response) {
   response['quick_replies'] = [
     {

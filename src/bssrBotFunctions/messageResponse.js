@@ -9,14 +9,14 @@ import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
-import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes } from './getCoffeeNight.js';
+import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes, addWildcat, getWildcats, clearWildcats } from './getCoffeeNight.js';
 import { getWhatsOn } from './getEvents.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
-//Sleep for 20 milliseconds to allow bot to load directory before sorting replies
-//This was truly insane trying to find a way to get it to work but somehow it does
+//Sleep for 20 milliseconds to allow bot to load directory
 await new Promise(r => setTimeout(r, 20));
+// Now sort replies(necessary)
 bot.sortReplies();
 
 // Zach 5852973454748898
@@ -111,7 +111,7 @@ export function Respond(senderId, message) {
 
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do
 	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
-		if (ADMIN_IDS.includes(senderId)) {
+		if (ADMIN_IDS.includes(senderId)) { //Checks if senderId is an admin
 			return {
 				'text' : clearImagesDino()
 			}
@@ -129,7 +129,7 @@ export function Respond(senderId, message) {
 		};
 	}
 
-	// Send Coffeee Night Quotes
+	// Send Coffee Night Quotes
 	if (text.startsWith("coffeenightquote")) {
 		addQuote(message)
 		return {
@@ -163,7 +163,7 @@ export function Respond(senderId, message) {
 		}
 	}
 
-	// Get coffee night pics, send only to admins
+	// Get coffee night pics, sent only to admins
 	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
@@ -179,10 +179,44 @@ export function Respond(senderId, message) {
 		};
 	}
 
+	//Send in wildcat nominations
+	if (text.startsWith("wildcat")) {
+		addWildcat(message)
+		return {
+			'text' : 'Sent! See you at coffee night ;)'
+		}
+	}
+	//Get wildcat nominations, only admins can do
+	if (text === 'getwildcats') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : getWildcats()
+			}
+		} else {
+			return {
+				'text' : 'Wait till coffee night to see ;)'
+			}
+		}
+	}
+
+	// Clear wildcat nominations, only admins can do
+	if (text === 'clearwildcats' || text === 'removewildcats' || text === 'deletewildcats') {
+		if (ADMIN_IDS.includes(senderId)) {
+			return {
+				'text' : clearWildcats()
+			}
+		} else {
+			return {
+				'text' : 'Sorry. Only admins can do this'
+			}
+		}
+	}
+
 
 
 	// No command is correct & Rivescript stuff
 	let reply = bot.reply("localuser", message)
+	//If not in the rivescript files...
 	if (reply.includes(`Sorry I don't understand`)) {
 		reply = 'Input \'commands\' to see the list of commands!'
 	}
