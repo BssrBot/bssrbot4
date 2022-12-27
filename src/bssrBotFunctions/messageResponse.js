@@ -11,6 +11,7 @@ import { getFeedback } from './getFeedback.js';
 import { getRecappuccino, validRecap } from './getRecappuccino.js';
 import { addQuote, clearQuotes, COFFEE_NIGHT, getQuotes, addWildcat, getWildcats, clearWildcats } from './getCoffeeNight.js';
 import { getWhatsOn, getWhatsOnToday, getWhatsOnTomorrow } from './getEvents.js';
+import { addBasserian } from './getBasserian.js';
 
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
@@ -28,6 +29,14 @@ export const ADMIN_IDS = ['5852973454748898', '5688278634581333']
 export function Respond(senderId, message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
 	
+	// Add Basserian 
+	if (text === 'basserwildcat') {
+		addBasserian(senderId);
+		return {
+			text: 'Welcome, Wildcat!'
+		}
+	}
+
 	// Commands
 	if (text === 'commands') {
 		return {
@@ -113,11 +122,11 @@ export function Respond(senderId, message) {
 	if (text === 'removedinoimages' || text === 'cleardinoimages' || text === 'deletedinoimages') {
 		if (ADMIN_IDS.includes(senderId)) { //Checks if senderId is an admin
 			return {
-				'text' : clearImagesDino()
+				text : clearImagesDino()
 			}
 		} else {
 			return {
-				'text' : 'No admin permissions. Ask Zach or Laurence to clear if required'
+				text : 'No admin permissions. Ask Zach or Laurence to clear if required'
 			}
 		}
 	}
@@ -133,7 +142,7 @@ export function Respond(senderId, message) {
 	if (text.startsWith("coffeenightquote")) {
 		addQuote(message)
 		return {
-			'text' : 'Sent! See you at coffee night ;)'
+			text : 'Sent! See you at coffee night ;)'
 		}
 	}
 
@@ -141,11 +150,11 @@ export function Respond(senderId, message) {
 	if (text === 'getcoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : getQuotes()
+				text : getQuotes()
 			}
 		} else {
 			return {
-				'text' : 'Wait till coffee night to see ;)'
+				text : 'Wait till coffee night to see ;)'
 			}
 		}
 	}
@@ -154,11 +163,11 @@ export function Respond(senderId, message) {
 	if (text === 'clearcoffeenightquotes' || text === 'removecoffeenightquotes' || text === 'deletecoffeenightquotes') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : clearQuotes()
+				text : clearQuotes()
 			}
 		} else {
 			return {
-				'text' : 'Sorry. Only admins can do this'
+				text : 'Sorry. Only admins can do this'
 			}
 		}
 	}
@@ -167,7 +176,7 @@ export function Respond(senderId, message) {
 	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : COFFEE_NIGHT
+				text : COFFEE_NIGHT
 			}
 		};
 	}
@@ -175,21 +184,21 @@ export function Respond(senderId, message) {
 	// Whats On
 	if (text === 'whatson') {
 		return {
-			'text' : getWhatsOn()
+			text : getWhatsOn()
 		};
 	}
 
 	// Whats On Today
 	if (text === 'whatsontoday') {
 		return {
-			'text' : getWhatsOnToday()
+			text : getWhatsOnToday()
 		};
 	}
 
 	// Whats On Tomorrow
 	if (text === 'whatsontomorrow') {
 		return {
-			'text' : getWhatsOnTomorrow()
+			text : getWhatsOnTomorrow()
 		};
 	}
 
@@ -197,18 +206,18 @@ export function Respond(senderId, message) {
 	if (text.startsWith("wildcat")) {
 		addWildcat(message)
 		return {
-			'text' : 'Sent! See you at coffee night ;)'
+			text : 'Sent! See you at coffee night ;)'
 		}
 	}
 	//Get wildcat nominations, only admins can do
 	if (text === 'getwildcats') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : getWildcats()
+				text : getWildcats()
 			}
 		} else {
 			return {
-				'text' : 'Wait till coffee night to see ;)'
+				text : 'Wait till coffee night to see ;)'
 			}
 		}
 	}
@@ -217,11 +226,11 @@ export function Respond(senderId, message) {
 	if (text === 'clearwildcats' || text === 'removewildcats' || text === 'deletewildcats') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
-				'text' : clearWildcats()
+				text : clearWildcats()
 			}
 		} else {
 			return {
-				'text' : 'Sorry. Only admins can do this'
+				text : 'Sorry. Only admins can do this'
 			}
 		}
 	}
