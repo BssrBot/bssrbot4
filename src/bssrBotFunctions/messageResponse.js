@@ -31,10 +31,9 @@ export function Respond(senderId, message) {
 	
 	// Add Basserian 
 	if (text === 'basserwildcat') {
-		addBasserian(senderId);
 		return {
-			text: 'Welcome, Wildcat!'
-		}
+			text: addBasserian(senderId)
+		};
 	}
 
 	// Commands

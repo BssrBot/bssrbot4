@@ -6,8 +6,13 @@ const filename = 'src/bssrBotFunctions/Basserians.txt';
 
 function addBasserian(PSID) {
     if (fs.existsSync(filename)) {
-        fs.appendFileSync(filename, PSID + '\n')
-    }
+        if (!isBasserian(PSID)) {
+            fs.appendFileSync(filename, PSID + '\n');
+            return 'Welcome, Wildcat'
+        } else {
+            return 'You\'re already a Basserian\n';
+        }
+    } 
 }
 
 function isBasserian(PSID) {
@@ -20,6 +25,7 @@ function isBasserian(PSID) {
                 return true;
             }
         }
+        return false;
     }
 }
 
