@@ -4,7 +4,7 @@ var fs = require('fs');
 
 const filename = 'src/bssrBotFunctions/Basserians.txt';
 
-function addBasserian(PSID) {
+export function addBasserian(PSID) {
     if (fs.existsSync(filename)) {
         if (!isBasserian(PSID)) {
             fs.appendFileSync(filename, PSID + '\n');
@@ -15,7 +15,7 @@ function addBasserian(PSID) {
     } 
 }
 
-function isBasserian(PSID) {
+export function isBasserian(PSID) {
     if (fs.existsSync(filename)) {
         let data = fs.readFileSync(pathname, 'UTF-8')
 		// split the contents by new line
@@ -29,7 +29,7 @@ function isBasserian(PSID) {
     }
 }
 
-function allBasserians() {
+export function allBasserians() {
     if (fs.existsSync(filename)) {
         let data = fs.readFileSync(pathname, 'UTF-8')
 		// split the contents by new line
