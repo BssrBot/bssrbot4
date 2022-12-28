@@ -1,4 +1,4 @@
-import { Respond, ADMIN_IDS } from './bssrBotFunctions/messageResponse.js';
+import { Respond } from './bssrBotFunctions/messageResponse.js';
 import { isDinoMeal } from './bssrBotFunctions/getDino.js';
 import { addImageDino, getRandomImage, removeSpecificImage} from './bssrBotFunctions/images.js';
 import { addCoffeeNightPic, getCoffeeNightPics, COFFEE_NIGHT, clearCoffeeNightPics } from './bssrBotFunctions/getCoffeeNight.js'
@@ -146,7 +146,7 @@ function handleMessage(senderPsid, receivedMessage) {
     callSendAPI(senderPsid, imageResponse);
   //Send coffee night pics to Laurence
   } else if (response.text === COFFEE_NIGHT) {
-    sendCoffeeNightPics(getCoffeeNightPics());
+    sendCoffeeNightPics(senderPsid, getCoffeeNightPics());
   }
 }
 
@@ -160,9 +160,9 @@ function attachDinoImage(receivedMessage) {
 }
 
 // Send all Coffee Night Pics
-function sendCoffeeNightPics(urls) {
+function sendCoffeeNightPics(senderPsid, urls) {
   for (const url of urls) {
-    callSendAPI(ADMIN_IDS[1], { //ADMIN_IDS[1] is Laurence's PSID
+    callSendAPI(senderPsid, { 
       'attachment': {
         'type':'image', 
         'payload':{
