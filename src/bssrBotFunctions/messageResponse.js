@@ -136,7 +136,7 @@ export function Respond(senderId, message) {
 	// Security
 	if (text === 'security') {
 		return {
-			attachment: 
+			attachment: getSecurityButton()
 		}
 	}
 
