@@ -58,3 +58,6 @@ function getOptometrist() {
 	return optometristString;
 }
 
+export function lifeLineButton() {
+	
+}
