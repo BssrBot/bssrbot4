@@ -9,7 +9,8 @@ import { getHealth,
 	getCounsellorButton, 
 	getMentalHealthSupportButton,
 	getUNSWHealthServicesButton,
-	getDentistButton
+	getDentistButton,
+	getOptometristButton
 	} from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
@@ -99,7 +100,6 @@ export function Respond(senderId, message) {
 			text === 'dutytutor' || 
 			text === 'security' || 
 			text === 'doctor' ||  
-			text === 'dentist' || 
 			text === 'optometrist') {
 		return {
 			text: 'Helpful Contacts:\n' + getHealth()
@@ -148,6 +148,12 @@ export function Respond(senderId, message) {
 		}
 	}
 
+	// Optometrist
+	if (text === 'optometrist') {
+		return {
+			attachment: getOptometristButton()
+		}
+	}
 	// Feedback
 	if (text === 'feedback') {
 		return {

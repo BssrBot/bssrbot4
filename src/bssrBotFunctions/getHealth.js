@@ -145,3 +145,20 @@ export function getDentistButton() {
 	};
 }
 
+export function getOptometristButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Have a cavity or possibly need a teeth whitening?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call UNSW Dentist",
+					"payload":"0293136228"
+				}
+			]
+		}
+	};
+}
+
