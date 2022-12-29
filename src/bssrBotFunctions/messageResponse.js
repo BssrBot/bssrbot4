@@ -4,7 +4,7 @@ const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
 import { clearImagesDino } from './images.js';
 import { getJoke } from './getJokes.js';
-import { getHealth, getLifelineButton } from './getHealth.js'
+import { getHealth, getLifelineButton, getCounsellorButton } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
@@ -93,7 +93,6 @@ export function Respond(senderId, message) {
 			text === 'dutytutor' || 
 			text === 'security' || 
 			text === 'counsellor' || 
-			text === 'lifeline' || 
 			text === 'doctor' || 
 			text === 'unswhealthservices' || 
 			text === 'dentist' || 
@@ -109,6 +108,14 @@ export function Respond(senderId, message) {
 			attachment: getLifelineButton()
 		}
 	}
+
+	// Counsellor
+	if (text === 'counsellor') {
+		return {
+			attachment: getCounsellorButton()
+		}
+	}
+
 
 	// Laundry 
 	if (text === 'laundry') {
