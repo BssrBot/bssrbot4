@@ -10,7 +10,8 @@ import { getHealth,
 	getMentalHealthSupportButton,
 	getUNSWHealthServicesButton,
 	getDentistButton,
-	getOptometristButton
+	getOptometristButton,
+	getSecurityButton
 	} from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
@@ -129,6 +130,13 @@ export function Respond(senderId, message) {
 	if (text === 'unswhealthservices' || text === 'doctor') {
 		return {
 			attachment: getUNSWHealthServicesButton()
+		}
+	}
+
+	// Security
+	if (text === 'security') {
+		return {
+			attachment: 
 		}
 	}
 

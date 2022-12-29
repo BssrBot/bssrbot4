@@ -163,3 +163,20 @@ export function getOptometristButton() {
 	};
 }
 
+export function getSecurityButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Need to call UNSW security?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call UNSW Security",
+					"payload":"93856000"
+				}
+			]
+		}
+	};
+}
+
