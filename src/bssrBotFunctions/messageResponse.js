@@ -97,10 +97,7 @@ export function Respond(senderId, message) {
 	}
 
 	// Health
-	if (text === 'help' || 
-			text === 'health' || 
-			text === 'dutytutor' || 
-			text === 'security') {
+	if (text === 'help' || text === 'health') {
 		return {
 			text: 'Helpful Contacts:\n' + getHealth()
 		};
