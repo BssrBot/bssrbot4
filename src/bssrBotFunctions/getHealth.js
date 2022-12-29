@@ -116,7 +116,7 @@ export function getUNSWHealthServicesButton() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
- 			"text":"Need a doctor?",
+ 			"text":"Need a doctor or need a vaccine?",
 			"buttons":[
 				{
 					"type":"phone_number",

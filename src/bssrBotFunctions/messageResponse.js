@@ -125,7 +125,7 @@ export function Respond(senderId, message) {
 	}
 
 	// UNSW health services
-	if (text === 'unswhealthservices' || text === 'doctor') {
+	if (text === 'unswhealthservices' || text === 'doctor' || text === 'healthservices') {
 		return {
 			attachment: getUNSWHealthServicesButton()
 		}
