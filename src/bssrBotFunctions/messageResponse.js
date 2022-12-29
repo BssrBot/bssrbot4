@@ -98,9 +98,7 @@ export function Respond(senderId, message) {
 	if (text === 'help' || 
 			text === 'health' || 
 			text === 'dutytutor' || 
-			text === 'security' || 
-			text === 'doctor' ||  
-			text === 'optometrist') {
+			text === 'security') {
 		return {
 			text: 'Helpful Contacts:\n' + getHealth()
 		};
@@ -128,7 +126,7 @@ export function Respond(senderId, message) {
 	}
 
 	// UNSW health services
-	if (text === 'unswhealthservices') {
+	if (text === 'unswhealthservices' || text === 'doctor') {
 		return {
 			attachment: getUNSWHealthServicesButton()
 		}
