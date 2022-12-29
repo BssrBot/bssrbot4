@@ -72,6 +72,24 @@ export function getLifelineButton() {
 				}
 			]
 		}
-	}
+	};
+}
+
+export function getCounsellorButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Need to book an appointment with a UNSW counsellor?",
+			"buttons":[
+				{
+					"type":"web_url",
+					"url":'https://unsw.au1.qualtrics.com/jfe/form/SV_7P5OepTL4eJDztb',
+					"title":"Click here",
+					"webview_height_ratio": "full"
+				}
+			]
+		}
+	};
 
 }
