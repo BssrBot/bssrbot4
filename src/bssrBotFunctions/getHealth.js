@@ -179,4 +179,20 @@ export function getSecurityButton() {
 		}
 	};
 }
+export function getDutyTutorButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Got locked out of your room or someone is making a racket?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call Duty Tutor",
+					"payload":"0293859786"
+				}
+			]
+		}
+	};
+}
 

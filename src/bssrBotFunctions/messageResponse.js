@@ -11,7 +11,8 @@ import { getHealth,
 	getUNSWHealthServicesButton,
 	getDentistButton,
 	getOptometristButton,
-	getSecurityButton
+	getSecurityButton,
+	getDutyTutorButton
 	} from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
@@ -137,6 +138,13 @@ export function Respond(senderId, message) {
 	if (text === 'security') {
 		return {
 			attachment: getSecurityButton()
+		}
+	}
+
+	// Duty Tutor
+	if (text === 'dutytutor') {
+		return {
+			attachment: getDutyTutorButton()
 		}
 	}
 
