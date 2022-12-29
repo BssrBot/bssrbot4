@@ -150,12 +150,13 @@ export function getOptometristButton() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text":"Have a cavity or possibly need a teeth whitening?",
+			"text":"Need an eye check up and don't want to see Basser's very own Jessie?",
 			"buttons":[
 				{
-					"type":"phone_number",
-					"title":"Call UNSW Dentist",
-					"payload":"0293136228"
+					"type":"web_url",
+					"url":'https://www.unsw.edu.au/medicine-health/our-schools/optometry/optometry-clinic/find-us/appointment',
+					"title":"Click here",
+					"webview_height_ratio": "full"
 				}
 			]
 		}
