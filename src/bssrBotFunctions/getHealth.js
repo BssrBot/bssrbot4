@@ -59,5 +59,19 @@ function getOptometrist() {
 }
 
 export function getLifelineButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Need to call Lifeline?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call Lifeline",
+					"payload":"131114"
+				}
+			]
+		}
+	}
 
 }
