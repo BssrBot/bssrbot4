@@ -4,7 +4,7 @@ const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
 import { clearImagesDino } from './images.js';
 import { getJoke } from './getJokes.js';
-import { getHealth, getLifelineButton, getCounsellorButton } from './getHealth.js'
+import { getHealth, getLifelineButton, getCounsellorButton, getMentalHealthSupportButton } from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
@@ -118,10 +118,16 @@ export function Respond(senderId, message) {
 	// Mental Health Support line
 	if (text === 'mentalhealth' || text === 'support' || text === 'mentalhealthsupport') {
 		return {
-			attachment: getCounsellorButton()
+			attachment: getMentalHealthSupportButton()
 		}
 	}
 
+	// UNSW health services
+	if (text === 'unswhealthservices') {
+		return {
+			attachment: 
+		}
+	}
 
 	// Laundry 
 	if (text === 'laundry') {

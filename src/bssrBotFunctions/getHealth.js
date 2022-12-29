@@ -110,3 +110,21 @@ export function getMentalHealthSupportButton() {
 		}
 	};
 }
+
+export function getUNSWHealthServicesButton() {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Need UNSW health services?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call UNSW Health Services",
+					"payload":"0293855425"
+				}
+			]
+		}
+	};
+}
+
