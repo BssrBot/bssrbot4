@@ -93,3 +93,7 @@ export function getCounsellorButton() {
 	};
 
 }
+
+export function getMentalHealthSupportButton() {
+	
+}

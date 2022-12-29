@@ -92,7 +92,6 @@ export function Respond(senderId, message) {
 			text === 'health' || 
 			text === 'dutytutor' || 
 			text === 'security' || 
-			text === 'counsellor' || 
 			text === 'doctor' || 
 			text === 'unswhealthservices' || 
 			text === 'dentist' || 
@@ -111,6 +110,13 @@ export function Respond(senderId, message) {
 
 	// Counsellor
 	if (text === 'counsellor') {
+		return {
+			attachment: getCounsellorButton()
+		}
+	}
+
+	// Mental Health Support line
+	if (text === 'mentalhealth' || text === 'support' || text === 'mentalhealthsupport') {
 		return {
 			attachment: getCounsellorButton()
 		}
