@@ -4,7 +4,16 @@ const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
 import { clearImagesDino } from './images.js';
 import { getJoke } from './getJokes.js';
-import { getHealth } from './getHealth.js'
+import { getHealth, 
+	getLifelineButton, 
+	getCounsellorButton, 
+	getMentalHealthSupportButton,
+	getUNSWHealthServicesButton,
+	getDentistButton,
+	getOptometristButton,
+	getSecurityButton,
+	getDutyTutorButton
+	} from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
@@ -88,19 +97,52 @@ export function Respond(senderId, message) {
 	}
 
 	// Health
-	if (text === 'help' || 
-			text === 'health' || 
-			text === 'dutytutor' || 
-			text === 'security' || 
-			text === 'counsellor' || 
-			text === 'lifeline' || 
-			text === 'doctor' || 
-			text === 'unswhealthservices' || 
-			text === 'dentist' || 
-			text === 'optometrist') {
+	if (text === 'help' || text === 'health') {
 		return {
 			text: 'Helpful Contacts:\n' + getHealth()
 		};
+	}
+
+	// Lifeline
+	if (text === 'lifeline') {
+		return {
+			attachment: getLifelineButton()
+		}
+	}
+
+	// Counsellor
+	if (text === 'counsellor') {
+		return {
+			attachment: getCounsellorButton()
+		}
+	}
+
+	// Mental Health Support line
+	if (text === 'mentalhealth' || text === 'support' || text === 'mentalhealthsupport') {
+		return {
+			attachment: getMentalHealthSupportButton()
+		}
+	}
+
+	// UNSW health services
+	if (text === 'unswhealthservices' || text === 'doctor' || text === 'healthservices') {
+		return {
+			attachment: getUNSWHealthServicesButton()
+		}
+	}
+
+	// Security
+	if (text === 'security') {
+		return {
+			attachment: getSecurityButton()
+		}
+	}
+
+	// Duty Tutor
+	if (text === 'dutytutor') {
+		return {
+			attachment: getDutyTutorButton()
+		}
 	}
 
 	// Laundry 
@@ -109,7 +151,20 @@ export function Respond(senderId, message) {
 			attachment: getLaundry()
 		};
 	}
+	
+	// Dentist
+	if (text === 'dentist') {
+		return {
+			attachment: getDentistButton()
+		}
+	}
 
+	// Optometrist
+	if (text === 'optometrist') {
+		return {
+			attachment: getOptometristButton()
+		}
+	}
 	// Feedback
 	if (text === 'feedback') {
 		return {
