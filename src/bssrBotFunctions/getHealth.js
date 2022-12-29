@@ -95,5 +95,18 @@ export function getCounsellorButton() {
 }
 
 export function getMentalHealthSupportButton() {
-	
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Need to call the UNSW Mental Health Support Line?",
+			"buttons":[
+				{
+					"type":"phone_number",
+					"title":"Call UNSW Mental Health Support",
+					"payload":"0293855418"
+				}
+			]
+		}
+	};
 }
