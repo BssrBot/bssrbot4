@@ -8,8 +8,9 @@ import { getHealth,
 	getLifelineButton, 
 	getCounsellorButton, 
 	getMentalHealthSupportButton,
-	getUNSWHealthServicesButton
-	 } from './getHealth.js'
+	getUNSWHealthServicesButton,
+	getDentistButton
+	} from './getHealth.js'
 import { getCommands } from './getCommands.js';
 import { getLaundry } from './getLaundry.js';
 import { getFeedback } from './getFeedback.js';
@@ -97,8 +98,7 @@ export function Respond(senderId, message) {
 			text === 'health' || 
 			text === 'dutytutor' || 
 			text === 'security' || 
-			text === 'doctor' || 
-			text === 'unswhealthservices' || 
+			text === 'doctor' ||  
 			text === 'dentist' || 
 			text === 'optometrist') {
 		return {
@@ -139,6 +139,13 @@ export function Respond(senderId, message) {
 		return {
 			attachment: getLaundry()
 		};
+	}
+	
+	// Dentist
+	if (text === 'dentist') {
+		return {
+			attachment: getDentistButton()
+		}
 	}
 
 	// Feedback
