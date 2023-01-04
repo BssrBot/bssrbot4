@@ -1,6 +1,11 @@
 ! version = 2.0
 
-// People in Basser
+//change this for bssrbot4 capabilitiess
++ @hello
+- Hello, there!
+
++ who (made|programmed|built|developed|created) you
+- I was made by Zach and Laurence!
 
 // 2022 Floor 1
 + Saharsh
@@ -415,6 +420,7 @@
 - Didn't use traditional ingredients
 - Absolute incriminating
 - https://www.thesaurus.com/browse/offended
+
 
 
 

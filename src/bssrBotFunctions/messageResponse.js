@@ -25,7 +25,7 @@ import { addBasserian } from './getBasserian.js';
 const bot = new RiveScript();
 bot.loadDirectory("./brain");
 //Sleep for 20 milliseconds to allow bot to load directory
-await new Promise(r => setTimeout(r, 20));
+await new Promise(r => setTimeout(r, 25));
 // Now sort replies(necessary)
 bot.sortReplies();
 
