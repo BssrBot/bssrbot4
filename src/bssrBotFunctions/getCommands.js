@@ -49,7 +49,7 @@ function dino() {
 
 function college() {
 	const college = emoji.get('heart') + emoji.get('blue_heart') + emoji.get('white_heart')
-	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nwildcat --> wildcat of the week nomination form\n\nrecap --> recappuccino\n\nwhats on? --> event scedule for the week\n\nwhats on today? --> todays events\n\nwhats on tomorrow? --> tomorrows events\n\n\n`
+	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nrecap --> recappuccino\n\nwhats on? --> event scedule for the week\n\nwhats on today? --> todays events\n\nwhats on tomorrow? --> tomorrows events\n\n\n`
 }
 
 function fun() {

@@ -8,7 +8,7 @@ const RiveScript = require("rivescript");
 const prompt = require("prompt-sync")();
 
 const bot = new RiveScript();
-bot.loadDirectory("brain").then(loading_done).catch(loading_error)
+bot.loadDirectory("./brain").then(loading_done).catch(loading_error)
 
 export async function loading_done() {
 

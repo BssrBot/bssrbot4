@@ -63,7 +63,7 @@ export function getLifelineButton() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text":"Need to call Lifeline?",
+			"text":"Click here to call Lifeline",
 			"buttons":[
 				{
 					"type":"phone_number",
@@ -99,7 +99,7 @@ export function getMentalHealthSupportButton() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text":"Need to call the UNSW Mental Health Support Line?",
+			"text":"Click here to call UNSW Mental Health Support Line",
 			"buttons":[
 				{
 					"type":"phone_number",
