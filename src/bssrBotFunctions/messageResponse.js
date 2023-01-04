@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
 import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
-import { clearImagesDino } from './images.js';
+import { clearImagesDino, getWarrane } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth, 
 	getLifelineButton, 
@@ -170,6 +170,13 @@ export function Respond(senderId, message) {
 		return {
 			attachment: getFeedback()
 		};
+	}
+	
+	// Warrane
+	if (text === 'warrane') {
+		return {
+			attachment: getWarrane()
+		}
 	}
 
 	// Remove all Dino Images (incase something naughty/bad). Only admins can do

@@ -50,3 +50,14 @@ export function clearImagesCoffeeNight() {
 	return 'All images removed from coffee night. See ya next Wednesday!';
 }
 
+export function getWarrane() {
+	return {
+			'type':'image', 
+			'payload':{
+				'url': 'https://media.istockphoto.com/id/624878806/photo/multiethnic-mud-run-team-of-men-yelling-during-obstacle-course.jpg?s=612x612&w=0&k=20&c=ORDbLEAuAvR5k-tBq5iHIPy7ugaiqS99bfyTtrx_5m4=',
+				'is_reusable': true
+		}
+		
+	}
+}
+
