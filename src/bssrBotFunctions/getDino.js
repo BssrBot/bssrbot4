@@ -21,7 +21,6 @@ let CURRENT_WEEK = 2;
 function checkMenuWeek() {
 	let timeNow = new Date();
 	let day = timeNow.getDay();
-	let weeks = timeNow.getWeek();
 }
 
 function checkTime() {
