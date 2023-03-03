@@ -225,7 +225,7 @@ export function getLunch() {
 }
 console.log(Lunch());
 function Lunch() {
-	const timeNow = new Date("March 5, 2023 01:15:00");
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
