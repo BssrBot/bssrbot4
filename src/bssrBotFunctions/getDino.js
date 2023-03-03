@@ -218,11 +218,14 @@ function Lunch() {
 	let timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
+	console.log(hours);
 	let flag = false;
 	let textString = "";
 	if (hours >= 15) {
 		day = (day+1) % 7;
 		flag = true;
+		console.log('INSIDE');
+		console.log(day);
 	}
 	if (CURRENT_WEEK === 1) {
 		if (day === 0) {
@@ -294,12 +297,17 @@ function Lunch() {
 		}
 
 	}
+	console.log("HERE")
 	if (flag === false) {
+		console.log("INSIDE 1");
 		textString = "Lunch\n\n" + textString;
 	}
+	console.log("HERE 2");
 	if (flag === true) {
+		console.log("INSIDE 2");
 		textString = "Lunch tommorow\n\n" + textString;
 	}
+	console.log(textString);
 	return textString;
 }
 
@@ -420,4 +428,4 @@ function Dinner() {
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-console.log(Lunch());
+console.log(Breakfast());
