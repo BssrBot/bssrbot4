@@ -19,9 +19,7 @@ let CURRENT_WEEK = 2;
 
 function checkMenuWeek() {
 	let timeNow = new Date();
-	let day = timeNow.getDay()
-	console.log(timeNow);
-	console.log(day);
+	let day = timeNow.getDay();
 }
 
 checkMenuWeek();
