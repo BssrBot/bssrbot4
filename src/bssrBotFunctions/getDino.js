@@ -229,7 +229,7 @@ function Lunch() {
 			textString = week1Data[2].Sunday
 		}
 		if (day === 1) {
-			textStrin = week1Data[2].Monday
+			textString = week1Data[2].Monday
 		}
 		if (day === 2) {
 			textString = week1Data[2].Tuesday
@@ -419,3 +419,5 @@ function Dinner() {
 	return textString;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+console.log(Lunch());
