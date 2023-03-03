@@ -246,7 +246,7 @@ export function Respond(senderId, message) {
 
 	if (text.startsWith('setmenuweek')) {
 		if (ADMIN_IDS.includes(senderId)) {
-			setMenuWeek(text)
+			setMenuWeek(message)
 			return {
 				text: 'Menu week set!'
 			}

@@ -18,7 +18,7 @@ let CURRENT_WEEK = 2;
 
 
 
-export function setMenuWeek(week) {
+export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
 	CURRENT_WEEK = parseInt(newText);
 }
