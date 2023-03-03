@@ -16,9 +16,11 @@ const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // If BssrBot is shut off, this needs to be adjusted to the current week
 let CURRENT_WEEK = 2;
 
-function checkMenuWeek() {
-	let timeNow = new Date();
-	let day = timeNow.getDay();
+
+
+export function setMenuWeek(week) {
+	let newText = text.replace("set menu week", "");
+	CURRENT_WEEK = parseInt(newText);
 }
 
 export function isDinoMeal(text) {
@@ -223,7 +225,6 @@ export function getLunch() {
 		}
 	};
 }
-console.log(Lunch());
 function Lunch() {
 	const timeNow = new Date();
 	let day = timeNow.getDay();

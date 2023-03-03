@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
-import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
+import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner, setMenuWeek } from './getDino.js';
 import { clearImagesDino, getWarrane } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth, 
@@ -39,11 +39,13 @@ export function Respond(senderId, message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
 	
 	// Add Basserian 
+	/*
 	if (text === 'basserwildcat') {
 		return {
 			text: addBasserian(senderId)
 		};
 	}
+	*/
 
 	// Commands
 	if (text === 'commands') {
@@ -234,12 +236,21 @@ export function Respond(senderId, message) {
 	}
 
 	// Get coffee night pics, sent only to admins
-	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
+	if (text=== 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
 				text : COFFEE_NIGHT
 			}
 		};
+	}
+
+	if (text.startsWith('setmenuweek') {
+		if (ADMIN_IDS.includes(senderId)) {
+			setMenuWeek(text)
+			return {
+				text: 'Menu week set!'
+			}
+		}
 	}
 
 	// Whats On
