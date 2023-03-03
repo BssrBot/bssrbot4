@@ -21,11 +21,6 @@ function checkMenuWeek() {
 	let day = timeNow.getDay();
 }
 
-function checkTime() {
-	let timeNow = newDate();
-	let hour = timeNow.getHours();
-}
-
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
 		return true;
@@ -43,11 +38,23 @@ export function getDinoTimes() {
 }
 
 export function getDino() {
+	let text = "";
+	const timeNow = new Date();
+	let hours = timeNow.getHours();
+	if (hours < 10 || hours >= 20) {
+		text = Breakfast();
+	}
+	if (hours >= 10 && hours < 15) {
+		text = Lunch();
+	}
+	if (hours >= 15 && hours < 20) {
+		text = Dinner();
+	}
 	return {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": 'Today\'s Menu\n\n\n' + Breakfast() + '\n' + Lunch() + '\n' + Dinner(),
+			"text": text,
 			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
@@ -100,12 +107,16 @@ function Breakfast() {
 	let hours = timeNow.getHours();
 	let flag = false;
 	let textString = "";
+	let tempCurrentWeek = CURRENT_WEEK;
 	if (hours >= 10) {
 		day = (day+1) % 7;
 		flag = true;
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 	}
 	const dino = emoji.get('knife_fork_plate')
-	if (CURRENT_WEEK === 1) {
+	if (tempCurrentWeek === 1) {
 		if (day === 0) {
 			textString = week1Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
@@ -128,7 +139,7 @@ function Breakfast() {
 			textString = week1Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 2) {
+	if (tempCurrentWeek === 2) {
 		if (day === 0) {
 			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
@@ -151,7 +162,7 @@ function Breakfast() {
 			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 3) {
+	if (tempCurrentWeek === 0) {
 		if (day === 0) {
 			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
@@ -186,7 +197,6 @@ function Breakfast() {
 
 }
 
-console.log(Breakfast());
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function getLunch() {
@@ -213,21 +223,21 @@ export function getLunch() {
 		}
 	};
 }
-
 function Lunch() {
-	let timeNow = new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
-	console.log(hours);
 	let flag = false;
+	let tempCurrentWeek = CURRENT_WEEK;
 	let textString = "";
 	if (hours >= 15) {
 		day = (day+1) % 7;
 		flag = true;
-		console.log('INSIDE');
-		console.log(day);
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 	}
-	if (CURRENT_WEEK === 1) {
+	if (tempCurrentWeek === 1) {
 		if (day === 0) {
 			textString = week1Data[2].Sunday
 		}
@@ -250,7 +260,7 @@ function Lunch() {
 			textString = week1Data[2].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 2) {
+	if (tempCurrentWeek === 2) {
 		if (day === 0) {
 			textString = week2Data[2].Sunday
 		}
@@ -273,7 +283,7 @@ function Lunch() {
 			textString = week2Data[2].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 3) {
+	if (tempCurrentWeek === 0) {
 		if (day === 0) {
 			textString = week3Data[2].Sunday
 		}
@@ -297,17 +307,12 @@ function Lunch() {
 		}
 
 	}
-	console.log("HERE")
 	if (flag === false) {
-		console.log("INSIDE 1");
 		textString = "Lunch\n\n" + textString;
 	}
-	console.log("HERE 2");
 	if (flag === true) {
-		console.log("INSIDE 2");
 		textString = "Lunch tommorow\n\n" + textString;
 	}
-	console.log(textString);
 	return textString;
 }
 
@@ -337,19 +342,23 @@ export function getDinner() {
 		}
 	};
 }
-
 // placeholder function
 function Dinner() {
-	let timeNow = new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
+	let tempCurrentWeek = CURRENT_WEEK;
 	let textString = "";
 	if (hours >= 20) {
 		day = (day+1) % 7;
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		flag = true;
 	}
-	if (CURRENT_WEEK === 1) {
+	//WEEK 1
+	if (tempCurrentWeek === 1) {
 		if (day === 0) {
 			textString = week1Data[3].Sunday
 		}
@@ -372,7 +381,8 @@ function Dinner() {
 			textString = week1Data[3].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 2) {
+	//WEEK 2
+	if (tempCurrentWeek === 2) {
 		if (day === 0) {
 			textString = week2Data[3].Sunday
 		}
@@ -395,7 +405,8 @@ function Dinner() {
 			textString = week2Data[3].Saturday
 		}
 	}
-	if (CURRENT_WEEK === 3) {
+	//WEEK 3
+	if (tempCurrentWeek === 0) {
 		if (day === 0) {
 			textString = week3Data[3].Sunday
 		}
@@ -427,5 +438,3 @@ function Dinner() {
 	return textString;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-console.log(Breakfast());
