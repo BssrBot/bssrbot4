@@ -22,6 +22,12 @@ function checkMenuWeek() {
 	let day = timeNow.getDay();
 }
 
+function checkTime() {
+	let timeNow = newDate();
+	let hour = timeNow.getHours();
+
+}
+
 checkMenuWeek();
 
 export function isDinoMeal(text) {
