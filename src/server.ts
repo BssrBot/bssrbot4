@@ -123,11 +123,6 @@ function handleMessage(senderPsid, receivedMessage) {
               },
               {
                 'type': 'postback',
-                'title': 'Coffee Night',
-                'payload': attachmentUrl,
-              },
-              {
-                'type': 'postback',
                 'title': 'Delete from Dino',
                 'payload': attachmentUrl,
               },
