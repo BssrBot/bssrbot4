@@ -55,7 +55,7 @@ export function Respond(senderId, message) {
 	// Dino 
 	if (text === 'dino') {
 		return {
-			attachment: getDino()
+			attachment: getBreakfast()
 		};
 	}
 

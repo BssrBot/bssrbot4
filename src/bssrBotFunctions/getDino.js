@@ -24,10 +24,7 @@ function checkMenuWeek() {
 function checkTime() {
 	let timeNow = newDate();
 	let hour = timeNow.getHours();
-
 }
-
-checkMenuWeek();
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
@@ -176,16 +173,16 @@ function Breakfast() {
 		if (day === 6) {
 			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
-		if (flag === false) {
-			textString = "Breakfast\n\n" + textString;
-		}
-		if (flag === true) {
-			textString = "Breakfast tommorow\n\n" + textString;
-		}
-		return textString;
+	
 
 	}
-
+	if (flag === false) {
+		textString = "Breakfast\n\n" + textString;
+	}
+	if (flag === true) {
+		textString = "Breakfast tommorow\n\n" + textString;
+	}
+	return textString;
 
 }
 
