@@ -16,6 +16,8 @@ laundry --> get the link to the laundry portal
 (Basser Only)
 feedback --> write feedback for events or general college life
 events --> event schedule for the week
+whats on today --> see what events are on today
+whats on tomorrow --> see whats events are on tomorrow
 (Basser Only)
 
 Fun!:
@@ -44,7 +46,7 @@ function dino() {
 
 function college() {
 	const college = emoji.get('heart') + emoji.get('blue_heart') + emoji.get('white_heart')
-	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nevents --> event schedule for the week\n\n\n`
+	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nevents --> event schedule for the week\n\nwhats on today --> see what events are on today\n\nwhats on tomorrow --> see whats events are on tomorrow\n\n`
 }
 
 function fun() {
