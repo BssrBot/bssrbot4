@@ -21,7 +21,7 @@ function checkMenuWeek() {
 	let timeNow = new Date();
 	let day = timeNow.getDay()
 	console.log(timeNow);
-	
+	console.log(day);
 }
 
 checkMenuWeek();
