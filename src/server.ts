@@ -205,11 +205,6 @@ function addQuickReply(response) {
   response['quick_replies'] = [
     {
       "content_type":"text",
-      "title":"Dino",
-      "payload":"Dino",
-    },
-    {
-      "content_type":"text",
       "title":"Breakfast",
       "payload":"Breakfast",
     },

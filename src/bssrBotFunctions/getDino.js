@@ -1,3 +1,4 @@
+import { text } from "body-parser";
 import exp from "constants";
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -20,6 +21,7 @@ let CURRENT_WEEK = 2;
 function checkMenuWeek() {
 	let timeNow = new Date();
 	let day = timeNow.getDay();
+	let weeks = timeNow.getWeek();
 }
 
 function checkTime() {
@@ -101,75 +103,89 @@ export function getBreakfast() {
 function Breakfast() {
 	const timeNow = new Date();
 	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let textString = "";
+	if (hours >= 10) {
+		day = (day+1) % 7;
+		flag = true;
+	}
 	const dino = emoji.get('knife_fork_plate')
 	if (CURRENT_WEEK === 1) {
 		if (day === 0) {
-			return week1Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week1Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
 		if (day === 1) {
-			return week1Data[0].Monday
+			textString = week1Data[0].Monday
 		}
 		if (day === 2) {
-			return week1Data[0].Tuesday
+			textString = week1Data[0].Tuesday
 		}
 		if (day === 3) {
-			return week1Data[0].Wednesday
+			textString = week1Data[0].Wednesday
 		}
 		if (day === 4) {
-			return week1Data[0].Thursday
+			textString = week1Data[0].Thursday
 		}
 		if (day === 5) {
-			return week1Data[0].Friday
+			textString = week1Data[0].Friday
 		}
 		if (day === 6) {
-			return week1Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week1Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 2) {
 		if (day === 0) {
-			return week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
 		if (day === 1) {
-			return week2Data[0].Monday
+			textString = week2Data[0].Monday
 		}
 		if (day === 2) {
-			return week2Data[0].Tuesday
+			textString = week2Data[0].Tuesday
 		}
 		if (day === 3) {
-			return week2Data[0].Wednesday
+			textString = week2Data[0].Wednesday
 		}
 		if (day === 4) {
-			return week2Data[0].Thursday
+			textString = week2Data[0].Thursday
 		}
 		if (day === 5) {
-			return week2Data[0].Friday
+			textString = week2Data[0].Friday
 		}
 		if (day === 6) {
-			return week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 3) {
 		if (day === 0) {
-			return week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
 		if (day === 1) {
-			return week3Data[0].Monday
+			textString = week3Data[0].Monday
 		}
 		if (day === 2) {
-			return week3Data[0].Tuesday
+			textString = week3Data[0].Tuesday
 		}
 		if (day === 3) {
-			return week3Data[0].Wednesday
+			textString = week3Data[0].Wednesday
 		}
 		if (day === 4) {
-			return week3Data[0].Thursday
+			textString = week3Data[0].Thursday
 		}
 		if (day === 5) {
-			return week3Data[0].Friday
+			textString = week3Data[0].Friday
 		}
 		if (day === 6) {
-			return week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
+		if (flag === false) {
+			textString = "Breakfast\n\n" + textString;
+		}
+		if (flag === true) {
+			textString = "Breakfast tommorow\n\n" + textString;
+		}
+		return textString;
 
 	}
 
@@ -207,76 +223,90 @@ export function getLunch() {
 function Lunch() {
 	let timeNow = new Date();
 	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let textString = "";
+	if (hours >= 15) {
+		day = (day+1) % 7;
+		flag = true;
+	}
 	if (CURRENT_WEEK === 1) {
 		if (day === 0) {
-			return week1Data[2].Sunday
+			textString = week1Data[2].Sunday
 		}
 		if (day === 1) {
-			return week1Data[2].Monday
+			textStrin = week1Data[2].Monday
 		}
 		if (day === 2) {
-			return week1Data[2].Tuesday
+			textString = week1Data[2].Tuesday
 		}
 		if (day === 3) {
-			return week1Data[2].Wednesday
+			textString = week1Data[2].Wednesday
 		}
 		if (day === 4) {
-			return week1Data[2].Thursday
+			textString = week1Data[2].Thursday
 		}
 		if (day === 5) {
-			return week1Data[2].Friday
+			textString = week1Data[2].Friday
 		}
 		if (day === 6) {
-			return week1Data[2].Saturday
+			textString = week1Data[2].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 2) {
 		if (day === 0) {
-			return week2Data[2].Sunday
+			textString = week2Data[2].Sunday
 		}
 		if (day === 1) {
-			return week2Data[2].Monday
+			textString = week2Data[2].Monday
 		}
 		if (day === 2) {
-			return week2Data[2].Tuesday
+			textString = week2Data[2].Tuesday
 		}
 		if (day === 3) {
-			return week2Data[2].Wednesday
+			textString = week2Data[2].Wednesday
 		}
 		if (day === 4) {
-			return week2Data[2].Thursday
+			textString = week2Data[2].Thursday
 		}
 		if (day === 5) {
-			return week2Data[2].Friday
+			textString = week2Data[2].Friday
 		}
 		if (day === 6) {
-			return week2Data[2].Saturday
+			textString = week2Data[2].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 3) {
 		if (day === 0) {
-			return week3Data[2].Sunday
+			textString = week3Data[2].Sunday
 		}
 		if (day === 1) {
-			return week3Data[2].Monday
+			textString = week3Data[2].Monday
 		}
 		if (day === 2) {
-			return week3Data[2].Tuesday
+			textString = week3Data[2].Tuesday
 		}
 		if (day === 3) {
-			return week3Data[2].Wednesday
+			textString = week3Data[2].Wednesday
 		}
 		if (day === 4) {
-			return week3Data[2].Thursday
+			textString = week3Data[2].Thursday
 		}
 		if (day === 5) {
-			return week3Data[2].Friday
+			textString = week3Data[2].Friday
 		}
 		if (day === 6) {
-			return week3Data[2].Saturday
+			textString = week3Data[2].Saturday
 		}
 
 	}
+	if (flag === false) {
+		textString = "Lunch\n\n" + textString;
+	}
+	if (flag === true) {
+		textString = "Lunch tommorow\n\n" + textString;
+	}
+	return textString;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,75 +340,88 @@ export function getDinner() {
 function Dinner() {
 	let timeNow = new Date();
 	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let textString = "";
+	if (hours >= 20) {
+		day = (day+1) % 7;
+		flag = true;
+	}
 	if (CURRENT_WEEK === 1) {
 		if (day === 0) {
-			return week1Data[3].Sunday
+			textString = week1Data[3].Sunday
 		}
 		if (day === 1) {
-			return week1Data[3].Monday
+			textString = week1Data[3].Monday
 		}
 		if (day === 2) {
-			return week1Data[3].Tuesday
+			textString = week1Data[3].Tuesday
 		}
 		if (day === 3) {
-			return week1Data[3].Wednesday
+			textString = week1Data[3].Wednesday
 		}
 		if (day === 4) {
-			return week1Data[3].Thursday
+			textString = week1Data[3].Thursday
 		}
 		if (day === 5) {
-			return week1Data[3].Friday
+			textString = week1Data[3].Friday
 		}
 		if (day === 6) {
-			return week1Data[3].Saturday
+			textString = week1Data[3].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 2) {
 		if (day === 0) {
-			return week2Data[3].Sunday
+			textString = week2Data[3].Sunday
 		}
 		if (day === 1) {
-			return week2Data[3].Monday
+			textString = week2Data[3].Monday
 		}
 		if (day === 2) {
-			return week2Data[3].Tuesday
+			textString = week2Data[3].Tuesday
 		}
 		if (day === 3) {
-			return week2Data[3].Wednesday
+			textString = week2Data[3].Wednesday
 		}
 		if (day === 4) {
-			return week2Data[3].Thursday
+			textString = week2Data[3].Thursday
 		}
 		if (day === 5) {
-			return week2Data[3].Friday
+			textString = week2Data[3].Friday
 		}
 		if (day === 6) {
-			return week2Data[3].Saturday
+			textString = week2Data[3].Saturday
 		}
 	}
 	if (CURRENT_WEEK === 3) {
 		if (day === 0) {
-			return week3Data[3].Sunday
+			textString = week3Data[3].Sunday
 		}
 		if (day === 1) {
-			return week3Data[3].Monday
+			textString = week3Data[3].Monday
 		}
 		if (day === 2) {
-			return week3Data[3].Tuesday
+			textString = week3Data[3].Tuesday
 		}
 		if (day === 3) {
-			return week3Data[3].Wednesday
+			textString = week3Data[3].Wednesday
 		}
 		if (day === 4) {
-			return week3Data[3].Thursday
+			textString = week3Data[3].Thursday
 		}
 		if (day === 5) {
-			return week3Data[3].Friday
+			textString = week3Data[3].Friday
 		}
 		if (day === 6) {
-			return week3Data[3].Saturday
+			textString = week3Data[3].Saturday
 		}
-
 	}
+	if (flag === false) {
+		textString = "Tonight I'll be eating\n\n" + textString;
+	}
+	if (flag === true) {
+		textString = "Tommorow night I'll be eating\n\n" + textString;
+	}
+	return textString;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
