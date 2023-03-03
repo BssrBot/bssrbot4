@@ -243,7 +243,7 @@ export function Respond(senderId, message) {
 	}
 
 	// Whats On
-	if (text === 'whatson') {
+	if (text === 'whatson' || text === 'events') {
 		return {
 			text : getWhatsOn()
 		};
