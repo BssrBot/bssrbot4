@@ -223,8 +223,9 @@ export function getLunch() {
 		}
 	};
 }
+console.log(Lunch());
 function Lunch() {
-	const timeNow = new Date();
+	const timeNow = new Date("March 5, 2023 01:15:00");
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
