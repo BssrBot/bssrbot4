@@ -244,7 +244,7 @@ export function Respond(senderId, message) {
 		};
 	}
 
-	if (text.startsWith('setmenuweek') {
+	if (text.startsWith('setmenuweek')) {
 		if (ADMIN_IDS.includes(senderId)) {
 			setMenuWeek(text)
 			return {
