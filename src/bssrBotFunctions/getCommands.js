@@ -8,23 +8,18 @@ Dino:
 breakfast --> get todays breakfast
 lunch --> get todays lunch
 dinner --> tonight ill be eating
-dino --> get todays menu
-dino times --> gives the times of dino breakfast lunch and dinner
+dino --> get the closest meal timewise sent to you
+dino times --> gives the times of dino breakfast brunch, lunch and dinner
 
 College:
 laundry --> get the link to the laundry portal
 (Basser Only)
 feedback --> write feedback for events or general college life
-recap --> recappuccino
-whats on? --> event scedule for the week
-whats on today? --> todays events
-whats on tomorrow? --> tomorrows events
+events --> event schedule for the week
 (Basser Only)
 
 Fun!:
 crack a joke --> bssr bot will tell you a joke
-coffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>
-wildcat --> Nominate someone for Wildcat of the week! Usage: wildcat <name and what they did>
 !! Secret quotes exist !! --> input your friends and see if bssrbot has anything to say about them
 
 */
@@ -44,16 +39,16 @@ function health() {
 
 function dino() {
 	const dino = emoji.get('knife_fork_plate')
-	return `Dino ${dino}:\nbreakfast --> get todays breakfast\n\nlunch --> get todays lunch\n\ndinner --> tonight ill be eating\n\ndino --> get todays menu\n\ndino times --> gives the times of dino breakfast lunch and dinner\n\n\n`
+	return `Dino ${dino}:\nbreakfast --> get todays breakfast\n\nlunch --> get todays lunch\n\ndinner --> tonight ill be eating\n\ndino --> get the closest meal timewise sent to you\n\ndino times --> gives the times of dino breakfast, brunch, lunch and dinner\n\n\n`
 }
 
 function college() {
 	const college = emoji.get('heart') + emoji.get('blue_heart') + emoji.get('white_heart')
-	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nrecap --> recappuccino\n\nwhats on? --> event scedule for the week\n\nwhats on today? --> todays events\n\nwhats on tomorrow? --> tomorrows events\n\n\n`
+	return `College ${college}:\nlaundry --> get the link to the laundry portal\n\nfeedback --> write feedback for events or general college life\n\nevents --> event schedule for the week\n\n\n`
 }
 
 function fun() {
 	const fun = emoji.get('tada')
-	return `Fun! ${fun}:\ncrack a joke --> bssr bot will tell you a joke\n\ncoffee night quote --> Send in a quote to coffee night! Usage: coffee night quote <quote>\n\nwildcat --> Nominate someone for Wildcat of the week! Usage: wildcat <name and what they did>\n\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
+	return `Fun! ${fun}:\ncrack a joke --> bssr bot will tell you a joke\n\n!! Secret quotes exist !!--> input your friend's names and see if bssrbot has anything to say about them ;)\n`
 }
 

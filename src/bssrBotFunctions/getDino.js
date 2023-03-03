@@ -8,15 +8,16 @@ const workbookWeek1 = workbook.Sheets["Week 1"];
 const workbookWeek2 = workbook.Sheets["Week 2"];
 const workbookWeek3 = workbook.Sheets["Week 3"];
 
-//Testing outputs
+// Testing outputs
 const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 
-// If BssrBot is shut off, this needs to be adjusted to the current week
+// Menu week can be set with setMenuWeek, admins only
+// WEEK 1 = 1
+// WEEK 2 = 2
+// WEEK 3 = 0(cause of modulus)
 let CURRENT_WEEK = 2;
-
-
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
@@ -33,9 +34,7 @@ export function isDinoMeal(text) {
 
 //DINO TIMES
 export function getDinoTimes() {
-	//Times could possibly change(with new caterers) so change if required
 	const dinoString = "Breakfast: 7:30-10:00am\nBrunch(Weeekends Only): 10:00am-12:00pm\nLunch: 12:00-2:15pm\nDinner: 5:00-7:30pm\nSeconds are last 15 minutes of each meal";
-	
 	return dinoString;
 }
 
@@ -207,7 +206,6 @@ export function getLunch() {
 		"payload":{
 			"template_type":"button",
 			"text": Lunch(),
-			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
@@ -326,7 +324,6 @@ export function getDinner() {
 		"payload":{
 			"template_type":"button",
 			"text": Dinner(),
-			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
 					"type":"web_url",
