@@ -29,10 +29,12 @@ await new Promise(r => setTimeout(r, 25));
 // Now sort replies(necessary)
 bot.sortReplies();
 
-// Zach 5852973454748898
-// Laurence 5688278634581333 
+// Zach 5852973454748898 Bssrbot-dev
+// Laurence 5688278634581333 Bssrbot-dev
+// Zach 5316476898382021 BssrBot
+// Laurence 7051403781600222 BssrBot
 // PSID
-export const ADMIN_IDS = ['5852973454748898', '5688278634581333']
+export const ADMIN_IDS = ['5852973454748898', '5688278634581333', '5316476898382021', '7051403781600222']
 
 
 export function Respond(senderId, message) {
@@ -193,7 +195,7 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-
+	/*
 	// Recap
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {
@@ -243,6 +245,7 @@ export function Respond(senderId, message) {
 			}
 		};
 	}
+	*/
 
 	if (text.startsWith('setmenuweek')) {
 		if (ADMIN_IDS.includes(senderId)) {
@@ -275,6 +278,7 @@ export function Respond(senderId, message) {
 	}
 
 	//Send in wildcat nominations
+	/*
 	if (text.startsWith("wildcat")) {
 		addWildcat(message)
 		return {
@@ -306,7 +310,7 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-
+	*/
 
 
 	// No command is correct & Rivescript stuff
