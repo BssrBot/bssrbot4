@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
-import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner } from './getDino.js';
+import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner, setMenuWeek } from './getDino.js';
 import { clearImagesDino, getWarrane } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth, 
@@ -29,21 +29,25 @@ await new Promise(r => setTimeout(r, 25));
 // Now sort replies(necessary)
 bot.sortReplies();
 
-// Zach 5852973454748898
-// Laurence 5688278634581333 
+// Zach 5852973454748898 Bssrbot-dev
+// Laurence 5688278634581333 Bssrbot-dev
+// Zach 5316476898382021 BssrBot
+// Laurence 7051403781600222 BssrBot
 // PSID
-export const ADMIN_IDS = ['5852973454748898', '5688278634581333']
+export const ADMIN_IDS = ['5852973454748898', '5688278634581333', '5316476898382021', '7051403781600222']
 
 
 export function Respond(senderId, message) {
 	const text = message.toLowerCase().replace(/\W/g, '');
 	
 	// Add Basserian 
+	/*
 	if (text === 'basserwildcat') {
 		return {
 			text: addBasserian(senderId)
 		};
 	}
+	*/
 
 	// Commands
 	if (text === 'commands') {
@@ -191,7 +195,7 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-
+	/*
 	// Recap
 	if (text.includes('recap') && validRecap(text) >= 0) {
 		return {
@@ -234,16 +238,26 @@ export function Respond(senderId, message) {
 	}
 
 	// Get coffee night pics, sent only to admins
-	if (text === 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
+	if (text=== 'getcoffeenightpics' || text === 'coffeenightpics' || text === 'cnp') {
 		if (ADMIN_IDS.includes(senderId)) {
 			return {
 				text : COFFEE_NIGHT
 			}
 		};
 	}
+	*/
+
+	if (text.startsWith('setmenuweek')) {
+		if (ADMIN_IDS.includes(senderId)) {
+			setMenuWeek(message)
+			return {
+				text: 'Menu week set!'
+			}
+		}
+	}
 
 	// Whats On
-	if (text === 'whatson') {
+	if (text === 'whatson' || text === 'events') {
 		return {
 			text : getWhatsOn()
 		};
@@ -264,6 +278,7 @@ export function Respond(senderId, message) {
 	}
 
 	//Send in wildcat nominations
+	/*
 	if (text.startsWith("wildcat")) {
 		addWildcat(message)
 		return {
@@ -295,7 +310,7 @@ export function Respond(senderId, message) {
 			}
 		}
 	}
-
+	*/
 
 
 	// No command is correct & Rivescript stuff

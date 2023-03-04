@@ -111,7 +111,7 @@ function handleMessage(senderPsid, receivedMessage) {
         'payload': {
           'template_type': 'generic',
           'elements': [{
-            'title': 'Add to Dino/Coffee Night?',
+            'title': 'Add to Dino?',
             'subtitle': 'Tap a button to answer.',
             'image_url': attachmentUrl,
             //Payload contains attachment URL for adding/deleting
@@ -119,11 +119,6 @@ function handleMessage(senderPsid, receivedMessage) {
               {
                 'type': 'postback',
                 'title': 'Dino',
-                'payload': attachmentUrl,
-              },
-              {
-                'type': 'postback',
-                'title': 'Coffee Night',
                 'payload': attachmentUrl,
               },
               {
@@ -145,8 +140,6 @@ function handleMessage(senderPsid, receivedMessage) {
     const imageResponse = getRandomImage();
     callSendAPI(senderPsid, imageResponse);
   //Send coffee night pics to Laurence
-  } else if (response.text === COFFEE_NIGHT) {
-    sendCoffeeNightPics(senderPsid, getCoffeeNightPics());
   }
 }
 
@@ -185,11 +178,6 @@ function handlePostback(senderPsid, receivedPostback) {
   if (title === 'Dino') {
     response = { 'text': 'Adding image to dino...'}
     addImageDino(receivedPostback.payload);
-  // If button pressed is Coffee night, add image to coffee night(contained in postback payload)
-  } else if (title === 'Coffee Night') {
-    response = { 'text': 'Adding image to coffee night...' };
-    console.log(receivedPostback.payload);
-    addCoffeeNightPic(receivedPostback.payload);
   }
   // If button pressed delete from dino, removes specific image that the user added so it won't appear in dino anymore
   else if (title === 'Delete from Dino') {
@@ -203,11 +191,6 @@ function handlePostback(senderPsid, receivedPostback) {
 // Adds Quick Reply Bubbles  
 function addQuickReply(response) {
   response['quick_replies'] = [
-    {
-      "content_type":"text",
-      "title":"Dino",
-      "payload":"Dino",
-    },
     {
       "content_type":"text",
       "title":"Breakfast",

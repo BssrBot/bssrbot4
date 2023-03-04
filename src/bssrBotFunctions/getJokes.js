@@ -85,7 +85,7 @@ const listOfJokes = [
     "What does an angry pepper do? It gets jalapeño your face.",
     "What did the buffalo say to his son when he dropped him off at school? Bison.",
     "What do you call someone with no body and no nose? Nobody knows.",
-    "Why did the crab never share? Because he's shellfish."
+    "Why did the crab never share? Because he's shellfish ."
 ];
 
 export function getJoke() {
