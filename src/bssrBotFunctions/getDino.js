@@ -108,7 +108,7 @@ function Breakfast() {
 	let flag = false;
 	let textString = "";
 	let tempCurrentWeek = CURRENT_WEEK;
-	if (hours >= 10) {
+	if (hours >= 12) {
 		day = (day+1) % 7;
 		flag = true;
 		if (day === 1) {
