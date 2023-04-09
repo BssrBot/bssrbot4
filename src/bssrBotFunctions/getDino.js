@@ -19,6 +19,7 @@ const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // WEEK 3 = 0(cause of modulus)
 let CURRENT_WEEK = 2;
 
+
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
 	CURRENT_WEEK = parseInt(newText);
