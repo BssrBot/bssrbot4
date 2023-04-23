@@ -17,7 +17,7 @@ const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // WEEK 1 = 1
 // WEEK 2 = 2
 // WEEK 3 = 0(cause of modulus)
-let CURRENT_WEEK = 0;
+let CURRENT_WEEK = 1;
 
 
 export function setMenuWeek(text) {
