@@ -97,11 +97,12 @@ export function getDino() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function getBreakfast() {
+
 	return {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Breakfast(),
+			"text": Breakfast(getCurrentWeek()),
 			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
@@ -224,7 +225,7 @@ export function getLunch() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Lunch(),
+			"text": Lunch(getCurrentWeek()),
 			"buttons":[
 				{
 					"type":"web_url",
@@ -342,7 +343,7 @@ export function getDinner() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Dinner(),
+			"text": Dinner(getCurrentWeek()),
 			"buttons":[
 				{
 					"type":"web_url",
