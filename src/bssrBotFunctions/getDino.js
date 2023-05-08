@@ -39,14 +39,14 @@ function getCurrentWeek() {
 	return dinoWeekNumber;
 	
 }
-
+/*
 getCurrentWeek();
 console.log(Breakfast(getCurrentWeek()));
 console.log('\n\n');
 console.log(Lunch(getCurrentWeek()));
 console.log('\n\n');
 console.log(Dinner(getCurrentWeek()));
-
+*/
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
