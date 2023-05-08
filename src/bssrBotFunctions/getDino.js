@@ -24,7 +24,7 @@ export function setMenuWeek(text) {
 function getCurrentWeek() {
 
 	// Calculate current week number
-	let currentDate = new Date();
+	let currentDate =  new Date();
     let startDate = new Date(currentDate.getFullYear(), 0, 1);
     let days = Math.floor((currentDate - startDate) /
         (24 * 60 * 60 * 1000));
@@ -34,19 +34,19 @@ function getCurrentWeek() {
 	//console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 
-	//console.log(dinoWeekNumber);
+	console.log(dinoWeekNumber);
 
 	return dinoWeekNumber;
 	
 }
-/*
+
 getCurrentWeek();
 console.log(Breakfast(getCurrentWeek()));
 console.log('\n\n');
 console.log(Lunch(getCurrentWeek()));
 console.log('\n\n');
 console.log(Dinner(getCurrentWeek()));
-*/
+
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
@@ -139,6 +139,9 @@ function Breakfast(week) {
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
 		}
 	}
 	const dino = emoji.get('knife_fork_plate')
@@ -249,7 +252,7 @@ export function getLunch() {
 	};
 }
 function Lunch(week) {
-	const timeNow = new Date();
+	const timeNow =  new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
@@ -260,6 +263,9 @@ function Lunch(week) {
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
 		}
 	}
 	if (tempCurrentWeek === 1) {
@@ -368,7 +374,7 @@ export function getDinner() {
 }
 // placeholder function
 function Dinner(week) {
-	const timeNow = new Date();
+	const timeNow =  new Date()
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
@@ -376,10 +382,13 @@ function Dinner(week) {
 	let textString = "";
 	if (hours >= 20) {
 		day = (day+1) % 7;
+		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
-		flag = true;
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
+		}
 	}
 	//WEEK 1
 	if (tempCurrentWeek === 1) {
