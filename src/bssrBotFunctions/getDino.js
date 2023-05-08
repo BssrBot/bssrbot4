@@ -3,6 +3,7 @@ const require = createRequire(import.meta.url);
 const XLSX = require("xlsx");
 const workbook = XLSX.readFile("./src/bssrBotFunctions/menu/menu.xlsx");
 const emoji = require('node-emoji');
+var currentWeekNumber = require('current-week-number');
 
 const workbookWeek1 = workbook.Sheets["Week 1"];
 const workbookWeek2 = workbook.Sheets["Week 2"];
@@ -13,17 +14,34 @@ const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 
-// Menu week can be set with setMenuWeek, admins only
-// WEEK 1 = 1
-// WEEK 2 = 2
-// WEEK 3 = 0(cause of modulus)
-let CURRENT_WEEK = 0;
-
+const WEEKADJUSTFACTOR = 1;
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
 	CURRENT_WEEK = parseInt(newText);
 }
+
+function getCurrentWeek() {
+
+	// Calculate current week number
+	let currentDate = new Date();
+    let startDate = new Date(currentDate.getFullYear(), 0, 1);
+    let days = Math.floor((currentDate - startDate) /
+        (24 * 60 * 60 * 1000));
+    
+    let weekNumber = Math.ceil(days / 7);
+
+	console.log(weekNumber);
+	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
+
+	console.log(dinoWeekNumber);
+
+	return dinoWeekNumber;
+	
+
+}
+
+getCurrentWeek();
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
@@ -43,14 +61,15 @@ export function getDino() {
 	let text = "";
 	const timeNow = new Date();
 	let hours = timeNow.getHours();
+	let week = getCurrentWeek();
 	if (hours < 10 || hours >= 20) {
-		text = Breakfast();
+		text = Breakfast(week);
 	}
 	if (hours >= 10 && hours < 15) {
-		text = Lunch();
+		text = Lunch(week);
 	}
 	if (hours >= 15 && hours < 20) {
-		text = Dinner();
+		text = Dinner(week);
 	}
 	return {
 		"type":"template",
@@ -102,13 +121,13 @@ export function getBreakfast() {
 	};
 }
 
-function Breakfast() {
+function Breakfast(week) {
 	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
 	let textString = "";
-	let tempCurrentWeek = CURRENT_WEEK;
+	let tempCurrentWeek = week;
 	if (hours >= 12) {
 		day = (day+1) % 7;
 		flag = true;
@@ -163,7 +182,7 @@ function Breakfast() {
 			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
 		}
 	}
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
 			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
 		}
@@ -223,12 +242,12 @@ export function getLunch() {
 		}
 	};
 }
-function Lunch() {
+function Lunch(week) {
 	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
-	let tempCurrentWeek = CURRENT_WEEK;
+	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 15) {
 		day = (day+1) % 7;
@@ -283,7 +302,7 @@ function Lunch() {
 			textString = week2Data[2].Saturday
 		}
 	}
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
 			textString = week3Data[2].Sunday
 		}
@@ -342,12 +361,12 @@ export function getDinner() {
 	};
 }
 // placeholder function
-function Dinner() {
+function Dinner(week) {
 	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
-	let tempCurrentWeek = CURRENT_WEEK;
+	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 20) {
 		day = (day+1) % 7;
@@ -405,7 +424,7 @@ function Dinner() {
 		}
 	}
 	//WEEK 3
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
 			textString = week3Data[3].Sunday
 		}
