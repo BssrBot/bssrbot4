@@ -3,7 +3,6 @@ const require = createRequire(import.meta.url);
 const XLSX = require("xlsx");
 const workbook = XLSX.readFile("./src/bssrBotFunctions/menu/menu.xlsx");
 const emoji = require('node-emoji');
-var currentWeekNumber = require('current-week-number');
 
 const workbookWeek1 = workbook.Sheets["Week 1"];
 const workbookWeek2 = workbook.Sheets["Week 2"];
