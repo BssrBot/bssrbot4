@@ -64,7 +64,7 @@ export function Respond(senderId, message) {
 	}
 
 	// Breakfast
-	if (text === 'breakfast') {
+	if (text === 'breakfast' || text == 'brunch') {
 		return {
 			attachment: getBreakfast()
 		};

@@ -31,17 +31,22 @@ function getCurrentWeek() {
     
     let weekNumber = Math.ceil(days / 7);
 
-	console.log(weekNumber);
+	//console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 
-	console.log(dinoWeekNumber);
+	//console.log(dinoWeekNumber);
 
 	return dinoWeekNumber;
 	
-
 }
-
+/*
 getCurrentWeek();
+console.log(Breakfast(getCurrentWeek()));
+console.log('\n\n');
+console.log(Lunch(getCurrentWeek()));
+console.log('\n\n');
+console.log(Dinner(getCurrentWeek()));
+*/
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
@@ -162,7 +167,7 @@ function Breakfast(week) {
 	}
 	if (tempCurrentWeek === 2) {
 		if (day === 0) {
-			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Sunday
 		}
 		if (day === 1) {
 			textString = week2Data[0].Monday
@@ -180,12 +185,12 @@ function Breakfast(week) {
 			textString = week2Data[0].Friday
 		}
 		if (day === 6) {
-			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
+			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Saturday
 		}
 	}
 	if (tempCurrentWeek === 3) {
 		if (day === 0) {
-			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Sunday
 		}
 		if (day === 1) {
 			textString = week3Data[0].Monday
@@ -203,7 +208,7 @@ function Breakfast(week) {
 			textString = week3Data[0].Friday
 		}
 		if (day === 6) {
-			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
+			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Saturday
 		}
 	
 
