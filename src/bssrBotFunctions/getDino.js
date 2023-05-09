@@ -12,17 +12,40 @@ const workbookWeek3 = workbook.Sheets["Week 3"];
 const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
-
-// Menu week can be set with setMenuWeek, admins only
-// WEEK 1 = 1
-// WEEK 2 = 2
-// WEEK 3 = 0(cause of modulus)
-let CURRENT_WEEK = 2;
+// Match this to current week every time you deploy to bssrbot
+const WEEKADJUSTFACTOR = 1;
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
 	CURRENT_WEEK = parseInt(newText);
 }
+
+function getCurrentWeek() {
+
+	// Calculate current week number
+	let currentDate =  new Date();
+    let startDate = new Date(currentDate.getFullYear(), 0, 1);
+    let days = Math.floor((currentDate - startDate) /
+        (24 * 60 * 60 * 1000));
+    
+    let weekNumber = Math.ceil(days / 7);
+
+	//console.log(weekNumber);
+	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
+
+	console.log(dinoWeekNumber);
+
+	return dinoWeekNumber;
+	
+}
+/*
+getCurrentWeek();
+console.log(Breakfast(getCurrentWeek()));
+console.log('\n\n');
+console.log(Lunch(getCurrentWeek()));
+console.log('\n\n');
+console.log(Dinner(getCurrentWeek()));
+*/
 
 export function isDinoMeal(text) {
 	if (text === 'dino' || text === 'breakfast' || text === 'lunch' || text === 'dinner') {
@@ -42,14 +65,15 @@ export function getDino() {
 	let text = "";
 	const timeNow = new Date();
 	let hours = timeNow.getHours();
+	let week = getCurrentWeek();
 	if (hours < 10 || hours >= 20) {
-		text = Breakfast();
+		text = Breakfast(week);
 	}
 	if (hours >= 10 && hours < 15) {
-		text = Lunch();
+		text = Lunch(week);
 	}
 	if (hours >= 15 && hours < 20) {
-		text = Dinner();
+		text = Dinner(week);
 	}
 	return {
 		"type":"template",
@@ -73,15 +97,15 @@ export function getDino() {
 		}
 	};
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function getBreakfast() {
+
 	return {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Breakfast(),
+			"text": Breakfast(getCurrentWeek()),
 			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
 			"buttons":[
 				{
@@ -101,18 +125,21 @@ export function getBreakfast() {
 	};
 }
 
-function Breakfast() {
+function Breakfast(week) {
 	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
 	let textString = "";
-	let tempCurrentWeek = CURRENT_WEEK;
-	if (hours >= 10) {
+	let tempCurrentWeek = week;
+	if (hours >= 12) {
 		day = (day+1) % 7;
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
 		}
 	}
 	const dino = emoji.get('knife_fork_plate')
@@ -141,7 +168,7 @@ function Breakfast() {
 	}
 	if (tempCurrentWeek === 2) {
 		if (day === 0) {
-			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Sunday
 		}
 		if (day === 1) {
 			textString = week2Data[0].Monday
@@ -159,12 +186,12 @@ function Breakfast() {
 			textString = week2Data[0].Friday
 		}
 		if (day === 6) {
-			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
+			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Saturday
 		}
 	}
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
-			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Sunday
 		}
 		if (day === 1) {
 			textString = week3Data[0].Monday
@@ -182,7 +209,7 @@ function Breakfast() {
 			textString = week3Data[0].Friday
 		}
 		if (day === 6) {
-			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
+			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Saturday
 		}
 	
 
@@ -196,7 +223,6 @@ function Breakfast() {
 	return textString;
 
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function getLunch() {
@@ -204,7 +230,7 @@ export function getLunch() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Lunch(),
+			"text": Lunch(getCurrentWeek()),
 			"buttons":[
 				{
 					"type":"web_url",
@@ -222,18 +248,21 @@ export function getLunch() {
 		}
 	};
 }
-function Lunch() {
-	const timeNow = new Date();
+function Lunch(week) {
+	const timeNow =  new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
-	let tempCurrentWeek = CURRENT_WEEK;
+	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 15) {
 		day = (day+1) % 7;
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
 		}
 	}
 	if (tempCurrentWeek === 1) {
@@ -282,7 +311,7 @@ function Lunch() {
 			textString = week2Data[2].Saturday
 		}
 	}
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
 			textString = week3Data[2].Sunday
 		}
@@ -314,7 +343,6 @@ function Lunch() {
 	}
 	return textString;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function getDinner() {
@@ -322,7 +350,7 @@ export function getDinner() {
 		"type":"template",
 		"payload":{
 			"template_type":"button",
-			"text": Dinner(),
+			"text": Dinner(getCurrentWeek()),
 			"buttons":[
 				{
 					"type":"web_url",
@@ -341,19 +369,22 @@ export function getDinner() {
 	};
 }
 // placeholder function
-function Dinner() {
-	const timeNow = new Date();
+function Dinner(week) {
+	const timeNow =  new Date()
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
-	let tempCurrentWeek = CURRENT_WEEK;
+	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 20) {
 		day = (day+1) % 7;
+		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
-		flag = true;
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
+		}
 	}
 	//WEEK 1
 	if (tempCurrentWeek === 1) {
@@ -404,7 +435,7 @@ function Dinner() {
 		}
 	}
 	//WEEK 3
-	if (tempCurrentWeek === 0) {
+	if (tempCurrentWeek === 3) {
 		if (day === 0) {
 			textString = week3Data[3].Sunday
 		}
@@ -436,3 +467,404 @@ function Dinner() {
 	return textString;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Get dino stuff on another day. Couldn't be bothered to change above functions. inefficient but oh well
+
+export function getBreakfastAnotherDay(text) {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text": BreakfastDiffDay(getCurrentWeek(), text),
+			"buttons":[
+				{
+					"type":"web_url",
+					"url":'https://myschoolconnect.com.au/login',
+					"title":"Latemeal",
+					"webview_height_ratio": "full"
+				},
+				{
+					"type":"web_url",
+					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title":"Leave Feedback",
+					"webview_height_ratio": "full"
+				}
+			]
+		}
+	};
+}
+//console.log(BreakfastDiffDay(getCurrentWeek(), 'breakfasttommorow'));
+
+function BreakfastDiffDay(week, text) {
+	const timeNow =  new Date();
+	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let tempCurrentWeek = week;
+	let newText = text.replace("breakfast", "");
+	if (newText === 'tommorow') {
+		day++;
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
+		}
+	} else if (newText === 'monday') {
+		day = 1;
+	} else if (newText === 'tuesday') {
+		day = 2;
+	} else if (newText === 'wednesday') {
+		day = 3;
+	} else if (newText === 'thursday') {
+		day = 4;
+	} else if (newText === 'friday') {
+		day = 5;
+	} else if (newText === 'saturday') {
+		day = 6;
+	} else if (newText === 'sunday') {
+		day = 0;
+	}
+	let textString = "";
+	const dino = emoji.get('knife_fork_plate')
+	if (tempCurrentWeek === 1) {
+		if (day === 0) {
+			textString = week1Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Sunday
+		}
+		if (day === 1) {
+			textString = week1Data[0].Monday
+		}
+		if (day === 2) {
+			textString = week1Data[0].Tuesday
+		}
+		if (day === 3) {
+			textString = week1Data[0].Wednesday
+		}
+		if (day === 4) {
+			textString = week1Data[0].Thursday
+		}
+		if (day === 5) {
+			textString = week1Data[0].Friday
+		}
+		if (day === 6) {
+			textString = week1Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week1Data[1].Saturday
+		}
+	}
+	if (tempCurrentWeek === 2) {
+		if (day === 0) {
+			textString = week2Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Sunday
+		}
+		if (day === 1) {
+			textString = week2Data[0].Monday
+		}
+		if (day === 2) {
+			textString = week2Data[0].Tuesday
+		}
+		if (day === 3) {
+			textString = week2Data[0].Wednesday
+		}
+		if (day === 4) {
+			textString = week2Data[0].Thursday
+		}
+		if (day === 5) {
+			textString = week2Data[0].Friday
+		}
+		if (day === 6) {
+			textString = week2Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week2Data[1].Saturday
+		}
+	}
+	if (tempCurrentWeek === 3) {
+		if (day === 0) {
+			textString = week3Data[0].Sunday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Sunday
+		}
+		if (day === 1) {
+			textString = week3Data[0].Monday
+		}
+		if (day === 2) {
+			textString = week3Data[0].Tuesday
+		}
+		if (day === 3) {
+			textString = week3Data[0].Wednesday
+		}
+		if (day === 4) {
+			textString = week3Data[0].Thursday
+		}
+		if (day === 5) {
+			textString = week3Data[0].Friday
+		}
+		if (day === 6) {
+			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Saturday
+		}
+	}
+	// Capatalise weekday name so it looks nicer
+	const str = newText;
+	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
+	textString = "Breakfast" + " " + captalisedText + "\n\n" + textString;
+	
+	return textString;
+}
+export function getLunchAnotherDay(text) {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text": LunchDiffDay(getCurrentWeek(), text),
+			"buttons":[
+				{
+					"type":"web_url",
+					"url":'https://myschoolconnect.com.au/login',
+					"title":"Latemeal",
+					"webview_height_ratio": "full"
+				},
+				{
+					"type":"web_url",
+					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title":"Leave Feedback",
+					"webview_height_ratio": "full"
+				}
+			]
+		}
+	};
+}
+
+function LunchDiffDay(week, text) {
+	const timeNow =  new Date();
+	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let tempCurrentWeek = week;
+	let newText = text.replace("lunch", "");
+	if (newText === 'tommorow') {
+		day++;
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
+		}
+	} else if (newText === 'monday') {
+		day = 1;
+	} else if (newText === 'tuesday') {
+		day = 2;
+	} else if (newText === 'wednesday') {
+		day = 3;
+	} else if (newText === 'thursday') {
+		day = 4;
+	} else if (newText === 'friday') {
+		day = 5;
+	} else if (newText === 'saturday') {
+		day = 6;
+	} else if (newText === 'sunday') {
+		day = 0;
+	}
+	let textString = "";
+	if (tempCurrentWeek === 1) {
+		if (day === 0) {
+			textString = week1Data[2].Sunday
+		}
+		if (day === 1) {
+			textString = week1Data[2].Monday
+		}
+		if (day === 2) {
+			textString = week1Data[2].Tuesday
+		}
+		if (day === 3) {
+			textString = week1Data[2].Wednesday
+		}
+		if (day === 4) {
+			textString = week1Data[2].Thursday
+		}
+		if (day === 5) {
+			textString = week1Data[2].Friday
+		}
+		if (day === 6) {
+			textString = week1Data[2].Saturday
+		}
+	}
+	if (tempCurrentWeek === 2) {
+		if (day === 0) {
+			textString = week2Data[2].Sunday
+		}
+		if (day === 1) {
+			textString = week2Data[2].Monday
+		}
+		if (day === 2) {
+			textString = week2Data[2].Tuesday
+		}
+		if (day === 3) {
+			textString = week2Data[2].Wednesday
+		}
+		if (day === 4) {
+			textString = week2Data[2].Thursday
+		}
+		if (day === 5) {
+			textString = week2Data[2].Friday
+		}
+		if (day === 6) {
+			textString = week2Data[2].Saturday
+		}
+	}
+	if (tempCurrentWeek === 3) {
+		if (day === 0) {
+			textString = week3Data[2].Sunday
+		}
+		if (day === 1) {
+			textString = week3Data[2].Monday
+		}
+		if (day === 2) {
+			textString = week3Data[2].Tuesday
+		}
+		if (day === 3) {
+			textString = week3Data[2].Wednesday
+		}
+		if (day === 4) {
+			textString = week3Data[2].Thursday
+		}
+		if (day === 5) {
+			textString = week3Data[2].Friday
+		}
+		if (day === 6) {
+			textString = week3Data[2].Saturday
+		}
+	}
+	// Capatalise weekday name so it looks nicer
+	const str = newText;
+	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
+	textString = "Lunch" + " " + captalisedText + "\n\n" + textString;
+	
+	return textString;
+}
+
+export function getDinnerAnotherDay(text) {
+	return {
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text": DinnerDiffDay(getCurrentWeek(), text),
+			"buttons":[
+				{
+					"type":"web_url",
+					"url":'https://myschoolconnect.com.au/login',
+					"title":"Latemeal",
+					"webview_height_ratio": "full"
+				},
+				{
+					"type":"web_url",
+					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title":"Leave Feedback",
+					"webview_height_ratio": "full"
+				}
+			]
+		}
+	};
+}
+
+function DinnerDiffDay(week, text) {
+	const timeNow =  new Date();
+	let day = timeNow.getDay();
+	let hours = timeNow.getHours();
+	let flag = false;
+	let tempCurrentWeek = week;
+	let newText = text.replace("dinner", "");
+	if (newText === 'tommorow') {
+		day++;
+		if (day === 1) {
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (tempCurrentWeek === 0) {
+			tempCurrentWeek = 3;
+		}
+	} else if (newText === 'monday') {
+		day = 1;
+	} else if (newText === 'tuesday') {
+		day = 2;
+	} else if (newText === 'wednesday') {
+		day = 3;
+	} else if (newText === 'thursday') {
+		day = 4;
+	} else if (newText === 'friday') {
+		day = 5;
+	} else if (newText === 'saturday') {
+		day = 6;
+	} else if (newText === 'sunday') {
+		day = 0;
+	}
+	let textString = "";
+	if (tempCurrentWeek === 1) {
+		if (day === 0) {
+			textString = week1Data[3].Sunday
+		}
+		if (day === 1) {
+			textString = week1Data[3].Monday
+		}
+		if (day === 2) {
+			textString = week1Data[3].Tuesday
+		}
+		if (day === 3) {
+			textString = week1Data[3].Wednesday
+		}
+		if (day === 4) {
+			textString = week1Data[3].Thursday
+		}
+		if (day === 5) {
+			textString = week1Data[3].Friday
+		}
+		if (day === 6) {
+			textString = week1Data[3].Saturday
+		}
+	}
+	if (tempCurrentWeek === 2) {
+		if (day === 0) {
+			textString = week2Data[3].Sunday
+		}
+		if (day === 1) {
+			textString = week2Data[3].Monday
+		}
+		if (day === 2) {
+			textString = week2Data[3].Tuesday
+		}
+		if (day === 3) {
+			textString = week2Data[3].Wednesday
+		}
+		if (day === 4) {
+			textString = week2Data[3].Thursday
+		}
+		if (day === 5) {
+			textString = week2Data[3].Friday
+		}
+		if (day === 6) {
+			textString = week2Data[3].Saturday
+		}
+	}
+	if (tempCurrentWeek === 3) {
+		if (day === 0) {
+			textString = week3Data[3].Sunday
+		}
+		if (day === 1) {
+			textString = week3Data[3].Monday
+		}
+		if (day === 2) {
+			textString = week3Data[3].Tuesday
+		}
+		if (day === 3) {
+			textString = week3Data[3].Wednesday
+		}
+		if (day === 4) {
+			textString = week3Data[3].Thursday
+		}
+		if (day === 5) {
+			textString = week3Data[3].Friday
+		}
+		if (day === 6) {
+			textString = week3Data[3].Saturday
+		}
+	}
+	// Capatalise weekday name so it looks nicer
+	const str = newText;
+	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
+	textString = "Dinner" + " " + captalisedText + "\n\n" + textString;
+	
+	return textString;
+}
+
+

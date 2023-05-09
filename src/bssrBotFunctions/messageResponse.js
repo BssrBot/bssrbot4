@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const RiveScript = require("rivescript");
-import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner, setMenuWeek } from './getDino.js';
+import { getDinoTimes, getDino, getBreakfast, getLunch, getDinner, setMenuWeek, getLunchAnotherDay, getBreakfastAnotherDay, getDinnerAnotherDay } from './getDino.js';
 import { clearImagesDino, getWarrane } from './images.js';
 import { getJoke } from './getJokes.js';
 import { getHealth, 
@@ -62,9 +62,31 @@ export function Respond(senderId, message) {
 			attachment: getDino()
 		};
 	}
+	// Get breakfast on another day
+	if (text === 'breakfasttommorow' || text === 'breakfastmonday' || text === 'breakfasttuesday' || text === 'breakfastwednesday' 
+	|| text === 'breakfastthursday' || text === 'breakfastfriday' || text === 'breakfastsaturday' || text === 'breakfastsunday') {
+		return {
+			attachment: getBreakfastAnotherDay(text)
+		}
+	}
+
+	// Get lunch on another day
+	if (text === 'lunchtommorow' || text === 'lunchmonday' || text === 'lunchtuesday' || text === 'lunchwednesday' || text === 'lunchthursday'
+	|| text === 'lunchfriday' || text === 'lunchsaturday' || text === 'lunchsunday') {
+		return {
+			attachment: getLunchAnotherDay(text)
+		}
+	}
+	// Get dinner on another day
+	if (text === 'dinnertommorow' || text === 'dinnermonday' || text === 'dinnertuesday' || text === 'dinnerwednesday' || text === 'dinnerthursday'
+	|| text === 'dinnerfriday' || text === 'dinnersaturday' || text === 'dinnersunday') {
+		return {
+			attachment: getDinnerAnotherDay(text)
+		}
+	}
 
 	// Breakfast
-	if (text === 'breakfast') {
+	if (text === 'breakfast' || text === 'brunch') {
 		return {
 			attachment: getBreakfast()
 		};
