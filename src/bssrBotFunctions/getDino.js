@@ -514,19 +514,40 @@ function BreakfastDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
+		if (day === 0 || day > 1) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 1;
 	} else if (newText === 'tuesday') {
+		if (day === 0 || day > 2) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 2;
 	} else if (newText === 'wednesday') {
+		if (day === 0 || day > 3) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 3;
 	} else if (newText === 'thursday') {
+		if (day === 0 || day > 4) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 4;
 	} else if (newText === 'friday') {
+		if (day === 0 || day > 5) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 5;
 	} else if (newText === 'saturday') {
+		if (day === 0) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 6;
 	} else if (newText === 'sunday') {
 		day = 0;
+	}
+	if (tempCurrentWeek === 0) {
+		tempCurrentWeek = 3;
 	}
 	let textString = "";
 	const dino = emoji.get('knife_fork_plate')
@@ -649,19 +670,40 @@ function LunchDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
+		if (day === 0 || day > 1) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 1;
 	} else if (newText === 'tuesday') {
+		if (day === 0 || day > 2) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 2;
 	} else if (newText === 'wednesday') {
+		if (day === 0 || day > 3) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 3;
 	} else if (newText === 'thursday') {
+		if (day === 0 || day > 4) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 4;
 	} else if (newText === 'friday') {
+		if (day === 0 || day > 5) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 5;
 	} else if (newText === 'saturday') {
+		if (day === 0) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 6;
 	} else if (newText === 'sunday') {
 		day = 0;
+	}
+	if (tempCurrentWeek === 0) {
+		tempCurrentWeek = 3;
 	}
 	let textString = "";
 	if (tempCurrentWeek === 1) {
@@ -784,19 +826,40 @@ function DinnerDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
+		if (day === 0 || day > 1) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 1;
 	} else if (newText === 'tuesday') {
+		if (day === 0 || day > 2) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 2;
 	} else if (newText === 'wednesday') {
+		if (day === 0 || day > 3) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 3;
 	} else if (newText === 'thursday') {
+		if (day === 0 || day > 4) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 4;
 	} else if (newText === 'friday') {
+		if (day === 0 || day > 5) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 5;
 	} else if (newText === 'saturday') {
+		if (day === 0) { 
+			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
 		day = 6;
 	} else if (newText === 'sunday') {
 		day = 0;
+	}
+	if (tempCurrentWeek === 0) {
+		tempCurrentWeek = 3;
 	}
 	let textString = "";
 	if (tempCurrentWeek === 1) {
