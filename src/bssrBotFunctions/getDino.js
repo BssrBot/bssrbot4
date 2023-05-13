@@ -507,6 +507,9 @@ function BreakfastDiffDay(week, text) {
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
+		if (day === 7) {
+			day = 0;
+		}
 		if (tempCurrentWeek === 0) {
 			tempCurrentWeek = 3;
 		}
@@ -639,6 +642,9 @@ function LunchDiffDay(week, text) {
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
+		if (day === 7) {
+			day = 0;
+		}
 		if (tempCurrentWeek === 0) {
 			tempCurrentWeek = 3;
 		}
@@ -770,6 +776,9 @@ function DinnerDiffDay(week, text) {
 		day++;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
+		}
+		if (day === 7) {
+			day = 0;
 		}
 		if (tempCurrentWeek === 0) {
 			tempCurrentWeek = 3;
