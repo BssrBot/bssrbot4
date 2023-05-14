@@ -64,7 +64,9 @@ export function Respond(senderId, message) {
 	}
 	// Get breakfast on another day
 	if (text === 'breakfasttommorow' || text === 'breakfastmonday' || text === 'breakfasttuesday' || text === 'breakfastwednesday' 
-	|| text === 'breakfastthursday' || text === 'breakfastfriday' || text === 'breakfastsaturday' || text === 'breakfastsunday') {
+	|| text === 'breakfastthursday' || text === 'breakfastfriday' || text === 'breakfastsaturday' || text === 'breakfastsunday' 
+	|| text === 'tommorowbreakfast' || text === 'mondaybreakfast' || text === 'tuesdaybreakfast' || text === 'wednesdaybreakfast' 
+	|| text === 'thursdaybreakfast' || text === 'fridaybreakfast' || text === 'saturdaybreakfast' || text === 'sundaybreakfast') {
 		return {
 			attachment: getBreakfastAnotherDay(text)
 		}
