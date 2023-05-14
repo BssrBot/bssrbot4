@@ -64,7 +64,9 @@ export function Respond(senderId, message) {
 	}
 	// Get breakfast on another day
 	if (text === 'breakfasttommorow' || text === 'breakfastmonday' || text === 'breakfasttuesday' || text === 'breakfastwednesday' 
-	|| text === 'breakfastthursday' || text === 'breakfastfriday' || text === 'breakfastsaturday' || text === 'breakfastsunday') {
+	|| text === 'breakfastthursday' || text === 'breakfastfriday' || text === 'breakfastsaturday' || text === 'breakfastsunday' 
+	|| text === 'tommorowbreakfast' || text === 'mondaybreakfast' || text === 'tuesdaybreakfast' || text === 'wednesdaybreakfast' 
+	|| text === 'thursdaybreakfast' || text === 'fridaybreakfast' || text === 'saturdaybreakfast' || text === 'sundaybreakfast') {
 		return {
 			attachment: getBreakfastAnotherDay(text)
 		}
@@ -72,14 +74,18 @@ export function Respond(senderId, message) {
 
 	// Get lunch on another day
 	if (text === 'lunchtommorow' || text === 'lunchmonday' || text === 'lunchtuesday' || text === 'lunchwednesday' || text === 'lunchthursday'
-	|| text === 'lunchfriday' || text === 'lunchsaturday' || text === 'lunchsunday') {
+	|| text === 'lunchfriday' || text === 'lunchsaturday' || text === 'lunchsunday' || text === 'tommorowlunch' 
+	|| text === 'mondaylunch' || text === 'tuesdaylunch' || text === 'wednesdaylunch' || text === 'thursdaylunch' 
+	|| text === 'fridaylunch' || text === 'saturdaylunch' || text === 'sundaylunch') {
 		return {
 			attachment: getLunchAnotherDay(text)
 		}
 	}
 	// Get dinner on another day
 	if (text === 'dinnertommorow' || text === 'dinnermonday' || text === 'dinnertuesday' || text === 'dinnerwednesday' || text === 'dinnerthursday'
-	|| text === 'dinnerfriday' || text === 'dinnersaturday' || text === 'dinnersunday') {
+	|| text === 'dinnerfriday' || text === 'dinnersaturday' || text === 'dinnersunday' || text === 'tommorowdinner' || text === 'mondaydinner' 
+	|| text === 'tuesdaydinner' || text === 'wednesdaydinner'  || text === 'thursdaydinner' || text === 'fridaydinner' 
+	|| text === 'saturdaydinner' || text === 'sundaydinner') {
 		return {
 			attachment: getDinnerAnotherDay(text)
 		}
