@@ -218,7 +218,7 @@ function Breakfast(week) {
 		textString = "Breakfast\n\n" + textString;
 	}
 	if (flag === true) {
-		textString = "Breakfast tommorow\n\n" + textString;
+		textString = "Breakfast Tomorrow\n\n" + textString;
 	}
 	return textString;
 
@@ -339,7 +339,7 @@ function Lunch(week) {
 		textString = "Lunch\n\n" + textString;
 	}
 	if (flag === true) {
-		textString = "Lunch tommorow\n\n" + textString;
+		textString = "Lunch Tomorrow\n\n" + textString;
 	}
 	return textString;
 }
@@ -462,7 +462,7 @@ function Dinner(week) {
 		textString = "Tonight I'll be eating\n\n" + textString;
 	}
 	if (flag === true) {
-		textString = "Tommorow night I'll be eating\n\n" + textString;
+		textString = "Tomorrow night I'll be eating\n\n" + textString;
 	}
 	return textString;
 }
@@ -493,7 +493,7 @@ export function getBreakfastAnotherDay(text) {
 		}
 	};
 }
-//console.log(BreakfastDiffDay(getCurrentWeek(), 'breakfasttommorow'));
+//console.log(BreakfastDiffDay(getCurrentWeek(), 'breakfasttomorrow'));
 
 function BreakfastDiffDay(week, text) {
 	const timeNow =  new Date();
@@ -502,7 +502,7 @@ function BreakfastDiffDay(week, text) {
 	let flag = false;
 	let tempCurrentWeek = week;
 	let newText = text.replace("breakfast", "");
-	if (newText === 'tommorow') {
+	if (newText === 'tomorrow') {
 		day++;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
@@ -658,7 +658,7 @@ function LunchDiffDay(week, text) {
 	let flag = false;
 	let tempCurrentWeek = week;
 	let newText = text.replace("lunch", "");
-	if (newText === 'tommorow') {
+	if (newText === 'tomorrow') {
 		day++;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
@@ -814,7 +814,7 @@ function DinnerDiffDay(week, text) {
 	let flag = false;
 	let tempCurrentWeek = week;
 	let newText = text.replace("dinner", "");
-	if (newText === 'tommorow') {
+	if (newText === 'tomorrow') {
 		day++;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
