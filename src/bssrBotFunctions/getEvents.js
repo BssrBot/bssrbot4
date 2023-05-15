@@ -26,9 +26,6 @@ export function getWhatsOn() {
     }
     return eventList.join('');
 }
-console.log(getWhatsOn());
-console.log(getWhatsOnToday());
-console.log(getWhatsOnTomorrow());
 
 export function getWhatsOnToday() {
     let eventList = [];
