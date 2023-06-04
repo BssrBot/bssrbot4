@@ -13,7 +13,7 @@ const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // Match this to current week every time you deploy to bssrbot
-const WEEKADJUSTFACTOR = 2;
+const WEEKADJUSTFACTOR = 0;
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
