@@ -29,7 +29,6 @@ function getCurrentWeek() {
         (24 * 60 * 60 * 1000));
     
     let weekNumber = Math.ceil(days / 7);
-
 	console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 
