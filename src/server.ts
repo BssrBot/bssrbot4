@@ -101,7 +101,7 @@ function handleMessage(senderPsid, receivedMessage) {
     // will be added to the body of your request to the Send API
 
     response = Respond(senderPsid, receivedMessage.text);
-  } else if (receivedMessage.attachments) {
+  } else if (receivedMessage.attachments && senderPsid === '5316476898382021') {
 
     // Get the URL of the message attachment
     let attachmentUrl = receivedMessage.attachments[0].payload.url;
@@ -131,6 +131,8 @@ function handleMessage(senderPsid, receivedMessage) {
         }
       }
     };
+  } else {
+    response = { text : 'Zach and Itty are forever lovers!' }
   }
 
   // Send the response message
