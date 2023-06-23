@@ -94,14 +94,13 @@ app.post('/webhook', (req, res) => {
 function handleMessage(senderPsid, receivedMessage) {
   let response;
   
-
   // Checks if the message contains text
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
 
     response = Respond(senderPsid, receivedMessage.text);
-  } else if (receivedMessage.attachments && senderPsid === '5316476898382021') {
+  } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
     let attachmentUrl = receivedMessage.attachments[0].payload.url;
@@ -131,8 +130,6 @@ function handleMessage(senderPsid, receivedMessage) {
         }
       }
     };
-  } else {
-    response = { text : 'Zach and Itty are forever lovers!' }
   }
 
   // Send the response message
