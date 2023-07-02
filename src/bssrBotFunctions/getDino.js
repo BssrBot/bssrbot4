@@ -13,7 +13,7 @@ const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // Match this to current week every time you deploy to bssrbot
-const WEEKADJUSTFACTOR = 1;
+const WEEKADJUSTFACTOR = 2;
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
@@ -29,8 +29,7 @@ function getCurrentWeek() {
         (24 * 60 * 60 * 1000));
     
     let weekNumber = Math.ceil(days / 7);
-
-	//console.log(weekNumber);
+	console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 
 	console.log(dinoWeekNumber);
@@ -38,6 +37,8 @@ function getCurrentWeek() {
 	return dinoWeekNumber;
 	
 }
+
+console.log(getCurrentWeek());
 /*
 getCurrentWeek();
 console.log(Breakfast(getCurrentWeek()));
