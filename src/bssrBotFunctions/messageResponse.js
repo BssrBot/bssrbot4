@@ -305,6 +305,12 @@ export function Respond(senderId, message) {
 		};
 	}
 
+	if (text === 'rechardt') {
+		return {
+			text : 'better than peter'
+		};
+	}
+
 	//Send in wildcat nominations
 	/*
 	if (text.startsWith("wildcat")) {
