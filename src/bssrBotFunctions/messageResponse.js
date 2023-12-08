@@ -310,6 +310,7 @@ export function Respond(senderId, message) {
 			text : 'better than peter'
 		};
 	}
+	
 
 	//Send in wildcat nominations
 	/*
