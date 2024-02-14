@@ -15,7 +15,7 @@
     "current-week-number": "^1.0.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "give-me-a-joke": "^0.5.1",
+    "give-me-a-joke": "^0.4.0",
     "morgan": "^1.10.0",
     "node-emoji": "^1.11.0",
     "node-ical": "^0.15.3",
