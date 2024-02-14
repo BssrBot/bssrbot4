@@ -13,7 +13,7 @@ const week1Data = XLSX.utils.sheet_to_json(workbookWeek1);
 const week2Data = XLSX.utils.sheet_to_json(workbookWeek2);
 const week3Data = XLSX.utils.sheet_to_json(workbookWeek3);
 // Match this to current week every time you deploy to bssrbot
-const WEEKADJUSTFACTOR = 2;
+const WEEKADJUSTFACTOR = 1;
 
 export function setMenuWeek(text) {
 	let newText = text.replace("set menu week", "");
@@ -23,22 +23,21 @@ export function setMenuWeek(text) {
 function getCurrentWeek() {
 
 	// Calculate current week number
-	let currentDate =  new Date();
-    let startDate = new Date(currentDate.getFullYear(), 0, 1);
-    let days = Math.floor((currentDate - startDate) /
-        (24 * 60 * 60 * 1000));
-    
-    let weekNumber = Math.ceil(days / 7);
-	console.log(weekNumber);
+	let currentDate = new Date();
+	let startDate = new Date(currentDate.getFullYear(), 0, 1);
+	let days = Math.floor((currentDate - startDate) /
+		(24 * 60 * 60 * 1000));
+
+	let weekNumber = Math.ceil(days / 7);
+
+	//console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 
 	console.log(dinoWeekNumber);
 
-	return dinoWeekNumber;
-	
-}
+	return dinoWeekNumber - 2; // yeah fuck you this is enough
 
-console.log(getCurrentWeek());
+}
 /*
 getCurrentWeek();
 console.log(Breakfast(getCurrentWeek()));
@@ -77,21 +76,21 @@ export function getDino() {
 		text = Dinner(week);
 	}
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": text,
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -103,22 +102,22 @@ export function getDino() {
 export function getBreakfast() {
 
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": Breakfast(getCurrentWeek()),
 			//Might need to update these urls(ask Dean/Ops n Comms perhaps)
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -134,7 +133,7 @@ function Breakfast(week) {
 	let textString = "";
 	let tempCurrentWeek = week;
 	if (hours >= 12) {
-		day = (day+1) % 7;
+		day = (day + 1) % 7;
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
@@ -212,7 +211,7 @@ function Breakfast(week) {
 		if (day === 6) {
 			textString = week3Data[0].Saturday + `\n\n${dino}Brunch(10:00am-12:00pm)${dino}\n\n` + week3Data[1].Saturday
 		}
-	
+
 
 	}
 	if (flag === false) {
@@ -228,21 +227,21 @@ function Breakfast(week) {
 
 export function getLunch() {
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": Lunch(getCurrentWeek()),
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -250,14 +249,14 @@ export function getLunch() {
 	};
 }
 function Lunch(week) {
-	const timeNow =  new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
 	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 15) {
-		day = (day+1) % 7;
+		day = (day + 1) % 7;
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
@@ -348,21 +347,21 @@ function Lunch(week) {
 
 export function getDinner() {
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": Dinner(getCurrentWeek()),
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -371,14 +370,14 @@ export function getDinner() {
 }
 // placeholder function
 function Dinner(week) {
-	const timeNow =  new Date()
+	const timeNow = new Date()
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
 	let tempCurrentWeek = week;
 	let textString = "";
 	if (hours >= 20) {
-		day = (day+1) % 7;
+		day = (day + 1) % 7;
 		flag = true;
 		if (day === 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
@@ -473,21 +472,21 @@ function Dinner(week) {
 
 export function getBreakfastAnotherDay(text) {
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": BreakfastDiffDay(getCurrentWeek(), text),
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -497,7 +496,7 @@ export function getBreakfastAnotherDay(text) {
 //console.log(BreakfastDiffDay(getCurrentWeek(), 'breakfasttomorrow'));
 
 function BreakfastDiffDay(week, text) {
-	const timeNow =  new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
@@ -515,32 +514,32 @@ function BreakfastDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
-		if (day === 0 || day > 1) { 
+		if (day === 0 || day > 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 1;
 	} else if (newText === 'tuesday') {
-		if (day === 0 || day > 2) { 
+		if (day === 0 || day > 2) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 2;
 	} else if (newText === 'wednesday') {
-		if (day === 0 || day > 3) { 
+		if (day === 0 || day > 3) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 3;
 	} else if (newText === 'thursday') {
-		if (day === 0 || day > 4) { 
+		if (day === 0 || day > 4) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 4;
 	} else if (newText === 'friday') {
-		if (day === 0 || day > 5) { 
+		if (day === 0 || day > 5) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 5;
 	} else if (newText === 'saturday') {
-		if (day === 0) { 
+		if (day === 0) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 6;
@@ -625,26 +624,26 @@ function BreakfastDiffDay(week, text) {
 	const str = newText;
 	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
 	textString = "Breakfast" + " " + captalisedText + "\n\n" + textString;
-	
+
 	return textString;
 }
 export function getLunchAnotherDay(text) {
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": LunchDiffDay(getCurrentWeek(), text),
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -653,7 +652,7 @@ export function getLunchAnotherDay(text) {
 }
 
 function LunchDiffDay(week, text) {
-	const timeNow =  new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
@@ -671,32 +670,32 @@ function LunchDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
-		if (day === 0 || day > 1) { 
+		if (day === 0 || day > 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 1;
 	} else if (newText === 'tuesday') {
-		if (day === 0 || day > 2) { 
+		if (day === 0 || day > 2) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 2;
 	} else if (newText === 'wednesday') {
-		if (day === 0 || day > 3) { 
+		if (day === 0 || day > 3) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 3;
 	} else if (newText === 'thursday') {
-		if (day === 0 || day > 4) { 
+		if (day === 0 || day > 4) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 4;
 	} else if (newText === 'friday') {
-		if (day === 0 || day > 5) { 
+		if (day === 0 || day > 5) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 5;
 	} else if (newText === 'saturday') {
-		if (day === 0) { 
+		if (day === 0) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 6;
@@ -780,27 +779,27 @@ function LunchDiffDay(week, text) {
 	const str = newText;
 	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
 	textString = "Lunch" + " " + captalisedText + "\n\n" + textString;
-	
+
 	return textString;
 }
 
 export function getDinnerAnotherDay(text) {
 	return {
-		"type":"template",
-		"payload":{
-			"template_type":"button",
+		"type": "template",
+		"payload": {
+			"template_type": "button",
 			"text": DinnerDiffDay(getCurrentWeek(), text),
-			"buttons":[
+			"buttons": [
 				{
-					"type":"web_url",
-					"url":'https://myschoolconnect.com.au/login',
-					"title":"Latemeal",
+					"type": "web_url",
+					"url": 'https://myschoolconnect.com.au/login',
+					"title": "Latemeal",
 					"webview_height_ratio": "full"
 				},
 				{
-					"type":"web_url",
-					"url":'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
-					"title":"Leave Feedback",
+					"type": "web_url",
+					"url": 'https://forms.office.com/Pages/ResponsePage.aspx?id=pM_2PxXn20i44Qhnufn7o91DYUQ6lW9MsGLk8aV9AgNUNlFXTDUwUEgwVzJQNUVYRjdMQVdJNkxSMS4u&origin=QRCode',
+					"title": "Leave Feedback",
 					"webview_height_ratio": "full"
 				}
 			]
@@ -809,7 +808,7 @@ export function getDinnerAnotherDay(text) {
 }
 
 function DinnerDiffDay(week, text) {
-	const timeNow =  new Date();
+	const timeNow = new Date();
 	let day = timeNow.getDay();
 	let hours = timeNow.getHours();
 	let flag = false;
@@ -827,32 +826,32 @@ function DinnerDiffDay(week, text) {
 			tempCurrentWeek = 3;
 		}
 	} else if (newText === 'monday') {
-		if (day === 0 || day > 1) { 
+		if (day === 0 || day > 1) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 1;
 	} else if (newText === 'tuesday') {
-		if (day === 0 || day > 2) { 
+		if (day === 0 || day > 2) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 2;
 	} else if (newText === 'wednesday') {
-		if (day === 0 || day > 3) { 
+		if (day === 0 || day > 3) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 3;
 	} else if (newText === 'thursday') {
-		if (day === 0 || day > 4) { 
+		if (day === 0 || day > 4) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 4;
 	} else if (newText === 'friday') {
-		if (day === 0 || day > 5) { 
+		if (day === 0 || day > 5) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 5;
 	} else if (newText === 'saturday') {
-		if (day === 0) { 
+		if (day === 0) {
 			tempCurrentWeek = (tempCurrentWeek + 1) % 3
 		}
 		day = 6;
@@ -936,7 +935,7 @@ function DinnerDiffDay(week, text) {
 	const str = newText;
 	const captalisedText = str.charAt(0).toUpperCase() + str.slice(1);
 	textString = "Dinner" + " " + captalisedText + "\n\n" + textString;
-	
+
 	return textString;
 }
 
