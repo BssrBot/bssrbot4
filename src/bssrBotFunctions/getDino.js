@@ -36,7 +36,7 @@ function getCurrentWeek() {
 	console.log(dinoWeekNumber);
 	let dinoNumber2024;
 
-	return dinoNumber2024; // yeah fuck you this is enough
+	return dinoWeekNumber; // yeah fuck you this is enough
 
 }
 /*
