@@ -35,7 +35,7 @@ function getCurrentWeek() {
 
 	console.log(dinoWeekNumber);
 
-	return (dinoWeekNumber - 2) % 3; // yeah fuck you this is enough
+	return 1; // yeah fuck you this is enough
 
 }
 /*
