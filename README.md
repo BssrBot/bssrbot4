@@ -5,10 +5,10 @@ We want to edit and test in lab, and then merge lab to main!
 ## Getting started
 1. ***git clone*** (ssh link on github): This will pull the repo and automatically put you in main branch
 2. ***git pull***: pulls code for main branch
-3. ***git branch lab***: connects the existing lab branch
-4. ***git checkout lab***: checks you out to the lab branch
+3. ***git switch lab***: connects the existing lab branch
 5. ***git pull***: probably not necessary but safe!
 
+Hot Tip: Use ***git checkout <branch>*** to switch between branches!
 
 ## How the fuck does it work?
 When you make changes and push to github lab, it will automatically deploy to fishy! You can then check fishy to see if its working.
