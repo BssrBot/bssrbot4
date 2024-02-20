@@ -34,12 +34,14 @@ function getCurrentWeek() {
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
 	let dinoNumber2024 = 0;
 	switch (dinoWeekNumber) {
-		case (1):
+		case 1:
 			dinoNumber2024 = 2;
-		case (2):
+		case 2:
 			dinoNumber2024 = 3;
-		case (3):
+		case 3:
 			dinoNumber2024 = 1;
+		default:
+			dinoNumber2024 = 0;
 	}
 
 	console.log("dino week number is", dinoWeekNumber)
