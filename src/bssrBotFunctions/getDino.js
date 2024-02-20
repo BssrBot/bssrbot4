@@ -32,11 +32,19 @@ function getCurrentWeek() {
 
 	//console.log(weekNumber);
 	let dinoWeekNumber = (weekNumber + WEEKADJUSTFACTOR) % 3 + 1;
+	let dinoNumber2024 = 0;
+	switch (dinoWeekNumber) {
+		case (1):
+			dinoNumber2024 = 2;
+		case (2):
+			dinoNumber2024 = 3;
+		case (3):
+			dinoNumber2024 = 1;
+	}
 
-	console.log(dinoWeekNumber);
-	let dinoNumber2024;
-
-	return dinoWeekNumber; // yeah fuck you this is enough
+	console.log("dino week number is", dinoWeekNumber)
+	console.log("dino 2024 week number is", dinoNumber2024)
+	return dinoNumber2024; // yeah fuck you this is enough
 
 }
 /*
