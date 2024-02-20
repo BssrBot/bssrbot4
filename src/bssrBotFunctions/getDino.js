@@ -35,15 +35,6 @@ function getCurrentWeek() {
 
 	console.log(dinoWeekNumber);
 	let dinoNumber2024;
-	switch (dinoWeekNumber) {
-		case (1):
-			dinoNumber2024 = 2;
-		case (2):
-			dinoNumber2024 = 3;
-		case (3):
-			dinoNumber2024 = 1;
-	}
-
 
 	return dinoNumber2024; // yeah fuck you this is enough
 
