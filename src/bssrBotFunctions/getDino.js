@@ -36,10 +36,13 @@ function getCurrentWeek() {
 	switch (dinoWeekNumber) {
 		case 1:
 			dinoNumber2024 = 2;
+			break;
 		case 2:
 			dinoNumber2024 = 3;
+			break;
 		case 3:
 			dinoNumber2024 = 1;
+			break;
 		default:
 			dinoNumber2024 = 0;
 	}
