@@ -37,15 +37,15 @@ function getCurrentWeek() {
 	let dinoNumber2024;
 	switch (dinoWeekNumber) {
 		case (1):
-			dinoNumber = 2;
+			dinoNumber2024 = 2;
 		case (2):
-			dinoNumber = 3;
+			dinoNumber2024 = 3;
 		case (3):
-			dinoNumber = 1;
+			dinoNumber2024 = 1;
 	}
 
 
-	return dinoNumber; // yeah fuck you this is enough
+	return dinoNumber2024; // yeah fuck you this is enough
 
 }
 /*
