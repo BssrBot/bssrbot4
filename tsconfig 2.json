@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "resolveJsonModule":true
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
